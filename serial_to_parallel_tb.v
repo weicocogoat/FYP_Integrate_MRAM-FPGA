@@ -100,10 +100,6 @@ initial begin
     
     #20
    
-    // Having issues with inout.
-    //data_out <= 16'b1111110000000000;
-    
-
     $finish;
  
 end
