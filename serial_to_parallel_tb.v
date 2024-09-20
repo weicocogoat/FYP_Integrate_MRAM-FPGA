@@ -29,7 +29,7 @@ reg ctrl_en = 0;
 
 reg addr_in;                
 reg data_in;                 
-reg ctrl;                     
+//reg ctrl;                     
 
 wire [19:0] addr_out;        
 wire [15:0] data_out;          
@@ -38,7 +38,6 @@ wire write_en;
 wire out_en;              
 wire lower_byte_en;      
 wire upper_byte_en;
-wire serial_data_out;
 
 // Variables 
 integer i = 0;
@@ -51,7 +50,7 @@ serial_to_parallel uut
     
     .addr_in(addr_in),                
     .data_in(data_in),                 
-    .ctrl(ctrl),                     
+    //.ctrl(ctrl),                     
     
     .addr_out(addr_out),         
     .data_out(data_out),          
@@ -59,8 +58,7 @@ serial_to_parallel uut
     .write_en(write_en),            
     .out_en(out_en),              
     .lower_byte_en(lower_byte_en),      
-    .upper_byte_en(upper_byte_en)
-    //.serial_data_out(serial_data_out)  
+    .upper_byte_en(upper_byte_en) 
 );
 
 always begin
@@ -72,7 +70,7 @@ initial begin
     clk <= 1'b0;
     rst <= 1'b1;
     ctrl_en <= 1'b0;
-    ctrl <= 1'b0;
+    //ctrl <= 1'b0;
     
     // At the negative edge of the clock, change the signal being fed into the UUT. 
     // Addr and data are fed in from LSB to MSB
@@ -83,7 +81,7 @@ initial begin
         ctrl_en <= 1'b1;
         addr_in <= 1'b1;
         data_in <= 1'b1;
-        ctrl <= 1'b1;
+        //ctrl <= 1'b1;
     end
     
     // For the next 10 cycles, addr and data bits will be set to 0
@@ -93,7 +91,7 @@ initial begin
         ctrl_en <= 1'b1;
         addr_in <= 1'b0;
         data_in <= 1'b0;
-        ctrl <= 1'b1;
+        //ctrl <= 1'b1;
     end
     
     @(negedge clk)
