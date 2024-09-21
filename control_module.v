@@ -76,10 +76,8 @@ begin
                         
                 5'd16 : data_en <= 0;       // All 16 bits have been shifted into the shift register, stop the shifting and retain the current state
                 
-                5'd20 : addr_en <= 0;       // All 20 bits have been shifted into the shift register, stop the shift and retain current state
-                
-                5'd21 : begin               
-                        counter <= 0;       // Reset counter to 0 and prepare for the next set of inputs
+                5'd20 : begin
+                        addr_en <= 0;       // All 20 bits have been shifted into the shift register, stop the shift and retain current state
                         send_data <= 1;     // At the 21st cycle, both addr and data shift registers are full and they can be moved to the output
                         
                         chip_en <= 0;     
@@ -87,6 +85,12 @@ begin
                         out_en <= 1;                
                         lower_byte_en <= 0;    
                         upper_byte_en <= 0;
+                        end
+                        
+                5'd21 : begin               
+                        counter <= 0;       // Reset counter to 0 and prepare for the next set of inputs
+                        data_en <= 0;
+                        addr_en <= 0;
                         end
                         
                 default : begin
@@ -113,8 +117,17 @@ begin
             case (counter)
                 6'd0  : addr_en <= 1;
                 
-                6'd20 : addr_en <= 0;           // All 20 bits have been shifted into the shift register, stop the shift and retain current state
-                
+                6'd20 : begin
+                        addr_en <= 0;           // All 20 bits have been shifted into the shift register, stop the shift and retain current state
+                        send_data <= 1;
+                        
+                        chip_en <= 0;     
+                        write_en <= 1;               
+                        out_en <= 0;            // Assert the out(read) line to signal a read operation for the MRAM                         
+                        lower_byte_en <= 0;    
+                        upper_byte_en <= 0;
+                        end
+                        
                 6'd21 : begin               
                         send_data <= 1;         // At the 21st cycle, send the addr to the MRAM
                         
