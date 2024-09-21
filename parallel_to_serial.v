@@ -25,13 +25,15 @@
 module parallel_to_serial(
     input clk,
     input rst,
+    input en,
+    
     input load,                     // When data is ready to be read, this signal will be asserted and data will be loaded into an internal register
     input send_data,                // Send the data serially
     
     input [15:0] data_in,           // Data from MRAM
     
-    output reg data_out,
-    output reg end_of_transmission
+    output reg data_out
+    //output reg end_of_transmission        // Enable this only when testing this module independatantly
 );
 
 reg [15:0] data_shift_reg;
@@ -43,25 +45,30 @@ begin
         data_shift_reg <= 0;
         counter <= 0;
         data_out <= 0;
-        end_of_transmission <= 0;
+        //end_of_transmission <= 0;
     end
     else 
-        if (load) begin
-            data_shift_reg <= data_in;
-            end_of_transmission <= 0;
-        end
-        if (send_data) begin
-            counter <= counter + 1;
-            data_out <= data_shift_reg[15];
-            data_shift_reg <= (data_shift_reg << 1);
-            
-            case (counter)
-                5'd16 : end_of_transmission <= 1;
+        if (en) begin
+            if (load) begin
+                data_shift_reg <= data_in;
+                //end_of_transmission <= 0;
+            end
+            if (send_data) begin
+                counter <= counter + 1;
+                data_out <= data_shift_reg[15];
+                data_shift_reg <= (data_shift_reg << 1);
                 
-                5'd17 : end_of_transmission <= 0;
-                
-                default: end_of_transmission <= 0;
-            endcase
+                /*
+                // Enable this section only when testing this independantly
+                case (counter)
+                    5'd16 : end_of_transmission <= 1;
+                    
+                    5'd17 : end_of_transmission <= 0;
+                    
+                    default: end_of_transmission <= 0;
+                endcase
+                */
+            end
         end
 end
 

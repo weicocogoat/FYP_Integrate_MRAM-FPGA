@@ -31,6 +31,9 @@ module top_module(
     output [15:0] data_out,
     output [19:0] addr_out,
     
+    input [15:0] parallel_data_in,
+    output ser_data_out,
+    
     // MRAM signals
     output chip_en,                 // Chip enable, active low
     output write_en,                // Write enable, active low
@@ -43,6 +46,9 @@ module top_module(
 wire data_en;                 // Enable the data STP module
 wire addr_en;                 // Enable the addr STP module
 wire send_data; 
+
+wire load;                    // Flag to load data from MRAM to internal shift registers
+wire data_in_from_MRAM_en;    // Enable the data in from MRAM PTS module
 
 serial_to_parallel #(.BUS_WIDTH(16)) data_STP
 (
@@ -68,6 +74,20 @@ serial_to_parallel #(.BUS_WIDTH(20)) addr_STP
     .data_out(addr_out)          
 );
 
+parallel_to_serial PTS
+(
+    .clk(clk),
+    .rst(rst),
+    .en(data_in_from_MRAM_en),
+    
+    .load(load),                     // When data is ready to be read, this signal will be asserted and data will be loaded into an internal register
+    .send_data(send_data),                // Send the data serially
+    
+    .data_in(parallel_data_in),           // Data from MRAM
+    
+    .data_out(ser_data_out)
+);
+
 control_module controller
 (
     .clk(clk),
@@ -77,7 +97,10 @@ control_module controller
     
     .data_en(data_en),                              
     .addr_en(addr_en),                 
-    .send_data(send_data),              
+    .send_data(send_data),
+    
+    .load(load),
+    .data_in_from_MRAM_en(data_in_from_MRAM_en),
     
     .chip_en(chip_en),                 
     .write_en(write_en),              
