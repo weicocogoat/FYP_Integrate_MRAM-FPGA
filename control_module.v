@@ -41,7 +41,7 @@ module control_module(
 );
 reg [5:0] counter;                      // 6 flip flops to use as a 5-bit counter. Need to count up to 20. 
 
-always @(posedge clk or rst)
+always @(posedge clk or posedge rst)
 begin
     if (rst) begin
         counter <= 0;
@@ -67,6 +67,8 @@ begin
             
             load <= load;
             data_in_from_MRAM_en <= data_in_from_MRAM_en;
+
+            counter <= counter + 1;
             
             case (counter)
                 5'd0  : begin               // Keep track of the number of bits being shifted into data and addr shift registers
@@ -103,7 +105,7 @@ begin
                           upper_byte_en <= 1;
                           end
             endcase
-            counter <= counter + 1;
+            //counter <= counter + 1;
         end
         
         else if (~read_write_sel) begin
