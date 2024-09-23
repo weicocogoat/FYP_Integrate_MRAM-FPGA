@@ -78,9 +78,14 @@ initial begin
     clk <= 1'b0;
     rst <= 1'b1;
     
-    #10
-    
     // Testing of Write operation starts here 
+    
+    // Assert the read_write_sel line(write operation) 1 cycle before serial input goes into the STP modules
+    #5
+    rst <= 1'b0;
+    read_write_sel <= 1'b1;
+    @(negedge clk)
+    
     
     // At the negative edge of the clock, change the signal being fed into the UUT. 
     // Addr and data are fed in from LSB to MSB
@@ -91,7 +96,6 @@ initial begin
         read_write_sel <= 1'b1;
         addr_in <= 1'b0;
         data_in <= 1'b1;
-        //ctrl <= 1'b1;
     end
     
     // For the next 10 cycles, addr and data bits will be set to 0
@@ -103,13 +107,19 @@ initial begin
         data_in <= 1'b0;
     end
     
+    // Enable reset and to stop all modules
     @(negedge clk)
     @(negedge clk)
     rst <= 1'b1;
     
     #20
+    
     // Testing of Write operation ends here
     
+    // Set the read_write_sel line to 0(read operation) 1 cycle before serial input goes into the STP modules
+    rst <= 1'b0;
+    read_write_sel <= 1'b1;
+    @(negedge clk)
     
     // Testing of Read operation starts here
     for (i = 0; i < 20; i = i+1) begin
