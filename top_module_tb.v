@@ -78,7 +78,11 @@ initial begin
     clk <= 1'b0;
     rst <= 1'b1;
     
-    #10
+    // Assert the read_write_sel line(write operation) 1 cycle before serial input goes into the STP modules
+    #5
+    rst <= 1'b0;
+    read_write_sel <= 1'b1;
+    @(negedge clk)
     
     // Testing of Write operation starts here 
     
@@ -112,6 +116,12 @@ initial begin
     #20
     
     // Testing of Read operation starts here
+    
+    // Set the read_write_sel line to 0(read operation) 1 cycle before serial input goes into the STP modules
+    rst <= 1'b0;
+    read_write_sel <= 1'b1;
+    @(negedge clk)
+    
     for (i = 0; i < 20; i = i+1) begin
         @(negedge clk)
         rst <= 1'b0;
