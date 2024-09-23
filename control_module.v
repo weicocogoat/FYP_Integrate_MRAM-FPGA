@@ -39,7 +39,7 @@ module control_module(
     output reg lower_byte_en,           // Reading of bytes 7:0 enable line, active low
     output reg upper_byte_en            // Reading of bytes 15:8 enable line, active low
 );
-reg [5:0] counter;                      // 6 flip flops to use as a 5-bit counter. Need to count up to 20. 
+reg [5:0] counter;                      // 6 flip flops to use as a 6-bit counter. Minimum required as of now
 
 always @(posedge clk or posedge rst)
 begin
@@ -68,20 +68,28 @@ begin
             load <= load;
             data_in_from_MRAM_en <= data_in_from_MRAM_en;
 
-            counter <= counter + 1;
-            
+            // Keep track of the number of bits being shifted into data and addr shift registers
             case (counter)
-                5'd0  : begin               // Keep track of the number of bits being shifted into data and addr shift registers
+                6'd0  : begin              
+                        // Enable both data and addr STP addr_en on the next rising edge
                         data_en <= 1; 
                         addr_en <= 1;
                         end
                         
-                5'd16 : data_en <= 0;       // All 16 bits have been shifted into the shift register, stop the shifting and retain the current state
-                
-                5'd20 : begin
-                        addr_en <= 0;       // All 20 bits have been shifted into the shift register, stop the shift and retain current state
-                        send_data <= 1;     // At the 21st cycle, both addr and data shift registers are full and they can be moved to the output
+                6'd16 : begin
+                        // All 16 bits have been shifted into the shift register, stop the shifting and retain the current state
+                        data_en <= 0;     
+                        end 
                         
+                6'd20 : begin
+                        // All 20 bits have been shifted into the shift register, stop the shift and retain current state
+                        addr_en <= 0;  
+                        
+                        // At the 21st cycle, both addr and data shift registers are full and they can be moved to the output
+                        // Set send_data to 1 so that on the next rising edge, data can be output to the MRAM
+                        send_data <= 1;     
+                        
+                        // Set the MRAM signals such that on the next rising edge, data can be output to the MRAM as a write operation
                         chip_en <= 0;     
                         write_en <= 0;               
                         out_en <= 1;                
@@ -89,62 +97,75 @@ begin
                         upper_byte_en <= 0;
                         end
                         
-                5'd21 : begin               
-                        counter <= 0;       // Reset counter to 0 and prepare for the next set of inputs
+                6'd21 : begin
+                        // Reset counter and enable lines to 0 and prepare for the next set of inputs               
+                        counter <= 0;
                         data_en <= 0;
                         addr_en <= 0;
                         end
                         
                 default : begin
-                          send_data <= 0;   // At every other clock cycle, do not send the data over yet
+                          // At every other clock cycle, do not send the data over yet
+                          send_data <= 0;   
                           
-                          chip_en <= 1;     // chip_en also helps to prevent the MRAM from reading the data as valid  
+                          // At every other clock cycle, do not enable MRAM yet.
+                          chip_en <= 1;      
                           write_en <= 1;               
                           out_en <= 1;                
                           lower_byte_en <= 1;    
                           upper_byte_en <= 1;
                           end
             endcase
-            //counter <= counter + 1;
+            counter <= counter + 1;
         end
         
         else if (~read_write_sel) begin
             // Read operation
-            // Write operation
             data_en <= data_en;
             addr_en <= addr_en;
+            
             data_in_from_MRAM_en <= data_in_from_MRAM_en;
             send_data <= send_data;
             
             case (counter)
-                6'd0  : addr_en <= 1;
+                6'd0  : begin
+                        // Enable the addr STP module in the next rising edge
+                        addr_en <= 1;
+                        end
                 
                 6'd20 : begin
-                        addr_en <= 0;           // All 20 bits have been shifted into the shift register, stop the shift and retain current state
+                        // All 20 bits have been shifted into the shift register, stop the shift and retain current state
+                        addr_en <= 0;
+                        
+                        // Set send_data to 1 so that on the next rising edge, data will be output to MRAM           
                         send_data <= 1;
                         
+                        // Set the MRAM signals such that on the next rising edge, data can be output to the MRAM as a write operation
                         chip_en <= 0;     
                         write_en <= 1;               
-                        out_en <= 0;            // Assert the out(read) line to signal a read operation for the MRAM                         
+                        out_en <= 0;
                         lower_byte_en <= 0;    
                         upper_byte_en <= 0;
                         end
                         
-                6'd21 : begin               
-                        send_data <= 1;         // At the 21st cycle, send the addr to the MRAM
+                6'd21 : begin
+                        // One stall cycle to enable MRAM fetch the data to its addr_en
+                        // For the current implementation, I think its not necessary? But I'll leave it in for now
+                                       
+                        send_data <= 1;
                         
                         chip_en <= 0;     
                         write_en <= 1;               
-                        out_en <= 0;            // Assert the out(read) line to signal a read operation for the MRAM                         
+                        out_en <= 0;                        
                         lower_byte_en <= 0;    
                         upper_byte_en <= 0;
                         end
                         
                     
                 6'd22 : begin
-                        // Assume that data will be ready on the next clock cycle for now
+                        // Data should be ready after the stall cycle
                         
-                        // These values need to be held low to allow reading of data (as per the MRAM module)
+                        // Continue holding these values low to allow reading of data (as per the MRAM module)
                         chip_en <= 0;     
                         write_en <= 1;               
                         out_en <= 0;                                   
@@ -153,21 +174,27 @@ begin
                         
                         send_data <= 0;
                         
-                        data_in_from_MRAM_en <= 1;          // Start the parallel to serial module
-                        load <= 1;                          // Assert the load flag to move the data into an internal register
+                        // Start the parallel to serial module
+                        data_in_from_MRAM_en <= 1;
+                        
+                        // Assert the load flag to move the data into an internal register         
+                        load <= 1;
+                        end                          
+                        
+                6'd23 : begin
+                        // Data should have been successfully loaded in at this clock cycle 
+                        // Assert the send_data signal such that data will be output serially on the next clock cycle
+                        send_data <= 1;                    
                         end
                         
-                6'd23 : send_data <= 1;                     // After data has been loaded in, start to send data serially
-                    
                 6'd39 : begin
-                        data_in_from_MRAM_en <= 0;          // All data has been shifted out of the MRAM at this point. Disable the module   
+                        // All data has been shifted out of the MRAM at this point. Disable the module
+                        data_in_from_MRAM_en <= 0;  
                         send_data <= 0;
                         counter <= 0;
                         end
                                  
                 default : begin
-                          //send_data <= 0;   // At every other clock cycle, do not send the data over yet
-                          
                           load <= 0;
                           
                           chip_en <= 1;     // chip_en also helps to prevent the MRAM from reading the data as valid  
