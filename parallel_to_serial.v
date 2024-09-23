@@ -39,7 +39,7 @@ module parallel_to_serial(
 reg [15:0] data_shift_reg;
 reg [5:0] counter;
 
-always @(posedge clk or rst)
+always @(posedge clk or posedge rst)
 begin
     if (rst) begin
         data_shift_reg <= 0;
