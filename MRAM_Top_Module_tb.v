@@ -85,7 +85,9 @@ initial begin
     // Assert the read_write_sel line(write operation) 1 cycle before serial input goes into the STP modules
     #5
     rst <= 1'b0;
-    read_write_sel <= 3'b011;
+    //read_write_sel <= 3'b111;
+    //read_write_sel <= 3'b011;
+    read_write_sel <= 3'b101;
     @(posedge clk)
     
     
@@ -96,7 +98,9 @@ initial begin
     for (i = 0; i < 20; i= i+1) begin
         @(posedge clk);
         rst <= 1'b0;
-        read_write_sel <= 3'b011;
+        //read_write_sel <= 3'b111;
+        //read_write_sel <= 3'b011;
+        read_write_sel <= 3'b101;
         addr_in <= 1'b0;
         data_in <= i%2;
     end
@@ -113,7 +117,9 @@ initial begin
     
     // Set the read_write_sel line to 0(read operation) 1 cycle before serial input goes into the STP modules
     rst <= 1'b0;
-    read_write_sel <= 3'b010;
+    //read_write_sel <= 3'b110;
+    //read_write_sel <= 3'b010;
+    read_write_sel <= 3'b100;
     @(posedge clk)
     
     // Testing of Read operation starts here
@@ -121,7 +127,9 @@ initial begin
     for (i = 0; i < 20; i = i+1) begin
         @(posedge clk)
         rst <= 1'b0;
-        read_write_sel <= 3'b010;
+        //read_write_sel <= 3'b110;
+        //read_write_sel <= 3'b010;
+        read_write_sel <= 3'b100;
         addr_in <= 1'b0;
     end
     

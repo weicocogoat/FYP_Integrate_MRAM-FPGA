@@ -30,6 +30,14 @@ module parallel_to_serial(
     input load,                     // When data is ready to be read, this signal will be asserted and data will be loaded into an internal register
     input send_data,                // Send the data serially
     
+    /*
+    Selects full, upper, or lower byte
+    11 -> Full byte
+    01 -> Lower byte
+    10 -> Upper byte
+    */
+    input [1:0] word_sel,           
+    
     input [15:0] data_in,           // Data from MRAM
     
     output reg data_out
@@ -54,9 +62,28 @@ begin
                 //end_of_transmission <= 0;
             end
             if (send_data) begin
-                counter <= counter + 1;
-                data_out <= data_shift_reg[15];
-                data_shift_reg <= (data_shift_reg << 1);
+            
+                case (word_sel)
+                    2'b11: begin
+                           counter <= counter + 1;
+                           data_out <= data_shift_reg[15];
+                           data_shift_reg <= (data_shift_reg << 1);
+                           end 
+                           
+                    2'b01: begin
+                           counter <= counter + 1;
+                           data_out <= data_shift_reg[7];
+                           data_shift_reg <= (data_shift_reg << 1);
+                           end
+                           
+                    2'b10: begin
+                           counter <= counter + 1;
+                           data_out <= data_shift_reg[15];
+                           data_shift_reg <= (data_shift_reg << 1);
+                           end
+                           
+                    default: counter <= counter + 1; // Should never reach here
+                endcase
                 
                 /*
                 // Enable this section only when testing this independantly

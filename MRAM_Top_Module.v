@@ -97,7 +97,9 @@ parallel_to_serial PTS
     .en(data_in_from_MRAM_en),
     
     .load(load),                     // When data is ready to be read, this signal will be asserted and data will be loaded into an internal register
-    .send_data(send_data),                // Send the data serially
+    .send_data(send_data),           // Send the data serially
+    
+    .word_sel(read_write_sel[2:1]),  // Bits to select full, upper or lower byte
     
     .data_in(parallel_data_in),           // Data from MRAM
     

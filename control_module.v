@@ -195,6 +195,16 @@ begin
                         send_data <= 1;                    
                         end
                         
+                6'd31: begin
+                       if ( ~(read_write_sel[2] && read_write_sel[1]) ) 
+                           begin
+                           // If either one of the bits is 0, it is a half word 
+                           // At the 31st cycle, all 8 bits have been sent out and should thus, stop sending data
+                           data_in_from_MRAM_en <= 0;  
+                           send_data <= 0;
+                           end
+                       end
+                        
                 6'd39 : begin
                         // All data has been shifted out of the MRAM at this point. Disable the module
                         data_in_from_MRAM_en <= 0;  
