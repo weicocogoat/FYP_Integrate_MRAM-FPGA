@@ -40,7 +40,7 @@ module serial_to_parallel
 reg [BUS_WIDTH - 1:0] data_shift_reg;
 
 // Datapath
-    always @(posedge clk or posedge rst)
+always @(posedge clk or posedge rst)
 begin
     if (rst) begin
         // Resets all shift registers to 0

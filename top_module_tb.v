@@ -28,7 +28,7 @@ reg rst = 0;
             
 reg data_in;   
 reg addr_in;     
-reg read_write_sel;                          
+reg [3:0] read_write_sel;                          
 
 wire [15:0] data_out;
 wire [19:0] addr_out;
@@ -78,21 +78,22 @@ initial begin
     clk <= 1'b0;
     rst <= 1'b1;
     
+    #10
+    
+    // Testing of Write operation starts here 
     // Assert the read_write_sel line(write operation) 1 cycle before serial input goes into the STP modules
     #5
     rst <= 1'b0;
-    read_write_sel <= 1'b1;
-    @(negedge clk)
-    
-    // Testing of Write operation starts here 
+    read_write_sel <= 3'b111;
+    @(posedge clk)
     
     // At the negative edge of the clock, change the signal being fed into the UUT. 
     // Addr and data are fed in from LSB to MSB
     // For the first 10 cycles, addr and data bits will be set to 1
     for (i = 0; i < 10; i= i+1) begin
-        @(negedge clk);
+        @(posedge clk);
         rst <= 1'b0;
-        read_write_sel <= 1'b1;
+        read_write_sel <= 3'b111;
         addr_in <= 1'b1;
         data_in <= 1'b1;
         //ctrl <= 1'b1;
@@ -100,42 +101,39 @@ initial begin
     
     // For the next 10 cycles, addr and data bits will be set to 0
     for (i = 0; i < 10; i= i+1) begin
-        @(negedge clk);
+        @(posedge clk);
         rst <= 1'b0;
-        read_write_sel <= 1'b1;
+        read_write_sel <= 3'b111;
         addr_in <= 1'b0;
         data_in <= 1'b0;
     end
     
     // Testing of Write operation ends here
     
-    @(negedge clk)
-    @(negedge clk)
+    @(posedge clk)
+    @(posedge clk)
     rst <= 1'b1;
     
     #20
+    
     
     // Testing of Read operation starts here
     
     // Set the read_write_sel line to 0(read operation) 1 cycle before serial input goes into the STP modules
     rst <= 1'b0;
-    read_write_sel <= 1'b1;
-    @(negedge clk)
+    read_write_sel <= 3'b110;
+    @(posedge clk)
     
     for (i = 0; i < 20; i = i+1) begin
-        @(negedge clk)
+        @(posedge clk)
         rst <= 1'b0;
-        read_write_sel <= 1'b0;
+        read_write_sel <= 3'b110;
         addr_in <= i%2;
     end
-    
-    
     
     parallel_data_in <= 16'b0101_0101_0101_0101;
     
     #300
-    
-   
 
     $finish;
  

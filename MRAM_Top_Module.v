@@ -26,12 +26,12 @@ module MRAM_Top_Module(
     
     input data_in,
     input addr_in,
-    input read_write_sel,
+    input [2:0] read_write_sel,
     
     output [15:0] data_out,
     output [19:0] addr_out,
     
-    input [15:0] parallel_data_in,
+    //input [15:0] parallel_data_in,
     output ser_data_out,
     
     // MRAM signals
@@ -48,7 +48,23 @@ wire addr_en;                 // Enable the addr STP module
 wire send_data; 
 
 wire load;                    // Flag to load data from MRAM to internal shift registers
-wire data_in_from_MRAM_en;    // Enable the data in from MRAM PTS module
+wire data_in_from_MRAM_en;    // Enable the data in from MRAM PTS module, Bit 0 enables full word, Bit 1 enables half word
+
+wire [15:0] parallel_data_in;
+
+MRAM_model MRAM(
+    .clk(clk),
+    
+    .e_chipEnable_n(chip_en),
+    .w_writeEnable_n(write_en),
+    .g_outputEnable_n(out_en),
+    .lb_lowerByteEnable_n(lower_byte_en),
+    .ub_upperByteEnable_n(upper_byte_en),
+    
+    .address(addr_out),
+    .dqi_datainput(data_out),
+    .dqo_dataoutput(parallel_data_in)
+);
 
 serial_to_parallel #(.BUS_WIDTH(16)) data_STP
 (
@@ -88,6 +104,7 @@ parallel_to_serial PTS
     .data_out(ser_data_out)
 );
 
+
 control_module controller
 (
     .clk(clk),
@@ -107,20 +124,6 @@ control_module controller
     .out_en(out_en),                 
     .lower_byte_en(lower_byte_en),           
     .upper_byte_en(upper_byte_en)          
-);
-
-MRAM_model mram(
-    .clk(clk),
-    
-    .e_chipEnable_n(chip_en),
-    .w_writeEnable_n(write_en),
-    .g_outputEnable_n(out_en),
-    .lb_lowerByteEnable_n(lower_byte_en),
-    .ub_upperByteEnable_n(upper_byte_en),
-    
-    .address(addr_out),
-    .dqi_datainput(data_out),
-    .dqo_dataoutput(parallel_data_in)
 );
 
 endmodule

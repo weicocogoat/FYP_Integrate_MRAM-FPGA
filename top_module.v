@@ -26,7 +26,7 @@ module top_module(
     
     input data_in,
     input addr_in,
-    input read_write_sel,
+    input [3:0] read_write_sel,
     
     output [15:0] data_out,
     output [19:0] addr_out,

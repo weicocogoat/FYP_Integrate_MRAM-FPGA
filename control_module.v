@@ -24,7 +24,15 @@ module control_module(
     input clk,
     input rst,
 
-    input read_write_sel,               // 0 for read, 1 for write
+    /*
+    Bit 0 - 0 for Read, 1 for Write
+    Bits 2:1 -
+    00 - nop
+    01 - Lower byte Read/Write
+    10 - Upper byte Read/Write
+    11 - Full byte Read/Write
+    */
+    input [2:0] read_write_sel,
     
     output reg data_en,                 // Enable the data STP module
     output reg addr_en,                 // Enable the addr STP module
@@ -60,7 +68,7 @@ begin
         upper_byte_en <= 1;
     end
     else begin
-        if (read_write_sel) begin
+        if (read_write_sel[0]) begin
             // Write operation
             data_en <= data_en;
             addr_en <= addr_en;
@@ -93,8 +101,8 @@ begin
                         chip_en <= 0;     
                         write_en <= 0;               
                         out_en <= 1;                
-                        lower_byte_en <= 0;    
-                        upper_byte_en <= 0;
+                        lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
+                        upper_byte_en <= ~read_write_sel[2];
                         end
                         
                 6'd21 : begin
@@ -119,7 +127,7 @@ begin
             counter <= counter + 1;
         end
         
-        else if (~read_write_sel) begin
+        else if (~read_write_sel[0]) begin
             // Read operation
             data_en <= data_en;
             addr_en <= addr_en;
@@ -144,8 +152,8 @@ begin
                         chip_en <= 0;     
                         write_en <= 1;               
                         out_en <= 0;
-                        lower_byte_en <= 0;    
-                        upper_byte_en <= 0;
+                        lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
+                        upper_byte_en <= ~read_write_sel[2];
                         end
                         
                 6'd21 : begin
@@ -157,8 +165,8 @@ begin
                         chip_en <= 0;     
                         write_en <= 1;               
                         out_en <= 0;                        
-                        lower_byte_en <= 0;    
-                        upper_byte_en <= 0;
+                        lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
+                        upper_byte_en <= ~read_write_sel[2];
                         end
                         
                     
@@ -169,13 +177,13 @@ begin
                         chip_en <= 0;     
                         write_en <= 1;               
                         out_en <= 0;                                   
-                        lower_byte_en <= 0;    
-                        upper_byte_en <= 0;
+                        lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
+                        upper_byte_en <= ~read_write_sel[2];
                         
                         send_data <= 0;
                         
-                        // Start the parallel to serial module
-                        data_in_from_MRAM_en <= 1;
+                        data_in_from_MRAM_en <= 1; 
+
                         
                         // Assert the load flag to move the data into an internal register         
                         load <= 1;
