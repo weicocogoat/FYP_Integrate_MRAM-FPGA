@@ -66,20 +66,20 @@ begin
                 case (word_sel)
                     2'b11: begin
                            counter <= counter + 1;
-                           data_out <= data_shift_reg[15];
-                           data_shift_reg <= (data_shift_reg << 1);
+                           data_out <= data_shift_reg[0];
+                           data_shift_reg <= (data_shift_reg >> 1);
                            end 
                            
                     2'b01: begin
                            counter <= counter + 1;
-                           data_out <= data_shift_reg[7];
-                           data_shift_reg <= (data_shift_reg << 1);
+                           data_out <= data_shift_reg[0];
+                           data_shift_reg <= (data_shift_reg >> 1);
                            end
                            
                     2'b10: begin
                            counter <= counter + 1;
-                           data_out <= data_shift_reg[15];
-                           data_shift_reg <= (data_shift_reg << 1);
+                           data_out <= data_shift_reg[8];
+                           data_shift_reg <= (data_shift_reg >> 1);
                            end
                            
                     default: counter <= counter + 1; // Should never reach here
