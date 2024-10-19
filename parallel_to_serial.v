@@ -22,7 +22,9 @@
 // Reference: https://github.com/mnmhdanas/Parallel-IN-Serial-OUT 
 // Concept for serial to parallel https://www.globalspec.com/learnmore/semiconductors/logic/digital_parallel_serial_converters
 // https://evlsi.wordpress.com/2014/10/24/paralleltoserialconverter/
-module parallel_to_serial(
+module parallel_to_serial
+#(parameter BUS_WIDTH = 16)
+(
     input clk,
     input rst,
     input en,
@@ -38,13 +40,13 @@ module parallel_to_serial(
     */
     input [1:0] word_sel,           
     
-    input [15:0] data_in,           // Data from MRAM
+    input [BUS_WIDTH - 1:0] data_in,           // Data from MRAM
     
     output reg data_out
     //output reg end_of_transmission        // Enable this only when testing this module independatantly
 );
 
-reg [15:0] data_shift_reg;
+reg [BUS_WIDTH - 1:0] data_shift_reg;
 reg [5:0] counter;
 
 always @(posedge clk or posedge rst)
@@ -78,7 +80,7 @@ begin
                            
                     2'b10: begin
                            counter <= counter + 1;
-                           data_out <= data_shift_reg[8];
+                           data_out <= data_shift_reg[BUS_WIDTH/2];
                            data_shift_reg <= (data_shift_reg >> 1);
                            end
                            

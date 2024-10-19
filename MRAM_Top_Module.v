@@ -90,7 +90,7 @@ serial_to_parallel #(.BUS_WIDTH(20)) addr_STP
     .data_out(addr_out)          
 );
 
-parallel_to_serial PTS
+parallel_to_serial #(.BUS_WIDTH(16)) PTS
 (
     .clk(clk),
     .rst(rst),
