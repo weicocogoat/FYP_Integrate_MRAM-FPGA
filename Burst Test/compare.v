@@ -47,7 +47,8 @@ begin
 end
 */
 
-assign stop_signal = (burst_len == counter) ? 1 : 0;
+// Slight workaround to detect when the burst_len exceeds counter
+assign stop_signal = ( (burst_len + 1) == counter) ? 1 : 0;
 
 
 endmodule

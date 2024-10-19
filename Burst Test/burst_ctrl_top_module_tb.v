@@ -57,6 +57,8 @@ always begin
     clk = ~clk;
 end
 
+integer i;
+
 initial begin
     clk <= 0;
     rst <= 1;
@@ -64,10 +66,24 @@ initial begin
     @(posedge clk)
     rst <= 0;
     burst_en <= 1;
-    mode_sel <= 0;
+    mode_sel <= 1;
+    
+    for(i = 0; i < 20; i = i + 1) begin
+        @(posedge clk)
+        burst_len_in <= i%2 + 1;
+        addr_in <= 0;
+    end
     
     @(posedge clk)
     @(posedge clk)
+    @(posedge clk)
+    
+    for(i = 0; i < 120; i = i + 1) begin
+        @(posedge clk)
+        burst_en <= 1;
+        mode_sel <= 1;
+    end
+
     
     $finish;
 

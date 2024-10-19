@@ -67,6 +67,13 @@ module burst_ctrl(
     output reg addr_sel
 );
 
+// Flag to determine if the initial burst len and addr is loaded into the register
+// 0 -> Not loaded in | 1 -> Loaded in.
+reg flag;
+
+// 6-bit counter to keep track of the number of clock cycles
+reg [5:0] internal_counter;
+
 always @(posedge clk or posedge rst)
 begin
     if (rst) begin
@@ -106,11 +113,118 @@ begin
         // Mux Signal
         addr_sel <= 0;
         
+        // Initialize flag to 0
+        flag <= 0;
+        
+        // Initialize counter to 0
+        internal_counter <= 0;
+        
     end
     else begin 
         if (en && ~mode_sel) begin
-            // If mod_sel is 0, Single Transfer is selected. Set the mux input to 0 to use the serial addr in. No other signals are necesary
+            // If mode_sel is 0, Single Transfer is selected. Set the mux input to 0 to use the serial addr in. No other signals are necesary
             addr_sel <= 0;
+        end
+        else if (en && mode_sel && ~stop_signal) begin
+            // If mode_sel is 1, Burst Transfer is selected.
+            
+            // Assign new value as old value (prevent latches)
+            burst_len_en <= burst_len_en;
+            send_burst_len_data <= send_burst_len_data;
+            
+            initial_addr_en <= initial_addr_en;
+            send_addr_data <= 0;
+            
+            addr_PTS_out_en <= addr_PTS_out_en;
+            addr_PTS_out_load <= addr_PTS_out_load;
+            addr_PTS_out_send_data <= addr_PTS_out_send_data;
+            addr_PTS_out_word_sel <= addr_PTS_out_word_sel; 
+
+            counter_en <= counter_en;
+            
+            adder_en <= adder_en;
+            
+            initial_addr_reg_wen <= initial_addr_reg_wen;
+            
+            initial_burst_len_reg_en <= initial_burst_len_reg_en;
+            
+            addr_sel <= addr_sel;
+
+            flag <= flag;
+            
+            case (internal_counter)
+                6'd0:   begin
+                        if (~flag) begin
+                            burst_len_en <= 1;          // Enable STP burst_len on the next clk cycle
+                            initial_addr_en <= 1;       // Enable STP initial_addr_in on the next clk cycle
+                        end
+                        
+                        else begin
+
+                            addr_PTS_out_en <= 1;
+                            addr_PTS_out_load <= 0;
+                            addr_PTS_out_send_data <= 1;
+                            addr_PTS_out_word_sel <= 2'b11;
+                        end
+                        
+                        end
+                /*        
+                6'd1:   begin
+                        counter_en <= 0;
+                        adder_en <= 0;
+                        end
+                */       
+                6'd4:   
+                begin
+                        if (~flag) begin
+                            burst_len_en <= 0;              // Disable STP burst_len on the next clk cycle
+                            send_burst_len_data <= 1;       // Move the burst_len into the internal reg on the next clk cycle
+                            initial_burst_len_reg_en <= 1;  // Enable the reg to be written
+                        end
+                        
+                        end
+                        
+                6'd5:  begin
+                        if (~flag) begin
+                            send_burst_len_data <= 0;
+                            initial_burst_len_reg_en <= 0;
+                        end
+                        
+                        end
+                        
+                6'd20:  begin
+                        if (~flag) begin
+                            initial_addr_en <= 0;           // Disable STP initial_addr_en on the next clk cycle
+                            send_addr_data <= 1;            // Move the burst_len into the internal reg on the next clk cycle
+                            initial_addr_reg_wen <= 1;      // Enable the reg to be written
+                        end
+                        
+                        // Assert these signals early
+                        counter_en <= 1;                    
+                        adder_en <= 1;
+                        
+                        addr_PTS_out_en <= 0;
+                        addr_PTS_out_load <= 0;
+                        addr_PTS_out_send_data <= 0;
+                        end
+                        
+                6'd21:  begin
+                        if (~flag) begin
+                            send_addr_data <= 0;
+                            initial_addr_reg_wen <= 0;
+                            flag <= 1;                      // Burst_len and initial_addr has been loaded in. Stop the loading of data.
+                        end
+                        
+                        counter_en <= 0; 
+                        addr_PTS_out_en <= 1;
+                        addr_PTS_out_load <= 1;
+                        end
+            endcase
+            
+            // These 2 are not occuring sequentially
+            internal_counter <= internal_counter + 1;
+            if (internal_counter == 22) internal_counter <= 0;
+            
         end
     
     end

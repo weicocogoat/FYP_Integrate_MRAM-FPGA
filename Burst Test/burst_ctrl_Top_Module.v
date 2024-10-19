@@ -50,7 +50,7 @@ wire [3:0] burst_len_parallel;
 wire addr_PTS_out_en;
 wire addr_PTS_out_load;
 wire addr_PTS_out_send_data;
-wire addr_PTS_out_word_sel;
+wire [1:0] addr_PTS_out_word_sel;
 
 wire stop_signal;
 
@@ -60,10 +60,10 @@ wire [3:0] counter_out;
 wire adder_en;
 
 wire initial_addr_reg_wen;
-wire initial_addr_reg_out;
+wire [19:0] initial_addr_reg_out;
 
 wire initial_burst_len_reg_en;
-wire initial_burst_len_reg_out;
+wire [3:0] initial_burst_len_reg_out;
 
 wire [19:0] burst_addr_out_parallel;
 
@@ -138,7 +138,7 @@ serial_to_parallel #(.BUS_WIDTH(20)) addr_STP
     .data_out(initial_addr_parallel)  
 );   
 
-parallel_to_serial addr_PTS_out
+parallel_to_serial #(.BUS_WIDTH(20)) addr_PTS_out
 (
     .clk(clk),
     .rst(rst),
