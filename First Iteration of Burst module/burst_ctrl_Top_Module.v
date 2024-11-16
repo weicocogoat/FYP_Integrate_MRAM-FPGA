@@ -46,7 +46,8 @@ wire send_addr_data;
 wire [19:0] initial_addr_parallel;
 
 wire [3:0] burst_len_parallel;
-    
+
+wire addr_PTS_out_rst;    
 wire addr_PTS_out_en;
 wire addr_PTS_out_load;
 wire addr_PTS_out_send_data;
@@ -58,12 +59,6 @@ wire counter_en;
 wire [3:0] counter_out;
 
 wire adder_en;
-
-wire initial_addr_reg_wen;
-wire [19:0] initial_addr_reg_out;
-
-wire initial_burst_len_reg_en;
-wire [3:0] initial_burst_len_reg_out;
 
 wire [19:0] burst_addr_out_parallel;
 
@@ -87,6 +82,7 @@ burst_ctrl burst_controller
     
     
     //  addr_PTS_out signals
+    .addr_PTS_out_rst(addr_PTS_out_rst),
     .addr_PTS_out_en(addr_PTS_out_en),
     .addr_PTS_out_load(addr_PTS_out_load),
     .addr_PTS_out_send_data(addr_PTS_out_send_data),
@@ -100,14 +96,6 @@ burst_ctrl burst_controller
     
     // adder signals
     .adder_en(adder_en),
-    
-    
-    // Internal Register holding initial addr
-    .initial_addr_reg_wen(initial_addr_reg_wen),
-    
-    
-    // Internal Register holding burst_len
-    .initial_burst_len_reg_en(initial_burst_len_reg_en),
     
     
     // Mux Signal
@@ -141,7 +129,7 @@ serial_to_parallel #(.BUS_WIDTH(20)) addr_STP
 parallel_to_serial #(.BUS_WIDTH(20)) addr_PTS_out
 (
     .clk(clk),
-    .rst(rst),
+    .rst(addr_PTS_out_rst),
     .en(addr_PTS_out_en),
     
     .load(addr_PTS_out_load),                     
@@ -152,28 +140,6 @@ parallel_to_serial #(.BUS_WIDTH(20)) addr_PTS_out
     .data_in(burst_addr_out_parallel),          
     
     .data_out(addr_ser_out)
-);
-
-single_reg #(.BUS_WIDTH(20)) initial_addr_reg 
-(
-    .clk(clk),
-    .rst(rst),
-    
-    .wen(initial_addr_reg_wen),              // Write enable
-    .data_in(initial_addr_parallel),
-    
-    .data_out(initial_addr_reg_out)
-);
-
-single_reg #(.BUS_WIDTH(4)) initial_burst_len_reg 
-(
-    .clk(clk),
-    .rst(rst),
-    
-    .wen(initial_burst_len_reg_en),              // Write enable
-    .data_in(burst_len_parallel),
-    
-    .data_out(initial_burst_len_reg_out)
 );
 
 counter #(.COUNTER_WIDTH(4)) counter
@@ -191,7 +157,7 @@ compare #(.COUNTER_WIDTH(4)) compare
     .clk(clk),
     .rst(rst),
     
-    .burst_len(initial_burst_len_reg_out),
+    .burst_len(burst_len_parallel),
     .counter(counter_out),
     
     .stop_signal(stop_signal)
@@ -203,7 +169,7 @@ Adder #(.ADDR_WIDTH(20), .COUNTER_WIDTH(4)) adder
     .rst(rst),
     
     .en(adder_en),
-    .initial_addr(initial_addr_reg_out),
+    .initial_addr(initial_addr_parallel),
     .counter(counter_out),
     
     .burst_addr(burst_addr_out_parallel)
