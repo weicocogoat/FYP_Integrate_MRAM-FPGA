@@ -52,6 +52,8 @@ wire data_in_from_MRAM_en;    // Enable the data in from MRAM PTS module, Bit 0 
 
 wire [15:0] parallel_data_in;
 
+wire [1:0] prev_read_write_sel;
+
 MRAM_model MRAM(
     .clk(clk),
     
@@ -99,7 +101,7 @@ parallel_to_serial #(.BUS_WIDTH(16)) PTS
     .load(load),                     // When data is ready to be read, this signal will be asserted and data will be loaded into an internal register
     .send_data(send_data),           // Send the data serially
     
-    .word_sel(read_write_sel[2:1]),  // Bits to select full, upper or lower byte
+    .word_sel(prev_read_write_sel),  // Bits to select full, upper or lower byte
     
     .data_in(parallel_data_in),           // Data from MRAM
     
@@ -113,6 +115,7 @@ control_module controller
     .rst(rst),
 
     .read_write_sel(read_write_sel),               // 0 for read, 1 for write
+    .prev_read_write_sel(prev_read_write_sel),
     
     .data_en(data_en),                              
     .addr_en(addr_en),                 

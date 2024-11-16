@@ -33,6 +33,7 @@ module control_module(
     11 - Full byte Read/Write
     */
     input [2:0] read_write_sel,
+    output reg [1:0] prev_read_write_sel,
     
     output reg data_en,                 // Enable the data STP module
     output reg addr_en,                 // Enable the addr STP module
@@ -49,15 +50,15 @@ module control_module(
 );
 reg [5:0] counter;                      // 6 flip flops to use as a 6-bit counter. Minimum required as of now
 reg read_flag;
-reg prev_read_write_sel[1:0];
+reg [1:0] prev_read_write_sel_intreg;
 
 always @(posedge clk or posedge rst)
 begin
     if (rst) begin
         counter <= 0;
         read_flag <= 0;
-        prev_read_write_sel[0] <= 0;
-        prev_read_write_sel[1] <= 0;
+        prev_read_write_sel_intreg[0] <= 0;
+        prev_read_write_sel_intreg[1] <= 0;
         
         data_en <= 0;
         addr_en <= 0;
@@ -71,6 +72,8 @@ begin
         out_en <= 1;                
         lower_byte_en <= 1;    
         upper_byte_en <= 1;
+        
+        prev_read_write_sel <= 0;
     end
     else begin
         if (read_write_sel[0]) begin
@@ -148,8 +151,12 @@ begin
             lower_byte_en <= lower_byte_en;    
             upper_byte_en <= upper_byte_en;
             
-            prev_read_write_sel[1] <= prev_read_write_sel[1];
-            prev_read_write_sel[0] <= prev_read_write_sel[0];
+            prev_read_write_sel_intreg[1] <= prev_read_write_sel_intreg[1];
+            prev_read_write_sel_intreg[0] <= prev_read_write_sel_intreg[0];
+            
+            prev_read_write_sel[1] <= prev_read_write_sel_intreg[1];
+            prev_read_write_sel[0] <= prev_read_write_sel_intreg[0];
+            
             read_flag <= read_flag;
             
             case (counter)
@@ -183,7 +190,7 @@ begin
                         end
                 
                 6'd9  : begin
-                        if ( read_flag && ~(prev_read_write_sel[1] && prev_read_write_sel[0]) ) 
+                        if ( read_flag && ~(prev_read_write_sel_intreg[1] && prev_read_write_sel_intreg[0]) ) 
                            begin
                            // If either one of the bits is 0, it is a half word 
                            // At the 31st cycle, all 8 bits have been sent out and should thus, stop sending data
@@ -213,8 +220,11 @@ begin
                         chip_en <= 0;     
                         write_en <= 1;               
                         out_en <= 0;
-                        lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
-                        upper_byte_en <= ~read_write_sel[2];
+                        lower_byte_en <= ~prev_read_write_sel_intreg[0];    // Active low, therefore, not operation first
+                        upper_byte_en <= ~prev_read_write_sel_intreg[1];
+                        
+                        prev_read_write_sel_intreg[1] <= read_write_sel[2];
+                        prev_read_write_sel_intreg[0] <= read_write_sel[1];
                         end
                         
                 6'd21 : begin
@@ -225,60 +235,15 @@ begin
                         chip_en <= 0;     
                         write_en <= 1;               
                         out_en <= 0;                        
-                        lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
-                        upper_byte_en <= ~read_write_sel[2];
+                        lower_byte_en <= ~prev_read_write_sel_intreg[0];    // Active low, therefore, not operation first
+                        upper_byte_en <= ~prev_read_write_sel_intreg[1];
                         
-                        prev_read_write_sel[1] <= read_write_sel[2];
-                        prev_read_write_sel[0] <= read_write_sel[1];
                         end
                 
                 6'd22 : begin
                         read_flag <= 1;
                         //counter <= 0;
                         end        
-                /*    
-                6'd22 : begin
-                        // Data should be ready after the stall cycle
-                        
-                        // Continue holding these values low to allow reading of data (as per the MRAM module)
-                        chip_en <= 0;     
-                        write_en <= 1;               
-                        out_en <= 0;                                   
-                        lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
-                        upper_byte_en <= ~read_write_sel[2];
-                        
-                        send_data <= 0;
-                        
-                        data_in_from_MRAM_en <= 1; 
-
-                        
-                        // Assert the load flag to move the data into an internal register         
-                        load <= 1;
-                        end                          
-                        
-                6'd23 : begin
-                        // Data should have been successfully loaded in at this clock cycle 
-                        // Assert the send_data signal such that data will be output serially on the next clock cycle
-                        send_data <= 1;                    
-                        end
-                        
-                6'd31: begin
-                       if ( ~(read_write_sel[2] && read_write_sel[1]) ) 
-                           begin
-                           // If either one of the bits is 0, it is a half word 
-                           // At the 31st cycle, all 8 bits have been sent out and should thus, stop sending data
-                           data_in_from_MRAM_en <= 0;  
-                           send_data <= 0;
-                           end
-                       end
-                        
-                6'd39 : begin
-                        // All data has been shifted out of the MRAM at this point. Disable the module
-                        data_in_from_MRAM_en <= 0;  
-                        send_data <= 0;
-                        counter <= 0;
-                        end
-                */
                                  
                 default : begin
                           load <= 0;
