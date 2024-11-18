@@ -85,7 +85,7 @@ initial begin
     /* FULL BYTE WRITE*/
   
     // Assert the read_write_sel line(write operation) 1 cycle before serial input goes into the STP modules
-    #5
+    @(posedge clk)
     rst <= 1'b0;
     read_write_sel <= 3'b111;
     
@@ -104,45 +104,40 @@ initial begin
     // Enable reset and to stop all modules
     @(posedge clk)      // 20
     @(posedge clk)      // 21
-    @(posedge clk)      // 22
-    
-    @(posedge clk)
     rst <= 1'b1;
     
  /*--------------------------------------------------------------------------------------------------------------*/
     /* LOWER BYTE WRITE*/
-    #5
+    @(posedge clk)
     rst <= 1'b0;
     read_write_sel <= 3'b011;
-    @(posedge clk)
     
+    @(posedge clk)
     read_write_sel <= 3'b011;
     addr_in <= 1'b1;
-    data_in <= 1'b1;
+    data_in <= 1'b0;
     
     for (i = 0; i < 19; i= i+1) begin
         @(posedge clk);
         rst <= 1'b0;
         read_write_sel <= 3'b011;
         addr_in <= 1'b0;
-        data_in <= i%2;
+        data_in <= i%2 + 1;
     end
     
+    @(posedge clk)  //20
     @(posedge clk)  //21
-    @(posedge clk)  //22
-    
-    @(posedge clk)
     rst <= 1'b1;
  /*--------------------------------------------------------------------------------------------------------------*/
     /*UPPER BYTE WRITE*/
-    #5
+    @(posedge clk) // Stall
     rst <= 1'b0;
     read_write_sel <= 3'b101;
-    @(posedge clk)
     
+    @(posedge clk)    
     read_write_sel <= 3'b101;
     addr_in <= 1'b0;
-    data_in <= 1'b1;
+    data_in <= 1'b0;
     
     @(posedge clk)
     read_write_sel <= 3'b101;
