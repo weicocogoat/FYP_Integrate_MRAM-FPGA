@@ -238,12 +238,9 @@ begin
                         lower_byte_en <= ~prev_read_write_sel_intreg[0];    // Active low, therefore, not operation first
                         upper_byte_en <= ~prev_read_write_sel_intreg[1];
                         
-                        end
-                
-                6'd22 : begin
                         read_flag <= 1;
-                        //counter <= 0;
-                        end        
+                        end
+                     
                                  
                 default : begin
                           load <= 0;
