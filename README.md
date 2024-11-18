@@ -12,10 +12,10 @@ This repository documents my progress of my FYP at NTU, designing a MRAM memory 
 
 ### Second iteration of STP&PTS module 
 - Slight improvement to the first iteration
-- 23 cycles for writing
+- 22 cycles for writing
 - For reading:
-  - 23 cycles to first get the address to be read from
-  - In the next loop, takes approximately 19 cycles to output data serially
+  - 22 cycles to first get the address to be read from
+  - In the next loop, takes 19 cycles to output a full byte of data serially
 
 ### Third iteration of STP&PTS module 
 - Similar to second iteration, but slight changes made to synchronize with the burst module
