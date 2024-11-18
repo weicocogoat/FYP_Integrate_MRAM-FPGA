@@ -3,7 +3,7 @@ This repository documents my progress of my FYP at NTU, designing a MRAM memory 
 
 ## (Most Updated) First Iteration Integration
 - Integrates the burst module and STP/PTS module with the MRAM
-- There is a pdf inside that showcases a rough timing analysis (Timing Analysis of Integrated Module.pdf)
+- There is a pdf inside that showcases a rough timing analysis (FYP Timing Analysis.pdf)
 
 ### First iteration of STP&PTS module
 - The very first iteration of converting serial input to parallel & parallel to serial using shift registers
