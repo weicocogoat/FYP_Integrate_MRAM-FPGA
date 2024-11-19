@@ -24,3 +24,7 @@ This repository documents my progress of my FYP at NTU, designing a MRAM memory 
 - Enables burst operation
 - 23 cycles per loop
 - Output of address is available on cycle 2
+
+### First Iteration of I2C_Simple
+- Editted version of: https://github.com/mitya1337/Simple_I2C
+- Modified to fit this project
