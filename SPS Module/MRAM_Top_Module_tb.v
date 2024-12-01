@@ -85,12 +85,14 @@ initial begin
     /* FULL BYTE WRITE*/
   
     // Assert the read_write_sel line(write operation) 1 cycle before serial input goes into the STP modules
-    @(posedge clk)
+    #5
     rst <= 1'b0;
     read_write_sel <= 3'b111;
     
     // At the negative edge of the clock, change the signal being fed into the UUT. 
     // Addr and data are fed in from LSB to MSB
+    @(posedge clk)      // Stall 2 cycle
+    @(posedge clk)
     
     // For the next 20 cycles, addr will be set to 0, data will be "01" repeated
     for (i = 0; i < 20; i= i+1) begin
@@ -102,18 +104,19 @@ initial begin
     end
     
     // Enable reset and to stop all modules
-    @(posedge clk)      // 20
-    @(posedge clk)      // 21
+    @(posedge clk)      // Stall
+    @(posedge clk)      // Stall
     rst <= 1'b1;
     
  /*--------------------------------------------------------------------------------------------------------------*/
     /* LOWER BYTE WRITE*/
     @(posedge clk)
     rst <= 1'b0;
+    @(posedge clk)      // Stall
+    @(posedge clk)      // Stall
+    
     read_write_sel <= 3'b011;
     
-    @(posedge clk)
-    read_write_sel <= 3'b011;
     addr_in <= 1'b1;
     data_in <= 1'b0;
     
@@ -125,26 +128,27 @@ initial begin
         data_in <= i%2 + 1;
     end
     
-    @(posedge clk)  //20
     @(posedge clk)  //21
+    @(posedge clk)  //22
+    
     rst <= 1'b1;
  /*--------------------------------------------------------------------------------------------------------------*/
     /*UPPER BYTE WRITE*/
-    @(posedge clk) // Stall
+    @(posedge clk)  
     rst <= 1'b0;
-    read_write_sel <= 3'b101;
+    @(posedge clk)      // Stall
+    @(posedge clk)      // Stall
     
-    @(posedge clk)    
     read_write_sel <= 3'b101;
     addr_in <= 1'b0;
-    data_in <= 1'b0;
+    data_in <= 1'b1;
     
     @(posedge clk)
     read_write_sel <= 3'b101;
     addr_in <= 1'b1;
     data_in <= 1'b1;
     
-    for (i = 0; i < 19; i= i+1) begin
+    for (i = 0; i < 18; i= i+1) begin
         @(posedge clk);
         rst <= 1'b0;
         read_write_sel <= 3'b101;
@@ -157,18 +161,16 @@ initial begin
     rst <= 1'b1;
     
   /*--------------------------------------------------------------------------------------------------------------*/   
-    #20
     // Testing of Write operation ends here
  
    /*--------------------------------------------------------------------------------------------------------------*/
    /* FULL BYTE READ*/
       
     // Set the read_write_sel line to 0(read operation) 1 cycle before serial input goes into the STP modules
+    @(posedge clk)    
     rst <= 1'b0;
-    read_write_sel <= 3'b110;
-    //read_write_sel <= 3'b010;
-    //read_write_sel <= 3'b100;
-    @(posedge clk)
+    @(posedge clk)      // Stall
+    @(posedge clk)      // Stall
     
     // Testing of Read operation starts here
     // Outputs from MSB to LSB
@@ -182,8 +184,7 @@ initial begin
     end
     
     /* LOWER BYTE READ*/
-    // Stall for 4 cycles until loop starts
-    @(posedge clk)
+    // Stall for until loop starts
     @(posedge clk)
     @(posedge clk)
     @(posedge clk)

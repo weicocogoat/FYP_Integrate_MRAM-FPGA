@@ -86,18 +86,18 @@ begin
 
             // Keep track of the number of bits being shifted into data and addr shift registers
             case (counter)
-                6'd0  : begin              
+                6'd1  : begin              
                         // Enable both data and addr STP addr_en on the next rising edge
                         data_en <= 1; 
                         addr_en <= 1;
                         end
                         
-                6'd16 : begin
+                6'd17 : begin
                         // All 16 bits have been shifted into the shift register, stop the shifting and retain the current state
                         data_en <= 0;     
                         end 
                         
-                6'd20 : begin
+                6'd21 : begin
                         // All 20 bits have been shifted into the shift register, stop the shift and retain current state
                         addr_en <= 0;  
                         
@@ -114,13 +114,13 @@ begin
                         
                         end
                         
-                6'd21 : begin
+                6'd22 : begin
                         // Reset Enable lines              
                         data_en <= 0;
                         addr_en <= 0;
+                        //counter <= 0;   // Reset Counter at 22nd clock cycle to sync with Burst Module
                         end
                         
-                6'd22 : counter <= 0;   // Reset Counter at 22nd clock cycle to sync with Burst Module
                         
                 default : begin
                           // At every other clock cycle, do not send the data over yet
@@ -135,6 +135,7 @@ begin
                           end
             endcase
             counter <= counter + 1;
+            if (counter == 22) counter <= 0;
         end
         
         else if (~read_write_sel[0]) begin
@@ -160,7 +161,7 @@ begin
             read_flag <= read_flag;
             
             case (counter)
-                6'd0  : begin
+                6'd1  : begin
                         // Enable the addr STP module in the next rising edge
                         addr_en <= 1;
                         
@@ -175,7 +176,7 @@ begin
                         
                         end
                         
-                6'd1  : begin
+                6'd2  : begin
                         // Data should have been successfully loaded in at this clock cycle 
                         // Assert the send_data signal such that data will be output serially on the next clock cycle
                         if (read_flag) begin
@@ -189,7 +190,7 @@ begin
                         upper_byte_en <= 1;
                         end
                 
-                6'd9  : begin
+                6'd10  : begin
                         if ( read_flag && ~(prev_read_write_sel_intreg[1] && prev_read_write_sel_intreg[0]) ) 
                            begin
                            // If either one of the bits is 0, it is a half word 
@@ -199,7 +200,7 @@ begin
                            end
                         end 
                         
-                6'd17 : begin
+                6'd18 : begin
                         if (read_flag) begin
                             // All data has been shifted out of the MRAM at this point. Disable the module
                             data_in_from_MRAM_en <= 0;  
@@ -209,7 +210,7 @@ begin
                         end
                         end
                 
-                6'd20 : begin
+                6'd21 : begin
                         // All 20 bits have been shifted into the shift register, stop the shift and retain current state
                         addr_en <= 0;
                         
@@ -227,7 +228,7 @@ begin
                         prev_read_write_sel_intreg[0] <= read_write_sel[1];
                         end
                         
-                6'd21 : begin
+                6'd22 : begin
                         // One stall cycle to enable MRAM fetch the data to its addr_en
                         // For the current implementation, I think its not necessary? But I'll leave it in for now               
                         send_data <= 1;
@@ -239,8 +240,7 @@ begin
                         upper_byte_en <= ~prev_read_write_sel_intreg[1];
                         
                         read_flag <= 1;
-                        end
-                     
+                        end      
                                  
                 default : begin
                           load <= 0;

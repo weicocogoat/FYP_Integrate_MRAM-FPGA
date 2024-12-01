@@ -54,7 +54,6 @@ begin
     if (rst) begin
         data_shift_reg <= 0;
         counter <= 0;
-        data_out <= 0;
         //end_of_transmission <= 0;
     end
     else 
