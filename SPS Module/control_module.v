@@ -33,6 +33,7 @@ module control_module(
     11 - Full byte Read/Write
     */
     input [2:0] read_write_sel,
+    output reg [1:0] prev_read_write_sel,
     
     output reg data_en,                 // Enable the data STP module
     output reg addr_en,                 // Enable the addr STP module
@@ -48,11 +49,16 @@ module control_module(
     output reg upper_byte_en            // Reading of bytes 15:8 enable line, active low
 );
 reg [5:0] counter;                      // 6 flip flops to use as a 6-bit counter. Minimum required as of now
+reg read_flag;
+reg [1:0] prev_read_write_sel_intreg;
 
 always @(posedge clk or posedge rst)
 begin
     if (rst) begin
         counter <= 0;
+        read_flag <= 0;
+        prev_read_write_sel_intreg[0] <= 0;
+        prev_read_write_sel_intreg[1] <= 0;
         
         data_en <= 0;
         addr_en <= 0;
@@ -66,6 +72,8 @@ begin
         out_en <= 1;                
         lower_byte_en <= 1;    
         upper_byte_en <= 1;
+        
+        prev_read_write_sel <= 0;
     end
     else begin
         if (read_write_sel[0]) begin
@@ -103,14 +111,16 @@ begin
                         out_en <= 1;                
                         lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
                         upper_byte_en <= ~read_write_sel[2];
+                        
                         end
                         
                 6'd21 : begin
-                        // Reset counter and enable lines to 0 and prepare for the next set of inputs               
-                        counter <= 0;
+                        // Reset Enable lines              
                         data_en <= 0;
                         addr_en <= 0;
                         end
+                        
+                6'd22 : counter <= 0;   // Reset Counter at 22nd clock cycle to sync with Burst Module
                         
                 default : begin
                           // At every other clock cycle, do not send the data over yet
@@ -135,10 +145,68 @@ begin
             data_in_from_MRAM_en <= data_in_from_MRAM_en;
             send_data <= send_data;
             
+            chip_en <= chip_en;     // chip_en also helps to prevent the MRAM from reading the data as valid  
+            write_en <= write_en;               
+            out_en <= out_en;                
+            lower_byte_en <= lower_byte_en;    
+            upper_byte_en <= upper_byte_en;
+            
+            prev_read_write_sel_intreg[1] <= prev_read_write_sel_intreg[1];
+            prev_read_write_sel_intreg[0] <= prev_read_write_sel_intreg[0];
+            
+            prev_read_write_sel[1] <= prev_read_write_sel_intreg[1];
+            prev_read_write_sel[0] <= prev_read_write_sel_intreg[0];
+            
+            read_flag <= read_flag;
+            
             case (counter)
                 6'd0  : begin
                         // Enable the addr STP module in the next rising edge
                         addr_en <= 1;
+                        
+                        if (read_flag) begin
+                        send_data <= 0;
+                        
+                        data_in_from_MRAM_en <= 1; 
+                        
+                        // Assert the load flag to move the data into an internal register         
+                        load <= 1;
+                        end
+                        
+                        end
+                        
+                6'd1  : begin
+                        // Data should have been successfully loaded in at this clock cycle 
+                        // Assert the send_data signal such that data will be output serially on the next clock cycle
+                        if (read_flag) begin
+                            send_data <= 1;
+                        end
+                        
+                        chip_en <= 1;     // chip_en also helps to prevent the MRAM from reading the data as valid  
+                        write_en <= 1;               
+                        out_en <= 1;                
+                        lower_byte_en <= 1;    
+                        upper_byte_en <= 1;
+                        end
+                
+                6'd9  : begin
+                        if ( read_flag && ~(prev_read_write_sel_intreg[1] && prev_read_write_sel_intreg[0]) ) 
+                           begin
+                           // If either one of the bits is 0, it is a half word 
+                           // At the 31st cycle, all 8 bits have been sent out and should thus, stop sending data
+                           data_in_from_MRAM_en <= 0;  
+                           send_data <= 0;
+                           end
+                        end 
+                        
+                6'd17 : begin
+                        if (read_flag) begin
+                            // All data has been shifted out of the MRAM at this point. Disable the module
+                            data_in_from_MRAM_en <= 0;  
+                            send_data <= 0;
+                            counter <= 0;
+                            read_flag <= 0;
+                        end
                         end
                 
                 6'd20 : begin
@@ -152,77 +220,34 @@ begin
                         chip_en <= 0;     
                         write_en <= 1;               
                         out_en <= 0;
-                        lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
-                        upper_byte_en <= ~read_write_sel[2];
+                        lower_byte_en <= ~prev_read_write_sel_intreg[0];    // Active low, therefore, not operation first
+                        upper_byte_en <= ~prev_read_write_sel_intreg[1];
+                        
+                        prev_read_write_sel_intreg[1] <= read_write_sel[2];
+                        prev_read_write_sel_intreg[0] <= read_write_sel[1];
                         end
                         
                 6'd21 : begin
                         // One stall cycle to enable MRAM fetch the data to its addr_en
-                        // For the current implementation, I think its not necessary? But I'll leave it in for now
-                                       
+                        // For the current implementation, I think its not necessary? But I'll leave it in for now               
                         send_data <= 1;
                         
                         chip_en <= 0;     
                         write_en <= 1;               
                         out_en <= 0;                        
-                        lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
-                        upper_byte_en <= ~read_write_sel[2];
+                        lower_byte_en <= ~prev_read_write_sel_intreg[0];    // Active low, therefore, not operation first
+                        upper_byte_en <= ~prev_read_write_sel_intreg[1];
+                        
+                        read_flag <= 1;
                         end
-                        
-                    
-                6'd22 : begin
-                        // Data should be ready after the stall cycle
-                        
-                        // Continue holding these values low to allow reading of data (as per the MRAM module)
-                        chip_en <= 0;     
-                        write_en <= 1;               
-                        out_en <= 0;                                   
-                        lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
-                        upper_byte_en <= ~read_write_sel[2];
-                        
-                        send_data <= 0;
-                        
-                        data_in_from_MRAM_en <= 1; 
-
-                        
-                        // Assert the load flag to move the data into an internal register         
-                        load <= 1;
-                        end                          
-                        
-                6'd23 : begin
-                        // Data should have been successfully loaded in at this clock cycle 
-                        // Assert the send_data signal such that data will be output serially on the next clock cycle
-                        send_data <= 1;                    
-                        end
-                        
-                6'd31: begin
-                       if ( ~(read_write_sel[2] && read_write_sel[1]) ) 
-                           begin
-                           // If either one of the bits is 0, it is a half word 
-                           // At the 31st cycle, all 8 bits have been sent out and should thus, stop sending data
-                           data_in_from_MRAM_en <= 0;  
-                           send_data <= 0;
-                           end
-                       end
-                        
-                6'd39 : begin
-                        // All data has been shifted out of the MRAM at this point. Disable the module
-                        data_in_from_MRAM_en <= 0;  
-                        send_data <= 0;
-                        counter <= 0;
-                        end
+                     
                                  
                 default : begin
                           load <= 0;
-                          
-                          chip_en <= 1;     // chip_en also helps to prevent the MRAM from reading the data as valid  
-                          write_en <= 1;               
-                          out_en <= 1;                
-                          lower_byte_en <= 1;    
-                          upper_byte_en <= 1;
                           end
             endcase
             counter <= counter + 1;
+            if (counter == 22) counter <= 0;
         end
         
         
