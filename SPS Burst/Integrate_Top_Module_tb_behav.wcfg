@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="Integrate_Top_Module_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="Integrate_Top_Module_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1,647.958 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,392.959 ns"></ZoomEndTime>
+      <Cursor1Time time="1,803.958 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="163"></NameColumnWidth>
+      <ValueColumnWidth column_width="123"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="66" />
+   <wvobject fp_name="/Integrate_Top_Module_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/burst_en" type="logic">
+      <obj_property name="ElementShortName">burst_en</obj_property>
+      <obj_property name="ObjectShortName">burst_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/mode_sel" type="logic">
+      <obj_property name="ElementShortName">mode_sel</obj_property>
+      <obj_property name="ObjectShortName">mode_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/burst_len_in" type="logic">
+      <obj_property name="ElementShortName">burst_len_in</obj_property>
+      <obj_property name="ObjectShortName">burst_len_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/addr_in" type="logic">
+      <obj_property name="ElementShortName">addr_in</obj_property>
+      <obj_property name="ObjectShortName">addr_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/data_in" type="logic">
+      <obj_property name="ElementShortName">data_in</obj_property>
+      <obj_property name="ObjectShortName">data_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/addr_sel" type="logic">
+      <obj_property name="ElementShortName">addr_sel</obj_property>
+      <obj_property name="ObjectShortName">addr_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/read_write_sel" type="array">
+      <obj_property name="ElementShortName">read_write_sel[2:0]</obj_property>
+      <obj_property name="ObjectShortName">read_write_sel[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/ser_data_out" type="logic">
+      <obj_property name="ElementShortName">ser_data_out</obj_property>
+      <obj_property name="ObjectShortName">ser_data_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/i" type="array">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider11">
+      <obj_property name="label">MRAM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/MRAM/w_writeEnable_n" type="logic">
+      <obj_property name="ElementShortName">w_writeEnable_n</obj_property>
+      <obj_property name="ObjectShortName">w_writeEnable_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/MRAM/address" type="array">
+      <obj_property name="ElementShortName">address[19:0]</obj_property>
+      <obj_property name="ObjectShortName">address[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/MRAM/mram" type="array">
+      <obj_property name="ElementShortName">mram[0:15][15:0]</obj_property>
+      <obj_property name="ObjectShortName">mram[0:15][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/MRAM/dqi_datainput" type="array">
+      <obj_property name="ElementShortName">dqi_datainput[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dqi_datainput[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/MRAM/dqo_dataoutput" type="array">
+      <obj_property name="ElementShortName">dqo_dataoutput[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dqo_dataoutput[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider53">
+      <obj_property name="label">MRAM controller_module</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/controller/read_flag" type="logic">
+      <obj_property name="ElementShortName">read_flag</obj_property>
+      <obj_property name="ObjectShortName">read_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/controller/counter" type="array">
+      <obj_property name="ElementShortName">counter[5:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider17">
+      <obj_property name="label">MRAM addr_STP</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/addr_STP/data_in" type="logic">
+      <obj_property name="ElementShortName">data_in</obj_property>
+      <obj_property name="ObjectShortName">data_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/addr_STP/send_data" type="logic">
+      <obj_property name="ElementShortName">send_data</obj_property>
+      <obj_property name="ObjectShortName">send_data</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/addr_STP/data_shift_reg" type="array">
+      <obj_property name="ElementShortName">data_shift_reg[19:0]</obj_property>
+      <obj_property name="ObjectShortName">data_shift_reg[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/addr_STP/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[19:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[19:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider23">
+      <obj_property name="label">MRAM data_STP</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/data_STP/send_data" type="logic">
+      <obj_property name="ElementShortName">send_data</obj_property>
+      <obj_property name="ObjectShortName">send_data</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/data_STP/data_in" type="logic">
+      <obj_property name="ElementShortName">data_in</obj_property>
+      <obj_property name="ObjectShortName">data_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/data_STP/data_shift_reg" type="array">
+      <obj_property name="ElementShortName">data_shift_reg[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_shift_reg[15:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/data_STP/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[15:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider505">
+      <obj_property name="label">MRAM PTS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/PTS/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/PTS/send_data" type="logic">
+      <obj_property name="ElementShortName">send_data</obj_property>
+      <obj_property name="ObjectShortName">send_data</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/PTS/load" type="logic">
+      <obj_property name="ElementShortName">load</obj_property>
+      <obj_property name="ObjectShortName">load</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/PTS/data_shift_reg" type="array">
+      <obj_property name="ElementShortName">data_shift_reg[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_shift_reg[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/PTS/data_out" type="logic">
+      <obj_property name="ElementShortName">data_out</obj_property>
+      <obj_property name="ObjectShortName">data_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/MRAM_Module/PTS/counter" type="array">
+      <obj_property name="ElementShortName">counter[5:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider39">
+      <obj_property name="label">Burst Controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/burst_controller/en" type="logic">
+      <obj_property name="ElementShortName">en</obj_property>
+      <obj_property name="ObjectShortName">en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/addr_in" type="logic">
+      <obj_property name="ElementShortName">addr_in</obj_property>
+      <obj_property name="ObjectShortName">addr_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/burst_len_in" type="logic">
+      <obj_property name="ElementShortName">burst_len_in</obj_property>
+      <obj_property name="ObjectShortName">burst_len_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/addr_sel" type="logic">
+      <obj_property name="ElementShortName">addr_sel</obj_property>
+      <obj_property name="ObjectShortName">addr_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/burst_controller/addr_loaded_flag" type="logic">
+      <obj_property name="ElementShortName">addr_loaded_flag</obj_property>
+      <obj_property name="ObjectShortName">addr_loaded_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/burst_controller/stop_signal" type="logic">
+      <obj_property name="ElementShortName">stop_signal</obj_property>
+      <obj_property name="ObjectShortName">stop_signal</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/burst_controller/internal_counter" type="array">
+      <obj_property name="ElementShortName">internal_counter[5:0]</obj_property>
+      <obj_property name="ObjectShortName">internal_counter[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider722">
+      <obj_property name="label">Burst burst_len_STP</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/burst_len_STP/send_data" type="logic">
+      <obj_property name="ElementShortName">send_data</obj_property>
+      <obj_property name="ObjectShortName">send_data</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/burst_len_STP/data_shift_reg" type="array">
+      <obj_property name="ElementShortName">data_shift_reg[3:0]</obj_property>
+      <obj_property name="ObjectShortName">data_shift_reg[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/burst_len_STP/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[3:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider43">
+      <obj_property name="label">Burst addr_STP</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/addr_STP/send_data" type="logic">
+      <obj_property name="ElementShortName">send_data</obj_property>
+      <obj_property name="ObjectShortName">send_data</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/addr_STP/data_shift_reg" type="array">
+      <obj_property name="ElementShortName">data_shift_reg[19:0]</obj_property>
+      <obj_property name="ObjectShortName">data_shift_reg[19:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/addr_STP/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[19:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[19:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider56">
+      <obj_property name="label">Burst compare</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/compare/burst_len" type="array">
+      <obj_property name="ElementShortName">burst_len[3:0]</obj_property>
+      <obj_property name="ObjectShortName">burst_len[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/compare/counter" type="array">
+      <obj_property name="ElementShortName">counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/compare/stop_signal" type="logic">
+      <obj_property name="ElementShortName">stop_signal</obj_property>
+      <obj_property name="ObjectShortName">stop_signal</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider48">
+      <obj_property name="label">Burst adder</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/adder/initial_addr" type="array">
+      <obj_property name="ElementShortName">initial_addr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">initial_addr[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/adder/counter" type="array">
+      <obj_property name="ElementShortName">counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/adder/data_shift_reg" type="array">
+      <obj_property name="ElementShortName">data_shift_reg[19:0]</obj_property>
+      <obj_property name="ObjectShortName">data_shift_reg[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/adder/burst_addr" type="array">
+      <obj_property name="ElementShortName">burst_addr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">burst_addr[19:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider237">
+      <obj_property name="label">Burst addr_PTS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/addr_PTS_out/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[19:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/addr_PTS_out/data_shift_reg" type="array">
+      <obj_property name="ElementShortName">data_shift_reg[19:0]</obj_property>
+      <obj_property name="ObjectShortName">data_shift_reg[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integrate_Top_Module_tb/uut/burst_module/addr_PTS_out/data_out" type="logic">
+      <obj_property name="ElementShortName">data_out</obj_property>
+      <obj_property name="ObjectShortName">data_out</obj_property>
+   </wvobject>
+</wave_config>
