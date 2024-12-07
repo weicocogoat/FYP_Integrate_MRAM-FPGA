@@ -101,21 +101,21 @@ int main(void)
 
   // Data Pins
   HAL_GPIO_WritePin(GPIOC, data_0_Pin, 0);
-  HAL_GPIO_WritePin(GPIOC, data_1_Pin, 1);
+  HAL_GPIO_WritePin(GPIOC, data_1_Pin, 0);
   HAL_GPIO_WritePin(GPIOB, data_2_Pin, 0);
-  HAL_GPIO_WritePin(GPIOC, data_3_Pin, 1);
+  HAL_GPIO_WritePin(GPIOC, data_3_Pin, 0);
   HAL_GPIO_WritePin(GPIOB, data_4_Pin, 0);
-  HAL_GPIO_WritePin(GPIOC, data_5_Pin, 1);
+  HAL_GPIO_WritePin(GPIOC, data_5_Pin, 0);
   HAL_GPIO_WritePin(GPIOA, data_6_Pin, 0);
-  HAL_GPIO_WritePin(GPIOA, data_7_Pin, 1);
+  HAL_GPIO_WritePin(GPIOA, data_7_Pin, 0);
   HAL_GPIO_WritePin(GPIOA, data_8_Pin, 0);
-  HAL_GPIO_WritePin(GPIOA, data_9_Pin, 1);
+  HAL_GPIO_WritePin(GPIOA, data_9_Pin, 0);
   HAL_GPIO_WritePin(GPIOA, data_10_Pin, 0);
-  HAL_GPIO_WritePin(GPIOB, data_11_Pin, 1);
+  HAL_GPIO_WritePin(GPIOB, data_11_Pin, 0);
   HAL_GPIO_WritePin(GPIOB, data_12_Pin, 0);
-  HAL_GPIO_WritePin(GPIOC, data_13_Pin, 1);
+  HAL_GPIO_WritePin(GPIOC, data_13_Pin, 0);
   HAL_GPIO_WritePin(GPIOA, data_14_Pin, 0);
-  HAL_GPIO_WritePin(GPIOB, data_15_Pin, 1);
+  HAL_GPIO_WritePin(GPIOB, data_15_Pin, 0);
 
   // Addr Pins
   HAL_GPIO_WritePin(GPIOA, addr_0_Pin, 0);
@@ -147,14 +147,53 @@ int main(void)
 
   HAL_Delay(1000);
 
-  // Write to MRAM
+  // Write to MRAM at addr 0x0
   HAL_GPIO_WritePin(GPIOB, CE_Pin, 0);
   HAL_GPIO_WritePin(GPIOC, Read_En_Pin, 1);
   HAL_GPIO_WritePin(GPIOC, Write_En_Pin, 0);
   HAL_GPIO_WritePin(GPIOC, LB_En_Pin, 0);
   HAL_GPIO_WritePin(GPIOC, UB_En_Pin, 0);
 
-  HAL_Delay(100);
+  HAL_Delay(200);
+
+  // Reset signals and prepare to write to addr 0x1
+  HAL_GPIO_WritePin(GPIOB, CE_Pin, 1);
+  HAL_GPIO_WritePin(GPIOC, Read_En_Pin, 1);
+  HAL_GPIO_WritePin(GPIOC, Write_En_Pin, 1);
+  HAL_GPIO_WritePin(GPIOC, LB_En_Pin, 1);
+  HAL_GPIO_WritePin(GPIOC, UB_En_Pin, 1);
+
+  HAL_Delay(200);
+
+  HAL_GPIO_WritePin(GPIOA, addr_0_Pin, 1);
+
+  HAL_GPIO_WritePin(GPIOC, data_0_Pin, 0);
+  HAL_GPIO_WritePin(GPIOC, data_1_Pin, 0);
+  HAL_GPIO_WritePin(GPIOB, data_2_Pin, 0);
+  HAL_GPIO_WritePin(GPIOC, data_3_Pin, 0);
+  HAL_GPIO_WritePin(GPIOB, data_4_Pin, 0);
+  HAL_GPIO_WritePin(GPIOC, data_5_Pin, 0);
+  HAL_GPIO_WritePin(GPIOA, data_6_Pin, 0);
+  HAL_GPIO_WritePin(GPIOA, data_7_Pin, 0);
+  HAL_GPIO_WritePin(GPIOA, data_8_Pin, 1);
+  HAL_GPIO_WritePin(GPIOA, data_9_Pin, 1);
+  HAL_GPIO_WritePin(GPIOA, data_10_Pin, 1);
+  HAL_GPIO_WritePin(GPIOB, data_11_Pin, 1);
+  HAL_GPIO_WritePin(GPIOB, data_12_Pin, 1);
+  HAL_GPIO_WritePin(GPIOC, data_13_Pin, 1);
+  HAL_GPIO_WritePin(GPIOA, data_14_Pin, 1);
+  HAL_GPIO_WritePin(GPIOB, data_15_Pin, 1);
+
+  HAL_Delay(200);
+
+  // Write to MRAM at addr 0x1
+    HAL_GPIO_WritePin(GPIOB, CE_Pin, 0);
+    HAL_GPIO_WritePin(GPIOC, Read_En_Pin, 1);
+    HAL_GPIO_WritePin(GPIOC, Write_En_Pin, 0);
+    HAL_GPIO_WritePin(GPIOC, LB_En_Pin, 0);
+    HAL_GPIO_WritePin(GPIOC, UB_En_Pin, 0);
+
+    HAL_Delay(200);
 
   // Set up for reading
   HAL_GPIO_WritePin(GPIOB, CE_Pin, 1);
@@ -183,35 +222,39 @@ int main(void)
   GPIOA->MODER &= ~(GPIO_MODER_MODER9);
   GPIOB->MODER &= ~(GPIO_MODER_MODER2);
 
-  HAL_Delay(100);
+  HAL_Delay(200);
 
-  // Read data pins
+  // Read data pins at addr 0
   HAL_GPIO_WritePin(GPIOB, CE_Pin, 0);
   HAL_GPIO_WritePin(GPIOC, Read_En_Pin, 0);
   HAL_GPIO_WritePin(GPIOC, Write_En_Pin, 1);
   HAL_GPIO_WritePin(GPIOC, LB_En_Pin, 0);
   HAL_GPIO_WritePin(GPIOC, UB_En_Pin, 0);
 
-  status[0] = HAL_GPIO_ReadPin(GPIOC, data_0_Pin);
-  status[1] = HAL_GPIO_ReadPin(GPIOC, data_1_Pin);
-  status[2] = HAL_GPIO_ReadPin(GPIOB, data_2_Pin);
-  status[3] = HAL_GPIO_ReadPin(GPIOC, data_3_Pin);
-  status[4] = HAL_GPIO_ReadPin(GPIOB, data_4_Pin);
-  status[5] = HAL_GPIO_ReadPin(GPIOC, data_5_Pin);
-  status[6] = HAL_GPIO_ReadPin(GPIOA, data_6_Pin);
-  status[7] = HAL_GPIO_ReadPin(GPIOA, data_7_Pin);
-  status[8] = HAL_GPIO_ReadPin(GPIOA, data_8_Pin);
-  status[9] = HAL_GPIO_ReadPin(GPIOA, data_9_Pin);
-  status[10] = HAL_GPIO_ReadPin(GPIOA, data_10_Pin);
-  status[11] = HAL_GPIO_ReadPin(GPIOB, data_11_Pin);
-  status[12] = HAL_GPIO_ReadPin(GPIOB, data_12_Pin);
-  status[13] = HAL_GPIO_ReadPin(GPIOC, data_13_Pin);
-  status[14] = HAL_GPIO_ReadPin(GPIOA, data_14_Pin);
-  status[15] = HAL_GPIO_ReadPin(GPIOB, data_15_Pin);
-
+  HAL_Delay(200);
 
   while (1)
   {
+	  // Alternate reading between addr 0x0 and 0x1
+	  HAL_GPIO_TogglePin(GPIOA, addr_0_Pin);
+
+	  status[0] = HAL_GPIO_ReadPin(GPIOC, data_0_Pin);
+	  status[1] = HAL_GPIO_ReadPin(GPIOC, data_1_Pin);
+	  status[2] = HAL_GPIO_ReadPin(GPIOB, data_2_Pin);
+	  status[3] = HAL_GPIO_ReadPin(GPIOC, data_3_Pin);
+	  status[4] = HAL_GPIO_ReadPin(GPIOB, data_4_Pin);
+	  status[5] = HAL_GPIO_ReadPin(GPIOC, data_5_Pin);
+	  status[6] = HAL_GPIO_ReadPin(GPIOA, data_6_Pin);
+	  status[7] = HAL_GPIO_ReadPin(GPIOA, data_7_Pin);
+	  status[8] = HAL_GPIO_ReadPin(GPIOA, data_8_Pin);
+	  status[9] = HAL_GPIO_ReadPin(GPIOA, data_9_Pin);
+	  status[10] = HAL_GPIO_ReadPin(GPIOA, data_10_Pin);
+	  status[11] = HAL_GPIO_ReadPin(GPIOB, data_11_Pin);
+	  status[12] = HAL_GPIO_ReadPin(GPIOB, data_12_Pin);
+	  status[13] = HAL_GPIO_ReadPin(GPIOC, data_13_Pin);
+	  status[14] = HAL_GPIO_ReadPin(GPIOA, data_14_Pin);
+	  status[15] = HAL_GPIO_ReadPin(GPIOB, data_15_Pin);
+
 	  sprintf(tx_buff, "Status: %d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d \r\n", status[0], status[1], status[2], status[3], status[4], status[5], status[6], status[7], status[8], status[9], status[10], status[11], status[12], status[13], status[14], status[15]);
 	  HAL_UART_Transmit(&huart2, tx_buff, 27, 1000);
 	  HAL_Delay(1000);
