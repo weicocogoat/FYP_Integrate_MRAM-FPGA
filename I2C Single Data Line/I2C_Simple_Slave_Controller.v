@@ -23,15 +23,15 @@
  module I2C_Simple_Slave_Controller(
     // Data and Clock lines for I2C comms
     // should be inout, but for testing, use input instead
-    input sda,
-    input scl,
+    input sda,				// should be inout
+    input scl,				// should be inout
     
     // Output to burst module (redundant)
     //output burst_en_out,
     //output [3:0] burst_len_out,
     
     // Output to MRAM
-    output [15:0] write_data,       // should be inout
+    output [15:0] write_data,      
     output [19:0] write_addr,
     
     // Output to PTS module
