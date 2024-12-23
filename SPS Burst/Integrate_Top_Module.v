@@ -37,7 +37,18 @@ module Integrate_Top_Module(
     input data_in,
     input [2:0] read_write_sel,
     
-    output ser_data_out
+    // Lines to/from MRAM
+    inout [15:0] data_to_MRAM,
+    output [19:0] addr_to_MRAM,
+    
+    output chip_en,                 // Chip enable, active low
+    output write_en,                // Write enable, active low
+    output out_en,                  // Read enable, active low
+    output lower_byte_en,           // Reading of bytes 7:0 enable line, active low
+    output upper_byte_en,            // Reading of bytes 15:8 enable line, active low
+    
+    //input [15:0] MRAM_parallel_data_in,
+    output PTS_ser_data_out
 );
 
 wire addr_sel;
@@ -46,6 +57,9 @@ wire addr_mux_output;
 
 wire addr_in_delayed;
 wire data_in_delayed;
+
+//wire [15:0] data;
+//wire out_en_intermediate;
 
 
 burst_ctrl_Top_Module burst_module
@@ -64,7 +78,7 @@ burst_ctrl_Top_Module burst_module
 );
 
 
-MRAM_Top_Module MRAM_Module
+MRAM_Top_Module MRAM_Controller_Module
 (
     .clk(clk),
     .rst(rst),
@@ -73,11 +87,19 @@ MRAM_Top_Module MRAM_Module
     .addr_in(addr_mux_output),
     .read_write_sel(read_write_sel),
     
-    .ser_data_out(ser_data_out),
     
-    // Redundant Signals
-    .data_out(),
-    .addr_out()
+    // PTS data from MRAM to be output
+    .data_out(data_to_MRAM),
+    .addr_out(addr_to_MRAM),
+    
+    .chip_en(chip_en),
+    .write_en(write_en),          
+    .out_en(out_en),                 
+    .lower_byte_en(lower_byte_en),           
+    .upper_byte_en(upper_byte_en),
+    
+    //.parallel_data_in(data_to_MRAM),
+    .ser_data_out(PTS_ser_data_out)
 );
 
 delay_register delay_reg_addr
@@ -101,5 +123,4 @@ delay_register delay_reg_data
 
 // 0 -> no burst. 1 -> burst
 assign addr_mux_output = (addr_sel) ? addr_ser_out : addr_in_delayed;
-
 endmodule
