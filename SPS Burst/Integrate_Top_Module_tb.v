@@ -35,7 +35,20 @@ reg addr_in;
 reg data_in;
 reg [2:0] read_write_sel;
 
-wire ser_data_out;
+wire [15:0] data_to_MRAM;
+reg [15:0] data_to_MRAM_drive;
+wire [15:0] data_to_MRAM_recv;
+wire [19:0] addr_to_MRAM;
+assign data_to_MRAM = data_to_MRAM_drive;
+assign data_to_MRAM_recv = data_to_MRAM;
+
+wire chip_en;                 // Chip enable, active low
+wire write_en;                // Write enable, active low
+wire out_en;                  // Read enable, active low
+wire lower_byte_en;           // Reading of bytes 7:0 enable line, active low
+wire upper_byte_en;            // Reading of bytes 15:8 enable line, active low
+
+wire PTS_ser_data_out;
 
 integer i;
 
@@ -54,7 +67,16 @@ Integrate_Top_Module uut
     .data_in(data_in),
     .read_write_sel(read_write_sel),
     
-    .ser_data_out(ser_data_out)
+    .data_to_MRAM(data_to_MRAM),
+    .addr_to_MRAM(addr_to_MRAM),
+    
+    .chip_en(chip_en),                 // Chip enable, active low
+    .write_en(write_en),                // Write enable, active low
+    .out_en(out_en),                  // Read enable, active low
+    .lower_byte_en(lower_byte_en),           // Reading of bytes 7:0 enable line, active low
+    .upper_byte_en(upper_byte_en),            // Reading of bytes 15:8 enable line, active low
+    
+    .PTS_ser_data_out(PTS_ser_data_out)
 );
 
 always begin
@@ -63,11 +85,8 @@ always begin
 end
 
 initial begin
-
-/*----------------------------------------------------------------------------------------------------------*/
-    /*SINGLE TRANSFER WRITE*/
-    
     // FULL BYTE WRITE
+    data_to_MRAM_drive <= 'bz;
     @(posedge clk)
     rst <= 1'b0;
     
@@ -87,57 +106,36 @@ initial begin
     @(posedge clk)
     rst <= 1;
     
-    // LOWER BYTE WRITE
+    // Full byte read
     @(posedge clk)
     rst <= 0;
     
     burst_en <= 0;
     mode_sel <= 0;
-    read_write_sel <= 3'b011;
+    read_write_sel <= 3'b110;
     
-    @(posedge clk)      // Stall cycle 0
-    data_in <= 0;
-    addr_in <= 1;
+    data_to_MRAM_drive <= 16'b010;
     
-    for (i = 0; i < 19; i = i+1) begin
+     for (i = 0; i < 20; i = i+1) begin
         @(posedge clk)
-        data_in <= i%2 + 1;
         addr_in <= 0;
     end
     
     @(posedge clk)
     @(posedge clk)
     @(posedge clk)
-    rst <= 1;
-    
-    // UPPER BYTE WRITE
-    @(posedge clk)
-    rst <= 0;
-    
-    burst_en <= 0;
-    mode_sel <= 0;
-    read_write_sel <= 3'b101;
-    
-    @(posedge clk)      // Stall cycle 0
-    data_in <= 0;
-    addr_in <= 0;
-    
-    @(posedge clk)
-    data_in <= 1;
-    addr_in <= 1;
-    
-    for (i = 0; i < 18; i = i+1) begin
-        @(posedge clk)
-        data_in <= i%2;
-        addr_in <= 0;
-    end
-    
-    @(posedge clk)
-    @(posedge clk)
-    @(posedge clk)
-    rst <= 1;
 
-  /*----------------------------------------------------------------------------------------------------------*/   
+    // Stall for output
+    @(posedge clk)
+    for (i = 0; i < 23; i = i+1) begin
+        @(posedge clk)
+        addr_in <= 0;
+    end
+    
+    @(posedge clk)
+    rst <= 1;
+    
+    /*----------------------------------------------------------------------------------------------------------*/   
     // BURST WRITE
     @(posedge clk)
     rst <= 0;
@@ -145,6 +143,8 @@ initial begin
     burst_en <= 1;
     mode_sel <= 1;
     read_write_sel <= 3'b111;
+    
+    data_to_MRAM_drive <= 'bz;
     
     // Write AAAA to addr 0
     @(posedge clk)
@@ -194,43 +194,6 @@ initial begin
     @(posedge clk)
     @(posedge clk)
     rst <= 1;
-    
-  /*----------------------------------------------------------------------------------------------------------*/   
-    // BURST READ
-    @(posedge clk)
-    rst <= 0;
-    
-    burst_en <= 1;
-    mode_sel <= 1;
-    read_write_sel <= 3'b110;
-    
-    @(posedge clk)
-    burst_len_in <= 1;
-    addr_in <= 0;
-    
-    @(posedge clk)
-    burst_len_in <= 1;
-    addr_in <= 0;
-    
-    for (i = 0; i < 18; i = i+1) begin
-        @(posedge clk)
-        addr_in <= 0;
-        burst_len_in <= 0;
-    end
-    
-    @(posedge clk)
-    @(posedge clk)
-    @(posedge clk)
-
-
-    // Stall to see output
-    @(posedge clk)
-    for (i = 0; i < 69; i = i+1) begin
-        @(posedge clk)
-        addr_in <= 0;
-    end
-    
-    
     $finish;
 
 end
