@@ -112,6 +112,9 @@ begin
             // If mode_sel is 0, Single Transfer is selected. Set the mux input to 0 to use the serial addr in. No other signals are necesary
             addr_sel <= 0;
         end
+        else if (en && stop_signal) begin
+            addr_loaded_flag <= 0;
+        end
         else if (en && mode_sel && ~stop_signal) begin
             // If mode_sel is 1, Burst Transfer is selected.
             
