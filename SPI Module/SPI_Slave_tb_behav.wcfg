@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="SPI_Slave_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="SPI_Slave_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1,535.769 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,631.107 ns"></ZoomEndTime>
+      <Cursor1Time time="1,564.113 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="145"></NameColumnWidth>
+      <ValueColumnWidth column_width="109"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="41" />
+   <wvobject type="divider" fp_name="divider48">
+      <obj_property name="label">SPI Slave signals</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/FPGA_clk" type="logic">
+      <obj_property name="ElementShortName">FPGA_clk</obj_property>
+      <obj_property name="ObjectShortName">FPGA_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/FPGA_rst" type="logic">
+      <obj_property name="ElementShortName">FPGA_rst</obj_property>
+      <obj_property name="ObjectShortName">FPGA_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/i" type="array">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider46">
+      <obj_property name="label">SPI signals</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/SSEL" type="logic">
+      <obj_property name="ElementShortName">SSEL</obj_property>
+      <obj_property name="ObjectShortName">SSEL</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/SCLK" type="logic">
+      <obj_property name="ElementShortName">SCLK</obj_property>
+      <obj_property name="ObjectShortName">SCLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/MOSI" type="logic">
+      <obj_property name="ElementShortName">MOSI</obj_property>
+      <obj_property name="ObjectShortName">MOSI</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/MISO" type="logic">
+      <obj_property name="ElementShortName">MISO</obj_property>
+      <obj_property name="ObjectShortName">MISO</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/addr_line" type="array">
+      <obj_property name="ElementShortName">addr_line[19:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_line[19:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/data_line" type="array">
+      <obj_property name="ElementShortName">data_line[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_line[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider71">
+      <obj_property name="label">SPI control</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/SCLK_risingedge" type="logic">
+      <obj_property name="ElementShortName">SCLK_risingedge</obj_property>
+      <obj_property name="ObjectShortName">SCLK_risingedge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/SSEL_active" type="logic">
+      <obj_property name="ElementShortName">SSEL_active</obj_property>
+      <obj_property name="ObjectShortName">SSEL_active</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/SSEL_startmessage" type="logic">
+      <obj_property name="ElementShortName">SSEL_startmessage</obj_property>
+      <obj_property name="ObjectShortName">SSEL_startmessage</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/state" type="array">
+      <obj_property name="ElementShortName">state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">state[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/bitcnt" type="array">
+      <obj_property name="ElementShortName">bitcnt[2:0]</obj_property>
+      <obj_property name="ObjectShortName">bitcnt[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/cycle" type="array">
+      <obj_property name="ElementShortName">cycle[3:0]</obj_property>
+      <obj_property name="ObjectShortName">cycle[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/byte_data_received" type="array">
+      <obj_property name="ElementShortName">byte_data_received[7:0]</obj_property>
+      <obj_property name="ObjectShortName">byte_data_received[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/byte_received" type="logic">
+      <obj_property name="ElementShortName">byte_received</obj_property>
+      <obj_property name="ObjectShortName">byte_received</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider26">
+      <obj_property name="label">Burst and Read</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/read_write_sel" type="array">
+      <obj_property name="ElementShortName">read_write_sel[2:0]</obj_property>
+      <obj_property name="ObjectShortName">read_write_sel[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/burst_len" type="array">
+      <obj_property name="ElementShortName">burst_len[3:0]</obj_property>
+      <obj_property name="ObjectShortName">burst_len[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/burst_en" type="logic">
+      <obj_property name="ElementShortName">burst_en</obj_property>
+      <obj_property name="ObjectShortName">burst_en</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider198">
+      <obj_property name="label">Addr and Data</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/addr_bits" type="array">
+      <obj_property name="ElementShortName">addr_bits[19:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_bits[19:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/SPI_Slave/data_bits" type="array">
+      <obj_property name="ElementShortName">data_bits[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_bits[15:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider249">
+      <obj_property name="label">MRAM Ctrl</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/chip_en_out" type="logic">
+      <obj_property name="ElementShortName">chip_en_out</obj_property>
+      <obj_property name="ObjectShortName">chip_en_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/read_en_out" type="logic">
+      <obj_property name="ElementShortName">read_en_out</obj_property>
+      <obj_property name="ObjectShortName">read_en_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/write_en_out" type="logic">
+      <obj_property name="ElementShortName">write_en_out</obj_property>
+      <obj_property name="ObjectShortName">write_en_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/lb_en_out" type="logic">
+      <obj_property name="ElementShortName">lb_en_out</obj_property>
+      <obj_property name="ObjectShortName">lb_en_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/ub_en_out" type="logic">
+      <obj_property name="ElementShortName">ub_en_out</obj_property>
+      <obj_property name="ObjectShortName">ub_en_out</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider405">
+      <obj_property name="label">PTS module</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/PTS_module/en" type="logic">
+      <obj_property name="ElementShortName">en</obj_property>
+      <obj_property name="ObjectShortName">en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/PTS_module/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/PTS_module/data_bits" type="array">
+      <obj_property name="ElementShortName">data_bits[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_bits[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/PTS_module/index" type="array">
+      <obj_property name="ElementShortName">index[3:0]</obj_property>
+      <obj_property name="ObjectShortName">index[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/PTS_module/ser_data_out" type="logic">
+      <obj_property name="ElementShortName">ser_data_out</obj_property>
+      <obj_property name="ObjectShortName">ser_data_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/data_line" type="array">
+      <obj_property name="ElementShortName">data_line[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_line[15:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SPI_Slave_tb/uut/PTS_module/index" type="array">
+      <obj_property name="ElementShortName">index[3:0]</obj_property>
+      <obj_property name="ObjectShortName">index[3:0]</obj_property>
+   </wvobject>
+</wave_config>
