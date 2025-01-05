@@ -96,7 +96,20 @@ begin
                         // All 16 bits have been shifted into the shift register, stop the shifting and retain the current state
                         data_en <= 0;     
                         end 
+
+                6'd20 : begin
+                        // Refer to MRAM documentation pg 10. 
+                        // This is utilizing Write Cycle 2 Timing, Enable Controlled: Pull write_en and lb&ub_en low first before pulling chip_en low. 
+                        if (read_write_sel[0] == 1) begin
+                            chip_en <= 1;     
+                            write_en <= 0;               
+                            out_en <= 1;                
+                            lower_byte_en <= ~read_write_sel[1];    // Active low, therefore, not operation first
+                            upper_byte_en <= ~read_write_sel[2];
+                        end
                         
+                        end
+                
                 6'd21 : begin
                         // All 20 bits have been shifted into the shift register, stop the shift and retain current state
                         addr_en <= 0;  
