@@ -1,0 +1,12 @@
+Running this vitis code to read from the MRAM will result in always getting 0 back. 
+After several tests and debugging, here are some of the things to highlight:
+
+1) Using a multimeter and reading the voltage of the wires per clock cycle, I can see that the correct signals are being asserted at the correct clock cycles. 
+- eg. for write operation, chip_en goes low at cycle 22, along with write_en, lb_en, and ub_en.
+
+2) However, writing and reading does not appear to work. My best guess for this discrepency is because voltage issues. 
+- When using a multimeter to read the addr and data lines, a high signal hovers between 2.0v to 2.2v.
+- MRAM input high voltage is minimally 2.2v.
+- Zedboard's FMC connectors are connected to banks 34 and 35, which can be selected to output 1.8v or 2.5v. 3v3 is not available without additional soldering of pins. 
+- I selected 2.5v output, but the FMC pins outputs only voltages of around 2.0v to 2.2v. 
+- Because there is a need for the voltage to be held steadily above 2.2v mininmally to register as a high signal on the MRAM, writing and reading to the MRAM does not work.
