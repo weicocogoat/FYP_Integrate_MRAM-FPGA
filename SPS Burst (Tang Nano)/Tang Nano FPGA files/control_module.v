@@ -180,7 +180,7 @@ begin
                         addr_en <= 1;
                         
                         if (read_flag) begin
-                        send_data <= 0;
+                        send_data <= 1;
                         
                         //data_in_from_MRAM_en <= 1; 
                         
