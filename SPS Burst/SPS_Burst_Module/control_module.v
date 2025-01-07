@@ -96,7 +96,7 @@ begin
                         // All 16 bits have been shifted into the shift register, stop the shifting and retain the current state
                         data_en <= 0;     
                         end 
-
+                        
                 6'd20 : begin
                         // Refer to MRAM documentation pg 10. 
                         // This is utilizing Write Cycle 2 Timing, Enable Controlled: Pull write_en and lb&ub_en low first before pulling chip_en low. 
@@ -109,7 +109,7 @@ begin
                         end
                         
                         end
-                
+                        
                 6'd21 : begin
                         // All 20 bits have been shifted into the shift register, stop the shift and retain current state
                         addr_en <= 0;  
@@ -119,6 +119,7 @@ begin
                         send_data <= 1;     
                         
                         // Set the MRAM signals such that on the next rising edge, data can be output to the MRAM as a write operation
+                        
                         chip_en <= 0;     
                         write_en <= 0;               
                         out_en <= 1;                
@@ -181,10 +182,10 @@ begin
                         if (read_flag) begin
                         send_data <= 0;
                         
-                        data_in_from_MRAM_en <= 1; 
+                        //data_in_from_MRAM_en <= 1; 
                         
-                        // Assert the load flag to move the data into an internal register         
-                        load <= 1;
+                        // Stop the loading. Data should have been latched in properly    
+                        load <= 0;
                         end
                         
                         end
@@ -222,6 +223,11 @@ begin
                             read_flag <= 0;
                         end
                         end
+                        
+                6'd20 : begin
+                        prev_read_write_sel_intreg[1] <= read_write_sel[2];
+                        prev_read_write_sel_intreg[0] <= read_write_sel[1];
+                        end
                 
                 6'd21 : begin
                         // All 20 bits have been shifted into the shift register, stop the shift and retain current state
@@ -237,8 +243,14 @@ begin
                         lower_byte_en <= ~prev_read_write_sel_intreg[0];    // Active low, therefore, not operation first
                         upper_byte_en <= ~prev_read_write_sel_intreg[1];
                         
-                        prev_read_write_sel_intreg[1] <= read_write_sel[2];
-                        prev_read_write_sel_intreg[0] <= read_write_sel[1];
+                        //prev_read_write_sel_intreg[1] <= read_write_sel[2];
+                        //prev_read_write_sel_intreg[0] <= read_write_sel[1];
+                        
+                        read_flag <= 1;
+                        
+                        // Assert the load flag to move the data into an internal register         
+                        load <= 1;
+                        data_in_from_MRAM_en <= 1; 
                         end
                         
                 6'd22 : begin
@@ -252,7 +264,9 @@ begin
                         lower_byte_en <= ~prev_read_write_sel_intreg[0];    // Active low, therefore, not operation first
                         upper_byte_en <= ~prev_read_write_sel_intreg[1];
                         
-                        read_flag <= 1;
+                        // Assert the load flag to move the data into an internal register         
+                        load <= 1;
+                        data_in_from_MRAM_en <= 1; 
                         end      
                                  
                 default : begin

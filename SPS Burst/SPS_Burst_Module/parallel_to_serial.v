@@ -62,7 +62,7 @@ begin
                 data_shift_reg <= data_in;
                 //end_of_transmission <= 0;
             end
-            if (send_data) begin
+            else if (send_data) begin
             
                 case (word_sel)
                     2'b11: begin

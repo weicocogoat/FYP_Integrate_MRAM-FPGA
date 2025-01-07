@@ -1,3 +1,4 @@
+
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
@@ -52,3 +53,4 @@ assign stop_signal = ( (burst_len + 1) == counter) ? 1 : 0;
 
 
 endmodule
+
