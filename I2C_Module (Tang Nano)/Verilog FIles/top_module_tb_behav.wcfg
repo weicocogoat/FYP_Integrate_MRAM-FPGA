@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_module_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="top_module_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1,167.503 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,588.004 ns"></ZoomEndTime>
+      <Cursor1Time time="1,099.878 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="132"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="39" />
+   <wvobject fp_name="/top_module_tb/FPGA_clk" type="logic">
+      <obj_property name="ElementShortName">FPGA_clk</obj_property>
+      <obj_property name="ObjectShortName">FPGA_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/FPGA_rst" type="logic">
+      <obj_property name="ElementShortName">FPGA_rst</obj_property>
+      <obj_property name="ObjectShortName">FPGA_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/sda" type="logic">
+      <obj_property name="ElementShortName">sda</obj_property>
+      <obj_property name="ObjectShortName">sda</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/scl" type="logic">
+      <obj_property name="ElementShortName">scl</obj_property>
+      <obj_property name="ObjectShortName">scl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/sda_output" type="logic">
+      <obj_property name="ElementShortName">sda_output</obj_property>
+      <obj_property name="ObjectShortName">sda_output</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider43">
+      <obj_property name="label">I2C Comms</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/SCL_risingedge" type="logic">
+      <obj_property name="ElementShortName">SCL_risingedge</obj_property>
+      <obj_property name="ObjectShortName">SCL_risingedge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/SCL_fallingedge" type="logic">
+      <obj_property name="ElementShortName">SCL_fallingedge</obj_property>
+      <obj_property name="ObjectShortName">SCL_fallingedge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/SCLr" type="array">
+      <obj_property name="ElementShortName">SCLr[2:0]</obj_property>
+      <obj_property name="ObjectShortName">SCLr[2:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/SDA_risingedge" type="logic">
+      <obj_property name="ElementShortName">SDA_risingedge</obj_property>
+      <obj_property name="ObjectShortName">SDA_risingedge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/SDA_fallingedge" type="logic">
+      <obj_property name="ElementShortName">SDA_fallingedge</obj_property>
+      <obj_property name="ObjectShortName">SDA_fallingedge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/SDAr" type="array">
+      <obj_property name="ElementShortName">SDAr[2:0]</obj_property>
+      <obj_property name="ObjectShortName">SDAr[2:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/end_of_comms" type="logic">
+      <obj_property name="ElementShortName">end_of_comms</obj_property>
+      <obj_property name="ObjectShortName">end_of_comms</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/data_input_from_SDA" type="array">
+      <obj_property name="ElementShortName">data_input_from_SDA[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_input_from_SDA[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider103">
+      <obj_property name="label">Counter and state</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/state" type="array">
+      <obj_property name="ElementShortName">state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">state[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/counter" type="array">
+      <obj_property name="ElementShortName">counter[2:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider135">
+      <obj_property name="label">Read Slave addr + RWS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/slave_addr" type="array">
+      <obj_property name="ElementShortName">slave_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">slave_addr[4:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/read_write_sel" type="array">
+      <obj_property name="ElementShortName">read_write_sel[2:0]</obj_property>
+      <obj_property name="ObjectShortName">read_write_sel[2:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider446">
+      <obj_property name="label">MRAM output</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/state" type="array">
+      <obj_property name="ElementShortName">state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">state[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/counter" type="array">
+      <obj_property name="ElementShortName">counter[2:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/MRAM_write_data" type="array">
+      <obj_property name="ElementShortName">MRAM_write_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">MRAM_write_data[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/MRAM_base_addr" type="array">
+      <obj_property name="ElementShortName">MRAM_base_addr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">MRAM_base_addr[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/write_addr" type="array">
+      <obj_property name="ElementShortName">write_addr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">write_addr[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/write_MRAM" type="logic">
+      <obj_property name="ElementShortName">write_MRAM</obj_property>
+      <obj_property name="ObjectShortName">write_MRAM</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/write_data" type="array">
+      <obj_property name="ElementShortName">write_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">write_data[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/write_addr" type="array">
+      <obj_property name="ElementShortName">write_addr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">write_addr[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/chip_en" type="logic">
+      <obj_property name="ElementShortName">chip_en</obj_property>
+      <obj_property name="ObjectShortName">chip_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/read_en" type="logic">
+      <obj_property name="ElementShortName">read_en</obj_property>
+      <obj_property name="ObjectShortName">read_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/write_en" type="logic">
+      <obj_property name="ElementShortName">write_en</obj_property>
+      <obj_property name="ObjectShortName">write_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/lb_en" type="logic">
+      <obj_property name="ElementShortName">lb_en</obj_property>
+      <obj_property name="ObjectShortName">lb_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/ub_en" type="logic">
+      <obj_property name="ElementShortName">ub_en</obj_property>
+      <obj_property name="ObjectShortName">ub_en</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider793">
+      <obj_property name="label">Read Output</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/sda_output" type="logic">
+      <obj_property name="ElementShortName">sda_output</obj_property>
+      <obj_property name="ObjectShortName">sda_output</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/internal_write_enable" type="logic">
+      <obj_property name="ElementShortName">internal_write_enable</obj_property>
+      <obj_property name="ObjectShortName">internal_write_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/send_ack" type="logic">
+      <obj_property name="ElementShortName">send_ack</obj_property>
+      <obj_property name="ObjectShortName">send_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_module_tb/I2C_module/uut1/ser_data_input" type="logic">
+      <obj_property name="ElementShortName">ser_data_input</obj_property>
+      <obj_property name="ObjectShortName">ser_data_input</obj_property>
+   </wvobject>
+</wave_config>
