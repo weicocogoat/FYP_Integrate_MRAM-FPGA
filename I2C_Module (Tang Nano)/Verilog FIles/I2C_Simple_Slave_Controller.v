@@ -223,7 +223,7 @@
                 READ_DATA1: begin
                     if (SCL_risingedge) begin
                     
-                        // Read burst_len (4bit) and MRAM_base_addr (24 bit)
+                        // Read burst_len (4bit) and MRAM_base_addr (20 bit)
                         data_input_from_SDA[counter] <= sda;
                         if(counter == 0) begin
                            state <= SEND_ACK2;

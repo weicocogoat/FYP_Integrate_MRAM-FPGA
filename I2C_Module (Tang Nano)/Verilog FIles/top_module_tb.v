@@ -88,6 +88,10 @@ initial begin
     sda <= 0;       
     
 /*-------------------------------------------SINGLE BYTE WRITE-------------------------------------------*/
+/*
+    // Pull SDA low to start I2C comms
+    sda <= 0;   
+    
     // Send Slave addr and RWS
     for (i = 0; i < 7; i = i+1) begin
         @(posedge scl)
@@ -133,9 +137,11 @@ initial begin
     
     @(posedge scl)
     @(posedge scl)
+*/
 /*-------------------------------------------------------------------------------------------------------*/
 
 /*-------------------------------------------SINGLE BYTE READ--------------------------------------------*/
+    /*
     // Pull SDA low to start I2C comms
     sda <= 0;    
     
@@ -184,6 +190,202 @@ initial begin
     
     @(posedge scl)
     @(posedge scl)
+*/
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------Burst write of length 3----------------------------------------*/
+
+    // Pull SDA low to start I2C comms
+    sda <= 0;   
+    
+    // Send Slave addr and RWS
+    for (i = 0; i < 7; i = i+1) begin
+        @(posedge scl)
+        sda <= 1;
+    end
+    
+    // Write operation
+    @(posedge scl)
+    sda <= 1;
+    
+    // ACK signal
+    @(posedge scl)
+    
+    // Input addr and burst len
+    for (j = 0; j < 2; j = j+1) begin
+        for (i = 0; i < 8; i = i+1) begin
+            @(posedge scl)
+            sda <= 0;
+        end
+        
+        // Ack
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    // Burst len of 3
+    for (i = 0; i < 2; i = i+1) begin
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    for (i = 0; i < 2; i = i+1) begin
+        @(posedge scl)
+        sda <= 1;
+    end
+    
+    // Remaining 4 bits of addr
+    for (i = 0; i < 4; i = i+1) begin
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    // ACK signal
+    @(posedge scl)
+    
+    // Data 1
+    for (j = 0; j < 2; j = j+1) begin
+        for (i = 0; i < 8; i = i+1) begin
+            @(posedge scl)
+            sda <= i%2;
+        end
+        
+        // Ack
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    // Data 2
+    for (j = 0; j < 2; j = j+1) begin
+        for (i = 0; i < 8; i = i+1) begin
+            @(posedge scl)
+            sda <= 1;
+        end
+        
+        // Ack
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    // Data 3
+    for (j = 0; j < 2; j = j+1) begin
+        for (i = 0; i < 8; i = i+1) begin
+            @(posedge scl)
+            sda <= 0;
+        end
+        
+        // Ack
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    @(posedge scl)
+    #1
+    sda <= 1;
+    
+    @(posedge scl)
+    @(posedge scl)
+    
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------Burst read of length 3-----------------------------------------*/
+
+    // Pull SDA low to start I2C comms
+    sda <= 0;   
+    
+    // Send Slave addr and RWS
+    for (i = 0; i < 7; i = i+1) begin
+        @(posedge scl)
+        sda <= 1;
+    end
+    
+    // Write operation
+    @(posedge scl)
+    sda <= 0;
+    
+    // ACK signal
+    @(posedge scl)
+    
+    // Input addr and burst len
+    for (j = 0; j < 2; j = j+1) begin
+        for (i = 0; i < 8; i = i+1) begin
+            @(posedge scl)
+            sda <= 0;
+        end
+        
+        // Ack
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    // Burst len of 3
+    for (i = 0; i < 2; i = i+1) begin
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    for (i = 0; i < 2; i = i+1) begin
+        @(posedge scl)
+        sda <= 1;
+    end
+    
+    // Remaining 4 bits of addr
+    for (i = 0; i < 4; i = i+1) begin
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    // ACK signal
+    @(posedge scl)
+    
+    // Data 1
+    write_data_drive <= 16'b0101_0101_0101_0101_0101;
+    for (j = 0; j < 2; j = j+1) begin
+        for (i = 0; i < 8; i = i+1) begin
+            @(posedge scl)
+            sda <= i%2;
+        end
+        
+        // Ack
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    // Data 2
+    write_data_drive <= 16'b1111_1111_1111_1111_1111;
+    for (j = 0; j < 2; j = j+1) begin
+        for (i = 0; i < 8; i = i+1) begin
+            @(posedge scl)
+            sda <= 1;
+        end
+        
+        // Ack
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    // Data 3
+    write_data_drive <= 16'b0000_0000_0000_0000_0000;
+    for (j = 0; j < 2; j = j+1) begin
+        for (i = 0; i < 8; i = i+1) begin
+            @(posedge scl)
+            sda <= 0;
+        end
+        
+        // Ack
+        @(posedge scl)
+        sda <= 0;
+    end
+    
+    @(posedge scl)
+    #1
+    sda <= 1;
+    
+    @(posedge scl)
+    @(posedge scl)
+    
 
 /*-------------------------------------------------------------------------------------------------------*/
     $finish;
