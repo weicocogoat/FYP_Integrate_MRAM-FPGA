@@ -40,6 +40,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+TIM_HandleTypeDef htim1;
+
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
@@ -50,6 +52,7 @@ UART_HandleTypeDef huart2;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_TIM1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -88,511 +91,283 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  uint8_t tx_buff[64];
-  int read_data[16];
 
-  sprintf(tx_buff, "Starting Program\r\n");
-  HAL_UART_Transmit(&huart2, tx_buff, 18, 1000);
+	// Printing to terminal
+	uint8_t tx_buff[64];
+	int read_data[16];
+
+	sprintf(tx_buff, "Starting Program\r\n");
+	HAL_UART_Transmit(&huart2, tx_buff, 18, 1000);
+
+	// Delay function
+	HAL_TIM_Base_Start(&htim1);
+	void delay_us (uint16_t us)
+	{
+	// Changes depending on prescaler set in TIM1.
+	// TIM1 is connected to APB2 and will be clocked at 84Mhz
+	// Possible to tweak the prescalar in order to change the clock speed
+    // As of now, the prescaler is set to 1, meaning that the period is 1/84^6, approx 12ns.
+	__HAL_TIM_SET_COUNTER(&htim1,0);  // set the counter value a 0
+	while (__HAL_TIM_GET_COUNTER(&htim1) < us);  // wait for the counter to reach the us input in the parameter
+	}
+
+	// System reset. Ends with clock being low
+	void MRAM_reset(){
+	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+	  HAL_GPIO_WritePin(GPIOC, rst_Pin, 1);
+	  HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 0);
+	  HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 0);
+	  HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
+	  HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
+	  HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
+	  HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 1);
+	  HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
+	  HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
+	  delay_us(5);
+	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
+	  delay_us(5);
+	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+	}
+
+	// Single word write
+	uint32_t bitwise_one = 1;
+
+	void MRAM_single_word_write(uint32_t addr_in, uint32_t data_in){		// 16-bit unsigned short
+	  int  i;
+	  uint32_t addr = addr_in;
+	  uint32_t data = data_in;
+
+
+	  for (i = 0; i < 23; i++){
+		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+		  HAL_GPIO_WritePin(GPIOC, rst_Pin, 0);
+
+		  if (i == 0){
+			  HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 0);
+			  HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 0);
+			  HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
+			  HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 1);
+			  HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
+			  HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
+		  }
+		  else{
+			  if (i > 1){
+				  addr = addr >> 1;
+				  data = data >> 1;
+			  }
+			  HAL_GPIO_WritePin(GPIOC, addr_in_Pin, addr & bitwise_one);
+			  HAL_GPIO_WritePin(GPIOA, data_in_Pin, data & bitwise_one);
+		  }
+
+		  delay_us(5);
+		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
+		  delay_us(5);
+	  }
+
+	  // End on low clock
+	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+	}
+
+  	  // Single Word Read
+  	  void MRAM_single_word_read(uint32_t addr_in){		// 16-bit unsigned short
+  	  int  i;
+  	  uint32_t addr = addr_in;
+
+  	  // First loop to receive base address
+  	  for (i = 0; i < 23; i++){
+  		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+  		  HAL_GPIO_WritePin(GPIOC, rst_Pin, 0);
+
+  		  if (i == 0){
+  			  HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 0);
+  			  HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 0);
+  			  HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
+  			  HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 0);
+  			  HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
+  			  HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
+  		  }
+  		  else{
+  			if (i > 1){
+  				addr = addr >> 1;
+  			}
+  			HAL_GPIO_WritePin(GPIOC, addr_in_Pin, addr & bitwise_one);
+  		  }
+  		  delay_us(5);
+  		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
+  		  delay_us(5);
+  	  }
+
+  	  // Second loop: Stall and receive data
+  	    for (int i = 0; i < 2; i++){
+  	    	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
+  		      HAL_Delay(10);
+  	    	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+  	    	  HAL_Delay(10);
+  	    }
+
+  	    for (int i = 0; i < 16; i++){
+  	  	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
+  	  	  read_data[i] = HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin);
+  	  	  sprintf(tx_buff, "Data[%d]: %d \r\n", i, read_data[i]);
+  	  	  HAL_UART_Transmit(&huart2, tx_buff, 14, 1000);
+  	  	  HAL_Delay(100);
+  	  	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+  	  	  HAL_Delay(100);
+  	    }
+
+  	    sprintf(tx_buff, "Data: %d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d \r\n", read_data[15], read_data[14], read_data[13], read_data[12], read_data[11], read_data[10], read_data[9], read_data[8], read_data[7], read_data[6], read_data[5], read_data[4], read_data[3], read_data[2], read_data[1], read_data[0]);
+  	    HAL_UART_Transmit(&huart2, tx_buff, 27, 1000);
+
+  	    // End on low clock
+  	    HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+    }
+
+
+  	// Burst write
+  	void MRAM_burst_write(uint32_t addr_in, uint32_t data_arr[], uint32_t burst_len_in){
+  		int i;
+  		int j;
+  		uint32_t addr = addr_in;
+  		uint32_t burst_len = burst_len_in;		// Burst_len has same len as array len
+  		uint32_t burst_len_loop = burst_len_in;
+  		uint32_t data;
+
+  		for (i = 0; i < burst_len_loop; i++ ){
+
+  			data = data_arr[i];
+  			//sprintf(tx_buff, "data_arr: %x\r\n", data);
+  			//HAL_UART_Transmit(&huart2, tx_buff, 27, 1000);
+
+  			for (j = 0; j < 23; j++){
+				  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+				  HAL_GPIO_WritePin(GPIOC, rst_Pin, 0);
+
+				  if (j == 0){
+					  HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 1);
+					  HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 1);
+					  HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 1);
+					  HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
+					  HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
+				  }
+				  else{
+					  if (j > 1){
+						  addr = addr >> 1;
+						  data = data >> 1;
+						  burst_len = burst_len >> 1;
+					  }
+					  HAL_GPIO_WritePin(GPIOC, addr_in_Pin, addr & bitwise_one);
+					  HAL_GPIO_WritePin(GPIOA, data_in_Pin, data & bitwise_one);
+					  HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, burst_len & bitwise_one);
+				  }
+
+				  delay_us(1);
+				  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
+				  delay_us(1);
+  			}
+  		}
+  		// End on low clock
+  		HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+
+  	}
+
+  	// Burst read
+  	void MRAM_burst_read(uint32_t addr_in, uint32_t data_arr[], uint32_t burst_len_in){
+  		int i;
+  		int j;
+  		uint32_t addr = addr_in;
+  		uint32_t burst_len = burst_len_in;
+  		uint32_t burst_len_loop = burst_len_in;
+  		uint16_t data = 0;
+
+  		for (i = 0; i <= burst_len_loop; i++){
+  			switch(i){
+  			case 0:
+  				for (j = 0; j < 23; j++){
+  					HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+  					HAL_GPIO_WritePin(GPIOC, rst_Pin, 0);
+					if (j == 0){
+						  HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 1);
+						  HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 1);
+						  HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 0);
+						  HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
+						  HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
+					}
+					else{
+						if (j > 1){
+							  addr = addr >> 1;
+							  burst_len = burst_len >> 1;
+						  }
+						  HAL_GPIO_WritePin(GPIOC, addr_in_Pin, addr & bitwise_one);
+						  HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, burst_len & bitwise_one);
+					}
+					delay_us(1);
+				    HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
+				    delay_us(1);
+				}
+  				break;
+
+  			default:
+  				for (int k = 0; k < 1; k++){
+  					  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+  					  delay_us(1);
+					  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
+					  delay_us(1);
+				}
+  				for (int k = 0; k < 16; k++){
+  					  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+  					  HAL_Delay(100);
+					  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
+					  read_data[k] = HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin);
+					  data = (data >> 1) | (HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin) << 15);
+					  sprintf(tx_buff, "Data[%d]: %d \r\n", k, read_data[k]);
+					  HAL_UART_Transmit(&huart2, tx_buff, 14, 1000);
+					  HAL_Delay(100);
+				}
+
+				sprintf(tx_buff, "Data: %d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d \r\n", read_data[15], read_data[14], read_data[13], read_data[12], read_data[11], read_data[10], read_data[9], read_data[8], read_data[7], read_data[6], read_data[5], read_data[4], read_data[3], read_data[2], read_data[1], read_data[0]);
+				HAL_UART_Transmit(&huart2, tx_buff, 27, 1000);
+				sprintf(tx_buff, "Data: %x\r\n", data);
+				HAL_UART_Transmit(&huart2, tx_buff, 27, 1000);
+
+				for (int k = 0; k < 6; k++){
+					HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+					delay_us(1);
+				    HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
+				    delay_us(1);
+				}
+				break;
+  			}
+
+  		}
+  		// End on low clock
+  		HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
+  	}
+
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-/*---------------------------------------Reset the system---------------------------------------*/
-/*
-  	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-  	HAL_Delay(5);
-    HAL_GPIO_WritePin(GPIOC, rst_Pin, 1);
-    HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 0);
-    HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 0);
-    HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
-    HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
-    HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
-    HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 1);
-    HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
-    HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
-    HAL_Delay(5);
-
-    HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-    HAL_Delay(10);
-*/
-/*-----------------------------------------------------------------------------------------------*/
-
-/*-------------------------------Single byte write data to addr 0x0------------------------------*/
-/*
-    HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-    HAL_Delay(5);
-    HAL_GPIO_WritePin(GPIOC, rst_Pin, 0);
-    HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 0);
-    HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 0);
-    HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
-    HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
-    HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
-    HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 1);
-    HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
-    HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
-    HAL_Delay(5);
-
-    // Cycle 0
-    HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-    HAL_Delay(10);
-
-    HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-    HAL_Delay(5);
-
-    // Cycles 1 to 19.
-    for (int i = 0; i < 19; i++){
-  	  HAL_GPIO_WritePin(GPIOA, data_in_Pin, i%2);
-  	  if (i == 0)HAL_GPIO_WritePin (GPIOA, data_in_Pin, 1);
-  	  HAL_Delay(5);
-
-  	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-  	  HAL_Delay(10);
-
-  	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-  	  HAL_Delay(5);
-    }
-
-    // Cycles 20 to 22
-    for (int i = 0; i < 3; i++){
-      	HAL_GPIO_WritePin(GPIOA, data_in_Pin, i%2);
-      	HAL_Delay(5);
-      	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-      	HAL_Delay(10);
-		HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		HAL_Delay(5);
-    }
-*/
-/*----------------------------------------------------------------------------------------------*/
-
-/*---------------------------------------Reset the system---------------------------------------*/
-/*
-    HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-    HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOC, rst_Pin, 1);
-	HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 0);
-	HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 0);
-	HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
-	HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
-	HAL_Delay(5);
-
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-*/
-/*----------------------------------------------------------------------------------------------*/
-
-/*-------------------------------Single byte read data at addr 0x0------------------------------*/
-/*
-    HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-    HAL_Delay(5);
-    HAL_GPIO_WritePin(GPIOC, rst_Pin, 0);
-    HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 0);
-    HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 0);
-    HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
-    HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
-    HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
-    HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 0);
-    HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
-    HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
-    HAL_Delay(5);
-
-
-    // Cycle 0 to 22
-    for (int i = 0; i < 23; i++){
-    	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-    	  HAL_Delay(10);
-    	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-    	  HAL_Delay(10);
-    }
-
-    // Stall for 1 cycle. Serial data is output from cycle 1 onwards
-    for (int i = 0; i < 2; i++){
-    	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	      HAL_Delay(10);
-    	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-    	  HAL_Delay(10);
-    }
-
-    for (int i = 0; i < 16; i++){
-  	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-  	  read_data[i] = HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin);
-  	  sprintf(tx_buff, "Data[%d]: %d \r\n", i, read_data[i]);
-  	  HAL_UART_Transmit(&huart2, tx_buff, 14, 1000);
-  	  HAL_Delay(100);
-  	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-  	  HAL_Delay(100);
-    }
-
-    sprintf(tx_buff, "Data: %d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d \r\n", read_data[15], read_data[14], read_data[13], read_data[12], read_data[11], read_data[10], read_data[9], read_data[8], read_data[7], read_data[6], read_data[5], read_data[4], read_data[3], read_data[2], read_data[1], read_data[0]);
-    HAL_UART_Transmit(&huart2, tx_buff, 27, 1000);
-*/
-/*----------------------------------------------------------------------------------------------*/
-
-/*---------------------------------------Reset the system---------------------------------------*/
-
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOC, rst_Pin, 1);
-	HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 0);
-	HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 0);
-	HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 1);
-	HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
-	HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
-	HAL_Delay(5);
-
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-
-/*----------------------------------------------------------------------------------------------*/
-
-/*------------------------------Burst write of length 3 to addr 0x0-----------------------------*/
-
-	// Write 0xffff to addr 0
-    HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-    HAL_Delay(5);
-    HAL_GPIO_WritePin(GPIOC, rst_Pin, 0);
-    HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 1);
-    HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 1);
-    HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 1);
-    HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
-    HAL_GPIO_WritePin(GPIOA, data_in_Pin, 1);
-    HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 1);
-    HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
-    HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
-    HAL_Delay(5);
-
-    // Cycle 0
-    HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-    HAL_Delay(10);
-    HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-    HAL_Delay(10);
-
-    // Cycle 1, first bit of burst_len gets loaded in
-    HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(10);
-
-	// Cycle 2, second bit of burst_len gets laoded in
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
-	HAL_Delay(5);
-
-	// Cycle 3 to 19
-	for (int i = 0; i < 17; i++){
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	  HAL_Delay(10);
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	  HAL_Delay(10);
-	}
-
-	// Cycles 20 to 22
-	for (int i = 0; i < 3; i++){
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  HAL_Delay(10);
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		  HAL_Delay(10);
-	}
-
-	// Loop 2, write 0101_0101_0101_0101 to addr 1
-	// Cycle 0
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
-	HAL_Delay(5);
-
-	// Cycle 1 to 19
-	for (int i = 0; i < 19; i++){
-		HAL_GPIO_WritePin(GPIOA, data_in_Pin, i%2);
-		if (i == 0)HAL_GPIO_WritePin (GPIOA, data_in_Pin, 1);
-		HAL_Delay(5);
-
-		HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		HAL_Delay(10);
-
-		HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		HAL_Delay(5);
-	}
-
-	// Cycle 20 to 22
-	for (int i = 0; i < 3; i++){
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  HAL_Delay(10);
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		  HAL_Delay(10);
-	}
-
-	// Loop 3 write 0 to addr 2
-	// Cycle 0
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
-	HAL_Delay(5);
-
-	// Cycle 1 to 19
-	for (int i = 0; i < 19; i++){
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  HAL_Delay(10);
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		  HAL_Delay(10);
-	}
-
-	// Cycle 20 to 22
-	for (int i = 0; i < 3; i++){
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  HAL_Delay(10);
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		  HAL_Delay(10);
-	}
-
-/*----------------------------------------------------------------------------------------------*/
-
-/*---------------------------------------Reset the system---------------------------------------*/
-
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOC, rst_Pin, 1);
-	HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 0);
-	HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 0);
-	HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
-	HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
-	HAL_Delay(5);
-
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-
-
-/*----------------------------------------------------------------------------------------------*/
-
-/*---------------------------Burst read data at addr 0x1, length of 3---------------------------*/
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOC, rst_Pin, 0);
-	HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 1);
-	HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 1);
-	HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 1);
-	HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
-	HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
-	HAL_Delay(5);
-
-	// Cycle 0
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(10);
-
-	// Cycle 1, first bit of burst_len gets loaded in
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(10);
-
-	// Cycle 2, second bit of burst_len gets laoded in
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
-	HAL_Delay(5);
-
-	// Cycle 3 to 19
-	for (int i = 0; i < 17; i++){
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	  HAL_Delay(10);
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	  HAL_Delay(10);
-	}
-
-	// Cycles 20 to 22
-	for (int i = 0; i < 3; i++){
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  HAL_Delay(10);
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		  HAL_Delay(10);
-	}
-
-	// Loop 2
-	for (int i = 0; i < 2; i++){
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  HAL_Delay(10);
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		  HAL_Delay(10);
-	}
-
-	for (int i = 0; i < 16; i++){
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	  read_data[i] = HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin);
-	  sprintf(tx_buff, "Data[%d]: %d \r\n", i, read_data[i]);
-	  HAL_UART_Transmit(&huart2, tx_buff, 14, 1000);
-	  HAL_Delay(100);
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	  HAL_Delay(100);
-	}
-
-	sprintf(tx_buff, "Data: %d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d \r\n", read_data[15], read_data[14], read_data[13], read_data[12], read_data[11], read_data[10], read_data[9], read_data[8], read_data[7], read_data[6], read_data[5], read_data[4], read_data[3], read_data[2], read_data[1], read_data[0]);
-	HAL_UART_Transmit(&huart2, tx_buff, 27, 1000);
-
-	// Stall until end of loop
-	for (int i = 0; i < 5; i++){
-			  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-			  HAL_Delay(10);
-			  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-			  HAL_Delay(10);
-	}
-
-	// loop 3
-	for (int i = 0; i < 2; i++){
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  HAL_Delay(10);
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		  HAL_Delay(10);
-	}
-
-	for (int i = 0; i < 16; i++){
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	  read_data[i] = HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin);
-	  sprintf(tx_buff, "Data[%d]: %d \r\n", i, read_data[i]);
-	  HAL_UART_Transmit(&huart2, tx_buff, 14, 1000);
-	  HAL_Delay(100);
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	  HAL_Delay(100);
-	}
-
-	sprintf(tx_buff, "Data: %d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d \r\n", read_data[15], read_data[14], read_data[13], read_data[12], read_data[11], read_data[10], read_data[9], read_data[8], read_data[7], read_data[6], read_data[5], read_data[4], read_data[3], read_data[2], read_data[1], read_data[0]);
-	HAL_UART_Transmit(&huart2, tx_buff, 27, 1000);
-
-	// Stall until end of loop
-	for (int i = 0; i < 5; i++){
-			  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-			  HAL_Delay(10);
-			  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-			  HAL_Delay(10);
-	}
-
-	// Loop 4
-	for (int i = 0; i < 2; i++){
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  HAL_Delay(10);
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		  HAL_Delay(10);
-	}
-
-	for (int i = 0; i < 16; i++){
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	  read_data[i] = HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin);
-	  sprintf(tx_buff, "Data[%d]: %d \r\n", i, read_data[i]);
-	  HAL_UART_Transmit(&huart2, tx_buff, 14, 1000);
-	  HAL_Delay(100);
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	  HAL_Delay(100);
-	}
-
-	sprintf(tx_buff, "Data: %d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d \r\n", read_data[15], read_data[14], read_data[13], read_data[12], read_data[11], read_data[10], read_data[9], read_data[8], read_data[7], read_data[6], read_data[5], read_data[4], read_data[3], read_data[2], read_data[1], read_data[0]);
-	HAL_UART_Transmit(&huart2, tx_buff, 27, 1000);
-
-/*----------------------------------------------------------------------------------------------*/
-
-/*-------------------------------Single byte read data at addr 0x1------------------------------*/
-/*
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOC, rst_Pin, 0);
-	HAL_GPIO_WritePin(GPIOB, burst_en_Pin, 0);
-	HAL_GPIO_WritePin(GPIOC, mode_sel_Pin, 0);
-	HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, data_in_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, rws_0_Pin, 0);
-	HAL_GPIO_WritePin(GPIOA, rws_1_Pin, 1);
-	HAL_GPIO_WritePin(GPIOB, rws_2_Pin, 1);
-	HAL_Delay(5);
-
-	// Cycle 0
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(5);
-
-	// Cycle 1, first bit of addr
-	HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 1);
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(5);
-
-	// Cycle 2
-	HAL_GPIO_WritePin(GPIOC, addr_in_Pin, 0);
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	HAL_Delay(10);
-	HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	HAL_Delay(10);
-
-
-	// Cycle 3 to 22
-	for (int i = 0; i < 20; i++){
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  HAL_Delay(10);
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		  HAL_Delay(10);
-	}
-
-	// Stall for 1 cycle. Serial data is output from cycle 1 onwards
-	for (int i = 0; i < 2; i++){
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  HAL_Delay(10);
-		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-		  HAL_Delay(10);
-	}
-
-	for (int i = 0; i < 16; i++){
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	  read_data[i] = HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin);
-	  sprintf(tx_buff, "Data[%d]: %d \r\n", i, read_data[i]);
-	  HAL_UART_Transmit(&huart2, tx_buff, 14, 1000);
-	  HAL_Delay(100);
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	  HAL_Delay(100);
-	}
-
-	sprintf(tx_buff, "Data: %d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d \r\n", read_data[15], read_data[14], read_data[13], read_data[12], read_data[11], read_data[10], read_data[9], read_data[8], read_data[7], read_data[6], read_data[5], read_data[4], read_data[3], read_data[2], read_data[1], read_data[0]);
-	HAL_UART_Transmit(&huart2, tx_buff, 27, 1000);
-*/
-/*----------------------------------------------------------------------------------------------*/
-
-
+  uint32_t arr[] = {0x1234, 0x5555, 0xabcd};
+  uint32_t arr_read[3];
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-	  HAL_Delay(10);
-	  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-	  HAL_Delay(10);
+
     /* USER CODE BEGIN 3 */
+	  MRAM_reset();
+	  //MRAM_single_word_write(0, 0x1234);
+	  //MRAM_single_word_read(0);
+	  MRAM_burst_write(0, arr, 3);
+	  MRAM_reset();
+	  MRAM_burst_read(0, arr_read, 3);
+	  //MRAM_reset();
+	  //MRAM_single_word_read(2);
+	  while (1){
+		  HAL_Delay(1000);
+	  }
   }
   /* USER CODE END 3 */
 }
@@ -641,6 +416,52 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief TIM1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM1_Init(void)
+{
+
+  /* USER CODE BEGIN TIM1_Init 0 */
+
+  /* USER CODE END TIM1_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM1_Init 1 */
+
+  /* USER CODE END TIM1_Init 1 */
+  htim1.Instance = TIM1;
+  htim1.Init.Prescaler = 1 - 1;
+  htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim1.Init.Period = 0xffff - 1;
+  htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim1.Init.RepetitionCounter = 0;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM1_Init 2 */
+
+  /* USER CODE END TIM1_Init 2 */
+
 }
 
 /**
