@@ -185,9 +185,9 @@ int main(void)
 			  HAL_GPIO_WritePin(GPIOA, data_in_Pin, data & bitwise_one);		// PA6
 		  }
 
-		  delay_us(1);
+		  //delay_us(1);
 		  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-		  delay_us(1);
+		  //delay_us(1);
 	  }
 	}
 
@@ -304,25 +304,25 @@ int main(void)
 				  GPIOC->ODR = (GPIOC->ODR & 0xFFDF) | ((addr & bitwise_one) << 5);
 			  }
 
-			  delay_us(1);
+			  //delay_us(1);
 			  GPIOC->ODR = GPIOC->ODR | 0x200;
-			  delay_us(1);
+			  //delay_us(1);
 		  }
 
 		// Second loop: Stall and receive data
 		for (int i = 0; i < 2; i++){
 			  GPIOC->ODR = GPIOC->ODR | 0x200;
-			  delay_us(1);
+			  //delay_us(1);
 			  GPIOC->ODR = GPIOC->ODR & 0xFCFF;
-			  delay_us(1);
+			  //delay_us(1);
 		}
 
 		for (int i = 0; i < 16; i++){
 		  GPIOC->ODR = GPIOC->ODR | 0x200;
 		  arr_read[0] = arr_read[0] >> 1 | ((GPIOB->IDR & 0x40) << 9);
-		  delay_us(1);
+		  //delay_us(1);
 		  GPIOC->ODR = GPIOC->ODR & 0xFCFF;
-		  delay_us(1);
+		  //delay_us(1);
 		}
 
 		// End on low clock
@@ -365,9 +365,9 @@ int main(void)
 					  HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, burst_len & bitwise_one);
 				  }
 
-				  delay_us(1);
+				  //delay_us(1);
 				  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-				  delay_us(1);
+				  //delay_us(1);
   			}
   		}
   		// End on low clock
@@ -407,9 +407,9 @@ int main(void)
   						  GPIOB->ODR = (GPIOB->ODR & 0xFDFF) | ((burst_len & bitwise_one) << 9);
   					  }
 
-  					  delay_us(1);
+  					  //delay_us(1);
   					  GPIOC->ODR = GPIOC->ODR | 0x200;
-  					  delay_us(1);
+  					  //delay_us(1);
   	  			}
   	  		}
   	  		// End on low clock
@@ -446,28 +446,28 @@ int main(void)
 						  HAL_GPIO_WritePin(GPIOC, addr_in_Pin, addr & bitwise_one);
 						  HAL_GPIO_WritePin(GPIOB, burst_len_in_Pin, burst_len & bitwise_one);
 					}
-					delay_us(1);
+					//delay_us(1);
 				    HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-				    delay_us(1);
+				    //delay_us(1);
 				}
   				break;
 
   			default:
   				for (int k = 0; k < 1; k++){
   					  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-  					  delay_us(1);
+  					  //delay_us(1);
 					  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-					  delay_us(1);
+					  //delay_us(1);
 				}
   				for (int k = 0; k < 16; k++){
   					  HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-  					  delay_us(1);
+  					  //delay_us(1);
 					  HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
 					  //read_data[k] = HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin);
 					  arr_read[i-1] = (arr_read[i-1] >> 1) | (HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin) << 15);
 					  //sprintf(tx_buff, "Data[%d]: %d \r\n", k, read_data[k]);
 					  //HAL_UART_Transmit(&huart2, tx_buff, 14, 1000);
-					  delay_us(1);
+					  //delay_us(1);
 				}
 
 				//sprintf(tx_buff, "Data: %d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d \r\n", read_data[15], read_data[14], read_data[13], read_data[12], read_data[11], read_data[10], read_data[9], read_data[8], read_data[7], read_data[6], read_data[5], read_data[4], read_data[3], read_data[2], read_data[1], read_data[0]);
@@ -477,9 +477,9 @@ int main(void)
 
 				for (int k = 0; k < 6; k++){
 					HAL_GPIO_WritePin(GPIOC, clk_Pin, 0);
-					delay_us(1);
+					//delay_us(1);
 				    HAL_GPIO_WritePin(GPIOC, clk_Pin, 1);
-				    delay_us(1);
+				    //delay_us(1);
 				}
 				break;
   			}
@@ -517,32 +517,32 @@ int main(void)
 						GPIOC->ODR = (GPIOC->ODR & 0xFFDF) | ((addr & bitwise_one) << 5);
 					    GPIOB->ODR = (GPIOB->ODR & 0xFDFF) | ((burst_len & bitwise_one) << 9);
 					}
-					delay_us(1);
+					//delay_us(1);
 					GPIOC->ODR = GPIOC->ODR | 0x200;
-					delay_us(1);
+					//delay_us(1);
 				}
 				break;
 
 			default:
 				for (int k = 0; k < 1; k++){
 					GPIOC->ODR = GPIOC->ODR & 0xFCFF;
-				    delay_us(1);
+				    //delay_us(1);
 				    GPIOC->ODR = GPIOC->ODR | 0x200;
-				    delay_us(1);
+				    //delay_us(1);
 				}
 				for (int k = 0; k < 16; k++){
 					  GPIOC->ODR = GPIOC->ODR & 0xFCFF;
-					  delay_us(1);
+					  //delay_us(1);
 					  GPIOC->ODR = GPIOC->ODR | 0x200;
 					  arr_read[i-1] = (arr_read[i-1] >> 1) | (HAL_GPIO_ReadPin(GPIOB, PTS_ser_out_Pin) << 15);
-					  delay_us(1);
+					  //delay_us(1);
 				}
 
 				for (int k = 0; k < 6; k++){
 					GPIOC->ODR = GPIOC->ODR & 0xFCFF;
-					delay_us(1);
+					//delay_us(1);
 					GPIOC->ODR = GPIOC->ODR | 0x200;
-					delay_us(1);
+					//delay_us(1);
 				}
 				break;
 			}
@@ -562,6 +562,7 @@ int main(void)
   uint32_t arr_8B[] = {0x1234, 0x5678, 0x9abc, 0xdef0};
   uint32_t arr_16B[] = {0x4321, 0x8765, 0xcba9, 0x0fed, 0x1111, 0x2222, 0x3333, 0x4444};
   uint32_t arr_32B[] = {0x1122, 0x3344, 0x4455, 0x6677, 0x8899, 0xaabb, 0xccdd, 0xeeff, 0x1234, 0x5678, 0x9abc, 0xdef0, 0x4321, 0x8765, 0xcba9, 0x0fed};
+  //uint32_t arr_32B[] = {0x3344, 0x4455, 0x6677, 0x8899, 0xaabb, 0xccdd, 0xeeff, 0x1234, 0x5678, 0x9abc, 0xdef0, 0x4321, 0x8765, 0xcba9, 0x0fed, 0x1122};
   uint16_t arr_read[16];
   GPIOA->BSRR = 0x00000400;
   GPIOB->BSRR = 0x00000400;
@@ -585,22 +586,31 @@ int main(void)
 	  //start = TIM2->CNT;
 	  //MRAM_single_word_write(0, 0x4567);
 	  //MRAM_single_word_write_no_HAL(0, 0xabcd);
+	  //for (int c = 0; c < 4; c++){
+		  //MRAM_single_word_write(c, arr_8B[c]);
+	  //}
 	  //stop = TIM2->CNT;
 
 	  //start = TIM2->CNT;
 	  //MRAM_single_word_read(0, arr_read);
 	  //MRAM_single_word_read_no_HAL(0, arr_read);
+	  //for (int c = 0; c < 4; c++){
+	  //		  MRAM_single_word_read(c, arr_read[c]);
+	  //}
 	  //stop = TIM2->CNT;
 
+	  //MRAM_burst_read_no_HAL(0, arr_read, 4);
+
+
 	  //start = TIM2->CNT;
-	  //MRAM_burst_write(0, arr, 3);
-	  MRAM_burst_write_no_HAL(0, arr_32B, 16);
+	  //MRAM_burst_write(0, arr_8B, 4);
+	  MRAM_burst_write_no_HAL(0, arr_8B, 4);
 	  //stop = TIM2->CNT;
 	  MRAM_reset();
 
 	  start = TIM2->CNT;
-	  //MRAM_burst_read(0, arr_read, 3);
-	  MRAM_burst_read_no_HAL(0, arr_read, 16);
+	  MRAM_burst_read(0, arr_read, 4);
+	  //MRAM_burst_read_no_HAL(0, arr_read, 4);
 	  stop = TIM2->CNT;
 
 	  //MRAM_reset();
@@ -613,10 +623,11 @@ int main(void)
 	  sprintf(tx_buff, "Elapsed Time: %d us\r\n", elapsed);
 	  HAL_UART_Transmit(&huart2, tx_buff, 23, 1000);
 
-	  for (int b = 0; b < 16; b++){
+	  for (int b = 0; b < 4; b++){
 		  sprintf(tx_buff, "Data: 0x%x \r\n", arr_read[b]);
 		  HAL_UART_Transmit(&huart2, tx_buff, 16, 1000);
 	  }
+
 
 	  //sprintf(tx_buff, "Data: 0x%x \r\n", arr_read[0]);
 	  //HAL_UART_Transmit(&huart2, tx_buff, 16, 1000);
