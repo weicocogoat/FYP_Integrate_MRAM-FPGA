@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="Integrate_Top_Module" Lut="1" T_Register="164(0)" T_Alu="24(0)" T_Lut="138(1)">
+    <SubModule name="burst_module" T_Register="88(0)" T_Alu="24(0)" T_Lut="64(0)">
+        <SubModule name="burst_controller" Register="17" Lut="39" T_Register="17(17)" T_Lut="39(39)"/>
+        <SubModule name="burst_len_STP" Register="5" T_Register="5(5)"/>
+        <SubModule name="addr_STP" Register="20" T_Register="20(20)"/>
+        <SubModule name="addr_PTS_out" Register="21" Lut="24" T_Register="21(21)" T_Lut="24(24)"/>
+        <SubModule name="counter" Register="5" Alu="4" Lut="1" T_Register="5(5)" T_Alu="4(4)" T_Lut="1(1)"/>
+        <SubModule name="adder" Register="20" Alu="20" T_Register="20(20)" T_Alu="20(20)"/>
+    </SubModule>
+    <SubModule name="MRAM_Controller_Module" Lut="1" T_Register="74(0)" T_Lut="73(1)">
+        <SubModule name="data_STP" Register="16" T_Register="16(16)"/>
+        <SubModule name="addr_STP" Register="20" T_Register="20(20)"/>
+        <SubModule name="PTS" Register="17" Lut="20" T_Register="17(17)" T_Lut="20(20)"/>
+        <SubModule name="controller" Register="21" Lut="52" T_Register="21(21)" T_Lut="52(52)"/>
+    </SubModule>
+    <SubModule name="delay_reg_addr" Register="1" T_Register="1(1)"/>
+    <SubModule name="delay_reg_data" Register="1" T_Register="1(1)"/>
+</Module>

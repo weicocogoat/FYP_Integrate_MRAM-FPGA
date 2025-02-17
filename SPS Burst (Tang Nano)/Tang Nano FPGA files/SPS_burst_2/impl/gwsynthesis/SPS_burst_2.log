@@ -1,0 +1,61 @@
+GowinSynthesis start
+Running parser ...
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\Adder.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\Integrate_Top_Module.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\MRAM_Top_Module.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\burst_ctrl.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\burst_ctrl_Top_Module.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\compare.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\control_module.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\counter.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\delay_register.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\serial_to_parallel.v'
+Compiling module 'Integrate_Top_Module'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\Integrate_Top_Module.v":23)
+Compiling module 'burst_ctrl_Top_Module'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\burst_ctrl_Top_Module.v":25)
+Compiling module 'burst_ctrl'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\burst_ctrl.v":24)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\burst_ctrl.v":209)
+Compiling module 'serial_to_parallel(BUS_WIDTH=5)'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\serial_to_parallel.v":24)
+Compiling module 'serial_to_parallel(BUS_WIDTH=20)'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\serial_to_parallel.v":24)
+Compiling module 'parallel_to_serial(BUS_WIDTH=20)'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v":25)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v":69)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v":75)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v":81)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v":86)
+Compiling module 'counter(COUNTER_WIDTH=5)'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\counter.v":23)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\counter.v":45)
+Compiling module 'compare(COUNTER_WIDTH=5)'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\compare.v":25)
+Compiling module 'Adder'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\Adder.v":24)
+Compiling module 'MRAM_Top_Module'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\MRAM_Top_Module.v":24)
+Compiling module 'serial_to_parallel'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\serial_to_parallel.v":24)
+Compiling module 'parallel_to_serial'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v":25)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v":69)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v":75)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v":81)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v":86)
+Compiling module 'control_module'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\control_module.v":23)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\control_module.v":151)
+WARN  (EX3791) : Expression size 7 truncated to fit in target size 6("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\control_module.v":276)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 16("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\MRAM_Top_Module.v":146)
+Compiling module 'delay_register'("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\delay_register.v":24)
+NOTE  (EX0101) : Current top module is "Integrate_Top_Module"
+[5%] Running netlist conversion ...
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+WARN  (NL0002) : The module "compare" instantiated to "compare" is swept in optimizing("C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\burst_ctrl_Top_Module.v":166)
+[95%] Generate netlist file "C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\impl\gwsynthesis\SPS_burst_2.vg" completed
+[100%] Generate report file "C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\impl\gwsynthesis\SPS_burst_2_syn.rpt.html" completed
+GowinSynthesis finish

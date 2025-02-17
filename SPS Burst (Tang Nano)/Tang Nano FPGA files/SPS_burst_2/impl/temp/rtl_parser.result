@@ -1,0 +1,136 @@
+[
+ {
+  "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/Integrate_Top_Module.v",
+  "InstLine" : 23,
+  "InstName" : "Integrate_Top_Module",
+  "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/Integrate_Top_Module.v",
+  "ModuleLine" : 23,
+  "ModuleName" : "Integrate_Top_Module",
+  "SubInsts" : [
+   {
+    "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/Integrate_Top_Module.v",
+    "InstLine" : 65,
+    "InstName" : "burst_module",
+    "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/burst_ctrl_Top_Module.v",
+    "ModuleLine" : 25,
+    "ModuleName" : "burst_ctrl_Top_Module",
+    "SubInsts" : [
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/burst_ctrl_Top_Module.v",
+      "InstLine" : 67,
+      "InstName" : "burst_controller",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/burst_ctrl.v",
+      "ModuleLine" : 24,
+      "ModuleName" : "burst_ctrl"
+     },
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/burst_ctrl_Top_Module.v",
+      "InstLine" : 107,
+      "InstName" : "burst_len_STP",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/serial_to_parallel.v",
+      "ModuleLine" : 24,
+      "ModuleName" : "serial_to_parallel"
+     },
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/burst_ctrl_Top_Module.v",
+      "InstLine" : 119,
+      "InstName" : "addr_STP",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/serial_to_parallel.v",
+      "ModuleLine" : 24,
+      "ModuleName" : "serial_to_parallel"
+     },
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/burst_ctrl_Top_Module.v",
+      "InstLine" : 131,
+      "InstName" : "addr_PTS_out",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/parallel_to_serial.v",
+      "ModuleLine" : 25,
+      "ModuleName" : "parallel_to_serial"
+     },
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/burst_ctrl_Top_Module.v",
+      "InstLine" : 147,
+      "InstName" : "counter",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/counter.v",
+      "ModuleLine" : 23,
+      "ModuleName" : "counter"
+     },
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/burst_ctrl_Top_Module.v",
+      "InstLine" : 157,
+      "InstName" : "compare",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/compare.v",
+      "ModuleLine" : 25,
+      "ModuleName" : "compare"
+     },
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/burst_ctrl_Top_Module.v",
+      "InstLine" : 168,
+      "InstName" : "adder",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/Adder.v",
+      "ModuleLine" : 24,
+      "ModuleName" : "Adder"
+     }
+    ]
+   },
+   {
+    "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/Integrate_Top_Module.v",
+    "InstLine" : 81,
+    "InstName" : "MRAM_Controller_Module",
+    "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/MRAM_Top_Module.v",
+    "ModuleLine" : 24,
+    "ModuleName" : "MRAM_Top_Module",
+    "SubInsts" : [
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/MRAM_Top_Module.v",
+      "InstLine" : 82,
+      "InstName" : "data_STP",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/serial_to_parallel.v",
+      "ModuleLine" : 24,
+      "ModuleName" : "serial_to_parallel"
+     },
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/MRAM_Top_Module.v",
+      "InstLine" : 94,
+      "InstName" : "addr_STP",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/serial_to_parallel.v",
+      "ModuleLine" : 24,
+      "ModuleName" : "serial_to_parallel"
+     },
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/MRAM_Top_Module.v",
+      "InstLine" : 106,
+      "InstName" : "PTS",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/parallel_to_serial.v",
+      "ModuleLine" : 25,
+      "ModuleName" : "parallel_to_serial"
+     },
+     {
+      "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/MRAM_Top_Module.v",
+      "InstLine" : 123,
+      "InstName" : "controller",
+      "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/control_module.v",
+      "ModuleLine" : 23,
+      "ModuleName" : "control_module"
+     }
+    ]
+   },
+   {
+    "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/Integrate_Top_Module.v",
+    "InstLine" : 105,
+    "InstName" : "delay_reg_addr",
+    "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/delay_register.v",
+    "ModuleLine" : 24,
+    "ModuleName" : "delay_register"
+   },
+   {
+    "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/Integrate_Top_Module.v",
+    "InstLine" : 114,
+    "InstName" : "delay_reg_data",
+    "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPS_burst_2/src/delay_register.v",
+    "ModuleLine" : 24,
+    "ModuleName" : "delay_register"
+   }
+  ]
+ }
+]

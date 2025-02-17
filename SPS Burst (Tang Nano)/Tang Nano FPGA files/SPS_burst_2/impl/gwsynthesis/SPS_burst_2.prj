@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gowin-synthesis-project>
+<Project>
+    <Version>beta</Version>
+    <Device id="GW1NR-9C" package="QFN88P" speed="6" partNumber="GW1NR-LV9QN88PC6/I5"/>
+    <FileList>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\Adder.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\Integrate_Top_Module.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\MRAM_Top_Module.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\burst_ctrl.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\burst_ctrl_Top_Module.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\compare.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\control_module.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\counter.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\delay_register.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\parallel_to_serial.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\src\serial_to_parallel.v" type="verilog"/>
+    </FileList>
+    <OptionList>
+        <Option type="disable_insert_pad" value="0"/>
+        <Option type="global_freq" value="50.000"/>
+        <Option type="looplimit" value="2000"/>
+        <Option type="output_file" value="C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\SPS_burst_2\impl\gwsynthesis\SPS_burst_2.vg"/>
+        <Option type="print_all_synthesis_warning" value="0"/>
+        <Option type="ram_rw_check" value="0"/>
+        <Option type="verilog_language" value="verilog-2001"/>
+        <Option type="vhdl_language" value="vhdl-1993"/>
+    </OptionList>
+</Project>
