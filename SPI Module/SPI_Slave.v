@@ -33,7 +33,7 @@ module SPI_Slave(
     
     // Output to peripheral
     //output LED            // Test
-    inout [15:0] data_line,
+    output [15:0] data_line,
     output [19:0] addr_line,
     
     output chip_en_out,
@@ -106,8 +106,8 @@ reg [3:0] addr_burst_counter = 0;
 always @(posedge FPGA_clk) begin
     if (FPGA_rst) begin
         // reset all signals if reset is called
-        SCLKr <= 0;
-        SSELr <= 0;
+        SCLKr <= 3'b111;
+        SSELr <= 3'b111;
         MOSIr <= 0;
         byte_received <= 0;
         bitcnt <= 3'b000;
@@ -115,10 +115,11 @@ always @(posedge FPGA_clk) begin
         
         state <= IDLE;
         cycle <= 0;
-        addr_burst_counter <= 0;
+        addr_burst_counter <= 1;
     end
     else begin
         // Using the FPGA clock, detect any rising or falling edge of the incoming SPI clk signal
+        // The updated state is shifted from LSB to MSB
         SCLKr <= {SCLKr[1:0], SCLK};
         SSELr <= {SSELr[1:0], SSEL};
         MOSIr <= {MOSIr[0], MOSI};
@@ -128,17 +129,22 @@ always @(posedge FPGA_clk) begin
         
         case (state)
             IDLE:   begin
-                if(~SSEL_active) begin
-                    bitcnt <= 3'b000;       // Reset bitcnt when SSEL is low
+                if(SSEL_active) begin
+                    bitcnt <= 3'b000;  
+                    state <= READ_INFO;
                 end
-                
+                else begin
+                    state <= IDLE;
+                end
+
                 chip_en <= 1;
                 read_en <= 1;
                 write_en <= 1;
                 lb_en <= 1;
                 ub_en <= 1;
                 
-                state <= READ_INFO;
+                PTS_en <= 0;
+
             end
             
             READ_INFO:  begin
@@ -159,6 +165,12 @@ always @(posedge FPGA_clk) begin
                     state <= READ_ADDR;
                     bitcnt <= 3'b000;
                 end
+                
+                chip_en <= 1;
+                read_en <= 1;
+                write_en <= 1;
+                lb_en <= 1;
+                ub_en <= 1;
             end
             
             READ_ADDR:  begin
@@ -240,7 +252,7 @@ always @(posedge FPGA_clk) begin
                 lb_en <= 0;
                 ub_en <= 0;
                 
-                if ((addr_burst_counter < burst_len + 1) && (burst_en) )begin
+                if ((addr_burst_counter < burst_len) && (burst_en) )begin
                     state <= READ_DATA;
                     addr_burst_counter <= addr_burst_counter + 1;
                 end
@@ -285,7 +297,7 @@ always @(posedge FPGA_clk) begin
                             bitcnt <= 3'b000;
                             cycle <= 0;
                             
-                            if ((addr_burst_counter < burst_len + 1) && (burst_en) )begin
+                            if ((addr_burst_counter < burst_len) && (burst_en) )begin
                                 state <= READ_MRAM;
                                 addr_burst_counter <= addr_burst_counter + 1;
                             end
@@ -310,10 +322,10 @@ assign write_en_out = write_en;
 assign lb_en_out = lb_en;
 assign ub_en_out = ub_en;
 
-// if RWS[0] is 1, write operation. Data is written to data_line. 
-// if RWS[0] is 0, read operation. Data is coming in from MRAM. 
-assign data_line = (read_write_sel[0]) ? data_bits : 'bz;     
-assign addr_line = addr_bits + addr_burst_counter;
+// if read_en is 1, write operation. Data is written to data_line. 
+// if read_en is 0, read operation. Data is coming in from MRAM. 
+assign data_line = data_bits;     
+assign addr_line = addr_bits + addr_burst_counter - 1;
 
 assign index = (cycle*8) + (bitcnt);
 assign PTS_en_out = PTS_en;
