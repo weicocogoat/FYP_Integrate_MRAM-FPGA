@@ -80,13 +80,15 @@ always begin
 end
 
 initial begin
-    #2
+    #20
     FPGA_rst <= 0;
     
+    #20
     SSEL <= 0;
+    data_line_drive <= 'bz;
     
  //----------------------------------------Single Write-----------------------------------------------//  
- /*   
+    /*
     // RWS, write operation
     for (i = 0; i < 3; i = i + 1) begin
         @(posedge SCLK)
@@ -157,7 +159,13 @@ initial begin
         MOSI <= 1;
         //data_line_drive <= 100;
     end
- */   
+    
+    // Need to wait approx 1 FPGA clk cycle so that we can enter the state to assert the send signals
+    @(posedge FPGA_clk)
+    @(posedge FPGA_clk)
+    
+    SSEL <= 1;
+    */
  //--------------------------------------------------------------------------------------------------//   
     
  //----------------------------------------Single Read-----------------------------------------------//     
@@ -186,7 +194,7 @@ initial begin
         //MOSI <= i%2;
         data_line_drive <= 100;
     end
-*/    
+*/   
  //--------------------------------------------------------------------------------------------------//
  
  //----------------------------------------Burst Read-----------------------------------------------//  
@@ -216,6 +224,7 @@ initial begin
         MOSI <= i%2;
     end
     
+    data_line_drive <= 100;
     // data in
     for (i = 0; i < 16; i = i + 1) begin
         @(posedge SCLK)
@@ -238,14 +247,11 @@ initial begin
     end
     
  //--------------------------------------------------------------------------------------------------//   
-    
+
     @(posedge SCLK)
+    FPGA_rst <= 1;
     SSEL <= 1;
     
-    @(posedge FPGA_clk)
-    FPGA_rst <= 1;
-    
-    @(posedge SCLK)
     $finish;
 end
 
