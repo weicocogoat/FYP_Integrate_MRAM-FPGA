@@ -33,7 +33,7 @@ module SPI_top_module(
     
     // Output to peripheral
     inout [15:0] data_line,
-    output [19:0]addr_line,
+    output [19:0] addr_line,
     
     output chip_en_out,
     output read_en_out,
@@ -46,6 +46,9 @@ wire PTS_en_out;
 wire [3:0] index;
 wire PTS_ser_data_in;
 
+wire [15:0] SPI_data_line;
+wire [15:0] PTS_data_line;
+
 SPI_Slave SPI_Slave
 (
     .FPGA_clk(FPGA_clk),
@@ -56,7 +59,7 @@ SPI_Slave SPI_Slave
     .MOSI(MOSI),
     .MISO(MISO),
     
-    .data_line(data_line),
+    .data_line(SPI_data_line),
     .addr_line(addr_line),
     
     .chip_en_out(chip_en_out),
@@ -78,8 +81,10 @@ PTS_module PTS_module
     .en(PTS_en_out),
     .index(index),
     
-    .data_in(data_line),
+    .data_in(PTS_data_line),
     .ser_data_out(PTS_ser_data_in)
 );
 
+assign data_line = (~PTS_en_out) ? SPI_data_line : 16'bz;
+assign PTS_data_line = data_line;
 endmodule
