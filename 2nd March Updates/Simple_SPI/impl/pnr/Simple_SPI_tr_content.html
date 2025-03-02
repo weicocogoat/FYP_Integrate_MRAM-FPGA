@@ -1,0 +1,8768 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Timing Analysis Report</title>
+<style type="text/css">
+@import url(../temp/style.css);
+body { font-family: Verdana, Arial, sans-serif; font-size: 12px; }
+div#content { width: 100%; margin: }
+hr { margin-top: 30px; margin-bottom: 30px; }
+h1, h3 { text-align: center; }
+h1 {margin-top: 50px; }
+table, th, td {white-space:pre; border: 1px solid #aaa; }
+table { border-collapse:collapse; margin-top: 10px; margin-bottom: 20px; width: 100%; }
+th, td { padding: 5px 5px 5px 5px; }
+th { color: #fff; font-weight: bold; background-color: #0084ff; }
+table.summary_table td.label { width: 24%; min-width: 200px; background-color: #dee8f4; }
+table.detail_table th.label {  min-width: 8%; width: 8%; }
+</style>
+</head>
+<body>
+<div id="content">
+<h1><a name="Message">Timing Messages</a></h1>
+<table class="summary_table">
+<tr>
+<td class="label">Report Title</td>
+<td>Timing Analysis Report</td>
+</tr>
+<tr>
+<td class="label">Design File</td>
+<td>C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\Simple_SPI\impl\gwsynthesis\Simple_SPI.vg</td>
+</tr>
+<tr>
+<td class="label">Physical Constraints File</td>
+<td>C:\Gowin\Gowin_V1.9.9.03_Education_x64\IDE\bin\Documents\Simple_SPI\src\Simple_SPI.cst</td>
+</tr>
+<tr>
+<td class="label">Timing Constraint File</td>
+<td>---</td>
+</tr>
+<tr>
+<td class="label">Tool Version</td>
+<td>V1.9.9.03 Education (64-bit)</td>
+</tr>
+<tr>
+<td class="label">Part Number</td>
+<td>GW1NR-LV9QN88PC6/I5</td>
+</tr>
+<tr>
+<td class="label">Device</td>
+<td>GW1NR-9</td>
+</tr>
+<tr>
+<td class="label">Device Version</td>
+<td>C</td>
+</tr>
+<tr>
+<td class="label">Created Time</td>
+<td>Sun Mar  2 02:04:33 2025
+</td>
+</tr>
+<tr>
+<td class="label">Legal Announcement</td>
+<td>Copyright (C)2014-2024 Gowin Semiconductor Corporation. All rights reserved.</td>
+</tr>
+</table>
+<h1><a name="Summary">Timing Summaries</a></h1>
+<h2><a name="STA_Tool_Run_Summary">STA Tool Run Summary:</a></h2>
+<table class="summary_table">
+<tr>
+<td class="label">Setup Delay Model</td>
+<td>Slow 1.14V 85C C6/I5</td>
+</tr>
+<tr>
+<td class="label">Hold Delay Model</td>
+<td>Fast 1.26V 0C C6/I5</td>
+</tr>
+<tr>
+<td class="label">Numbers of Paths Analyzed</td>
+<td>33</td>
+</tr>
+<tr>
+<td class="label">Numbers of Endpoints Analyzed</td>
+<td>30</td>
+</tr>
+<tr>
+<td class="label">Numbers of Falling Endpoints</td>
+<td>0</td>
+</tr>
+<tr>
+<td class="label">Numbers of Setup Violated Endpoints</td>
+<td>0</td>
+</tr>
+<tr>
+<td class="label">Numbers of Hold Violated Endpoints</td>
+<td>0</td>
+</tr>
+</table>
+<h2><a name="Clock_Report">Clock Summary:</a></h2>
+<table class="detail_table">
+<tr>
+<th class="label">Clock Name</th>
+<th class="label">Type</th>
+<th class="label">Period</th>
+<th class="label">Frequency(MHz)</th>
+<th class="label">Rise</th>
+<th class="label">Fall</th>
+<th class="label">Source</th>
+<th class="label">Master</th>
+<th class="label">Objects</th>
+</tr>
+<tr>
+<td>FPGA_clk</td>
+<td>Base</td>
+<td>20.000</td>
+<td>50.000
+<td>0.000</td>
+<td>10.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk_ibuf/I </td>
+</tr>
+</table>
+<h2><a name="Max_Frequency_Report">Max Frequency Summary:</a></h2>
+<table>
+<tr>
+<th>NO.</th>
+<th>Clock Name</th>
+<th>Constraint</th>
+<th>Actual Fmax</th>
+<th>Logic Level</th>
+<th>Entity</th>
+</tr>
+<tr>
+<td>1</td>
+<td>FPGA_clk</td>
+<td>50.000(MHz)</td>
+<td>198.706(MHz)</td>
+<td>2</td>
+<td>TOP</td>
+</tr>
+</table>
+<h2><a name="Total_Negative_Slack_Report">Total Negative Slack Summary:</a></h2>
+<table class="detail_table">
+<tr>
+<th class="label">Clock Name</th>
+<th class="label">Analysis Type</th>
+<th class="label">Endpoints TNS</th>
+<th class="label">Number of Endpoints</th>
+</tr>
+<tr>
+<td>FPGA_clk</td>
+<td>Setup</td>
+<td>0.000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>FPGA_clk</td>
+<td>Hold</td>
+<td>0.000</td>
+<td>0</td>
+</tr>
+</table>
+<h1><a name="Detail">Timing Details</a></h1>
+<h2><a name="All_Path_Slack_Table">Path Slacks Table:</a></h2>
+<h3><a name="Setup_Slack_Table">Setup Paths Table</a></h3>
+<h4>Report Command:report_timing -setup -max_paths 25 -max_common_paths 1</h4>
+<table class="detail_table">
+<tr>
+<th class="label">Path Number</th>
+<th class="label">Path Slack</th>
+<th class="label">From Node</th>
+<th class="label">To Node</th>
+<th class="label">From Clock</th>
+<th class="label">To Clock</th>
+<th class="label">Relation</th>
+<th class="label">Clock Skew</th>
+<th class="label">Data Delay</th>
+</tr>
+<tr>
+<td>1</td>
+<td>14.967</td>
+<td>byte_received_s0/Q</td>
+<td>LED_s2/CE</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>4.989</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15.287</td>
+<td>SCLKr_0_s0/Q</td>
+<td>SCLKr_1_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>4.313</td>
+</tr>
+<tr>
+<td>3</td>
+<td>15.450</td>
+<td>SSELr_0_s0/Q</td>
+<td>SSELr_1_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>4.150</td>
+</tr>
+<tr>
+<td>4</td>
+<td>15.451</td>
+<td>MOSIr_0_s0/Q</td>
+<td>MOSIr_1_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>4.149</td>
+</tr>
+<tr>
+<td>5</td>
+<td>15.461</td>
+<td>SCLKr_1_s0/Q</td>
+<td>byte_received_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>4.139</td>
+</tr>
+<tr>
+<td>6</td>
+<td>15.708</td>
+<td>SSELr_1_s0/Q</td>
+<td>bitcnt_0_s2/RESET</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>4.249</td>
+</tr>
+<tr>
+<td>7</td>
+<td>15.708</td>
+<td>SSELr_1_s0/Q</td>
+<td>bitcnt_1_s2/RESET</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>4.249</td>
+</tr>
+<tr>
+<td>8</td>
+<td>15.708</td>
+<td>SSELr_1_s0/Q</td>
+<td>bitcnt_2_s0/RESET</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>4.249</td>
+</tr>
+<tr>
+<td>9</td>
+<td>15.742</td>
+<td>byte_data_received_0_s0/Q</td>
+<td>LED_s2/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>3.858</td>
+</tr>
+<tr>
+<td>10</td>
+<td>15.810</td>
+<td>SCLKr_1_s0/Q</td>
+<td>byte_data_received_0_s0/CE</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>4.147</td>
+</tr>
+<tr>
+<td>11</td>
+<td>16.571</td>
+<td>SCLKr_1_s0/Q</td>
+<td>bitcnt_1_s2/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>3.029</td>
+</tr>
+<tr>
+<td>12</td>
+<td>17.044</td>
+<td>SCLKr_1_s0/Q</td>
+<td>bitcnt_0_s2/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>2.556</td>
+</tr>
+<tr>
+<td>13</td>
+<td>17.066</td>
+<td>SCLKr_1_s0/Q</td>
+<td>bitcnt_2_s0/CE</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>2.891</td>
+</tr>
+<tr>
+<td>14</td>
+<td>17.533</td>
+<td>SCLKr_1_s0/Q</td>
+<td>SCLKr_2_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>2.067</td>
+</tr>
+<tr>
+<td>15</td>
+<td>17.700</td>
+<td>bitcnt_1_s2/Q</td>
+<td>bitcnt_2_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>1.900</td>
+</tr>
+<tr>
+<td>16</td>
+<td>18.181</td>
+<td>MOSIr_1_s0/Q</td>
+<td>byte_data_received_0_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>1.419</td>
+</tr>
+</table>
+<h3><a name="Hold_Slack_Table">Hold Paths Table</a></h3>
+<h4>Report Command:report_timing -hold -max_paths 25 -max_common_paths 1</h4>
+<table class="detail_table">
+<tr>
+<th class="label">Path Number</th>
+<th class="label">Path Slack</th>
+<th class="label">From Node</th>
+<th class="label">To Node</th>
+<th class="label">From Clock</th>
+<th class="label">To Clock</th>
+<th class="label">Relation</th>
+<th class="label">Clock Skew</th>
+<th class="label">Data Delay</th>
+</tr>
+<tr>
+<td>1</td>
+<td>0.708</td>
+<td>bitcnt_2_s0/Q</td>
+<td>bitcnt_2_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.708</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.709</td>
+<td>bitcnt_1_s2/Q</td>
+<td>bitcnt_1_s2/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.709</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.955</td>
+<td>MOSIr_1_s0/Q</td>
+<td>byte_data_received_0_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.955</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.955</td>
+<td>bitcnt_0_s2/Q</td>
+<td>byte_received_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.955</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1.060</td>
+<td>bitcnt_0_s2/Q</td>
+<td>bitcnt_0_s2/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>1.060</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1.255</td>
+<td>SCLKr_1_s0/Q</td>
+<td>SCLKr_2_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>1.255</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1.516</td>
+<td>SCLKr_2_s0/Q</td>
+<td>bitcnt_2_s0/CE</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>1.529</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2.035</td>
+<td>byte_data_received_0_s0/Q</td>
+<td>LED_s2/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>2.035</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2.131</td>
+<td>SCLKr_2_s0/Q</td>
+<td>byte_data_received_0_s0/CE</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>2.144</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2.443</td>
+<td>MOSIr_0_s0/Q</td>
+<td>MOSIr_1_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>2.443</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2.443</td>
+<td>SSELr_0_s0/Q</td>
+<td>SSELr_1_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>2.443</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2.462</td>
+<td>SCLKr_0_s0/Q</td>
+<td>SCLKr_1_s0/D</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>2.462</td>
+</tr>
+<tr>
+<td>13</td>
+<td>2.775</td>
+<td>SSELr_1_s0/Q</td>
+<td>bitcnt_0_s2/RESET</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>2.788</td>
+</tr>
+<tr>
+<td>14</td>
+<td>2.775</td>
+<td>SSELr_1_s0/Q</td>
+<td>bitcnt_1_s2/RESET</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>2.788</td>
+</tr>
+<tr>
+<td>15</td>
+<td>2.775</td>
+<td>SSELr_1_s0/Q</td>
+<td>bitcnt_2_s0/RESET</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>2.788</td>
+</tr>
+<tr>
+<td>16</td>
+<td>3.200</td>
+<td>byte_received_s0/Q</td>
+<td>LED_s2/CE</td>
+<td>FPGA_clk:[R]</td>
+<td>FPGA_clk:[R]</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>3.213</td>
+</tr>
+</table>
+<h3><a name="Recovery_Slack_Table">Recovery Paths Table</a></h3>
+<h4>Report Command:report_timing -recovery -max_paths 25 -max_common_paths 1</h4>
+<h4>Nothing to report!</h4>
+<h3><a name="Removal_Slack_Table">Removal Paths Table</a></h3>
+<h4>Report Command:report_timing -removal -max_paths 25 -max_common_paths 1</h4>
+<h4>Nothing to report!</h4>
+<h2><a name="MIN_PULSE_WIDTH_TABLE">Minimum Pulse Width Table:</a></h2>
+<table class="detail_table">
+<tr>
+<th class="label">Number</th>
+<th class="label">Slack</th>
+<th class="label">Actual Width</th>
+<th class="label">Required Width</th>
+<th class="label">Type</th>
+<th class="label">Clock</th>
+<th class="label">Objects</th>
+</tr>
+<h4>Report Command:report_min_pulse_width -nworst 10 -detail</h4>
+<tr>
+<td>1</td>
+<td>7.750</td>
+<td>9.000</td>
+<td>1.250</td>
+<td>Low Pulse Width</td>
+<td>FPGA_clk</td>
+<td>SCLKr_1_s0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>7.750</td>
+<td>9.000</td>
+<td>1.250</td>
+<td>Low Pulse Width</td>
+<td>FPGA_clk</td>
+<td>SSELr_1_s0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>7.750</td>
+<td>9.000</td>
+<td>1.250</td>
+<td>Low Pulse Width</td>
+<td>FPGA_clk</td>
+<td>byte_received_s0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>7.750</td>
+<td>9.000</td>
+<td>1.250</td>
+<td>Low Pulse Width</td>
+<td>FPGA_clk</td>
+<td>MOSIr_0_s0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>7.750</td>
+<td>9.000</td>
+<td>1.250</td>
+<td>Low Pulse Width</td>
+<td>FPGA_clk</td>
+<td>bitcnt_0_s2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>7.750</td>
+<td>9.000</td>
+<td>1.250</td>
+<td>Low Pulse Width</td>
+<td>FPGA_clk</td>
+<td>bitcnt_1_s2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>7.750</td>
+<td>9.000</td>
+<td>1.250</td>
+<td>Low Pulse Width</td>
+<td>FPGA_clk</td>
+<td>SCLKr_0_s0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>7.750</td>
+<td>9.000</td>
+<td>1.250</td>
+<td>Low Pulse Width</td>
+<td>FPGA_clk</td>
+<td>MOSIr_1_s0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>7.750</td>
+<td>9.000</td>
+<td>1.250</td>
+<td>Low Pulse Width</td>
+<td>FPGA_clk</td>
+<td>SCLKr_2_s0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>7.750</td>
+<td>9.000</td>
+<td>1.250</td>
+<td>Low Pulse Width</td>
+<td>FPGA_clk</td>
+<td>LED_s2</td>
+</tr>
+</table>
+<h2><a name="Timing_Report_by_Analysis_Type">Timing Report By Analysis Type:</a></h2>
+<h3><a name="Setup_Analysis">Setup Analysis Report</a></h3>
+<h4>Report Command:report_timing -setup -max_paths 25 -max_common_paths 1</h4>
+<h3>Path1</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>14.967</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>7.321</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>22.289</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>byte_received_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>LED_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td>byte_received_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td style=" font-weight:bold;">byte_received_s0/Q</td>
+</tr>
+<tr>
+<td>4.248</td>
+<td>1.458</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C21[1][B]</td>
+<td>n132_s0/I1</td>
+</tr>
+<tr>
+<td>4.873</td>
+<td>0.625</td>
+<td>tINS</td>
+<td>FR</td>
+<td>1</td>
+<td>R15C21[1][B]</td>
+<td style=" background: #97FFFF;">n132_s0/F</td>
+</tr>
+<tr>
+<td>7.321</td>
+<td>2.448</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td style=" font-weight:bold;">LED_s2/CE</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td>LED_s2/CLK</td>
+</tr>
+<tr>
+<td>22.289</td>
+<td>-0.043</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td>LED_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.625, 12.527%; route: 3.906, 78.287%; tC2Q: 0.458, 9.186%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path2</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>15.287</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>6.645</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>21.932</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>SCLKr_1_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOT8[B]</td>
+<td>SCLKr_0_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>1</td>
+<td>IOT8[B]</td>
+<td style=" font-weight:bold;">SCLKr_0_s0/Q</td>
+</tr>
+<tr>
+<td>6.645</td>
+<td>3.855</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td style=" font-weight:bold;">SCLKr_1_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>21.932</td>
+<td>-0.400</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 3.855, 89.374%; tC2Q: 0.458, 10.626%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path3</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>15.450</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>6.482</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>21.932</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SSELr_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>SSELr_1_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOT10[A]</td>
+<td>SSELr_0_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>1</td>
+<td>IOT10[A]</td>
+<td style=" font-weight:bold;">SSELr_0_s0/Q</td>
+</tr>
+<tr>
+<td>6.482</td>
+<td>3.692</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td style=" font-weight:bold;">SSELr_1_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td>SSELr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>21.932</td>
+<td>-0.400</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td>SSELr_1_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 3.692, 88.957%; tC2Q: 0.458, 11.043%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path4</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>15.451</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>6.481</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>21.932</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>MOSIr_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>MOSIr_1_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOT10[B]</td>
+<td>MOSIr_0_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>1</td>
+<td>IOT10[B]</td>
+<td style=" font-weight:bold;">MOSIr_0_s0/Q</td>
+</tr>
+<tr>
+<td>6.481</td>
+<td>3.691</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C21[0][B]</td>
+<td style=" font-weight:bold;">MOSIr_1_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[0][B]</td>
+<td>MOSIr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>21.932</td>
+<td>-0.400</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C21[0][B]</td>
+<td>MOSIr_1_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 3.691, 88.953%; tC2Q: 0.458, 11.047%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path5</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>15.461</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>6.471</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>21.932</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>byte_received_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>R15C21[2][B]</td>
+<td style=" font-weight:bold;">SCLKr_1_s0/Q</td>
+</tr>
+<tr>
+<td>4.262</td>
+<td>1.471</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[1][B]</td>
+<td>n15_s0/I2</td>
+</tr>
+<tr>
+<td>5.361</td>
+<td>1.099</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>R15C26[1][B]</td>
+<td style=" background: #97FFFF;">n15_s0/F</td>
+</tr>
+<tr>
+<td>5.372</td>
+<td>0.011</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td>n20_s0/I0</td>
+</tr>
+<tr>
+<td>6.471</td>
+<td>1.099</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td style=" background: #97FFFF;">n20_s0/F</td>
+</tr>
+<tr>
+<td>6.471</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td style=" font-weight:bold;">byte_received_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td>byte_received_s0/CLK</td>
+</tr>
+<tr>
+<td>21.932</td>
+<td>-0.400</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td>byte_received_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>3</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 2.198, 53.108%; route: 1.482, 35.818%; tC2Q: 0.458, 11.074%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path6</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>15.708</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>6.581</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>22.289</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SSELr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_0_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td>SSELr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>R15C21[2][A]</td>
+<td style=" font-weight:bold;">SSELr_1_s0/Q</td>
+</tr>
+<tr>
+<td>4.253</td>
+<td>1.462</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[2][A]</td>
+<td>n128_s0/I0</td>
+</tr>
+<tr>
+<td>5.055</td>
+<td>0.802</td>
+<td>tINS</td>
+<td>FR</td>
+<td>3</td>
+<td>R15C26[2][A]</td>
+<td style=" background: #97FFFF;">n128_s0/F</td>
+</tr>
+<tr>
+<td>6.581</td>
+<td>1.526</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td style=" font-weight:bold;">bitcnt_0_s2/RESET</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>bitcnt_0_s2/CLK</td>
+</tr>
+<tr>
+<td>22.289</td>
+<td>-0.043</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>bitcnt_0_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.802, 18.876%; route: 2.989, 70.337%; tC2Q: 0.458, 10.787%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path7</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>15.708</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>6.581</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>22.289</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SSELr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_1_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td>SSELr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>R15C21[2][A]</td>
+<td style=" font-weight:bold;">SSELr_1_s0/Q</td>
+</tr>
+<tr>
+<td>4.253</td>
+<td>1.462</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[2][A]</td>
+<td>n128_s0/I0</td>
+</tr>
+<tr>
+<td>5.055</td>
+<td>0.802</td>
+<td>tINS</td>
+<td>FR</td>
+<td>3</td>
+<td>R15C26[2][A]</td>
+<td style=" background: #97FFFF;">n128_s0/F</td>
+</tr>
+<tr>
+<td>6.581</td>
+<td>1.526</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td style=" font-weight:bold;">bitcnt_1_s2/RESET</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>bitcnt_1_s2/CLK</td>
+</tr>
+<tr>
+<td>22.289</td>
+<td>-0.043</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>bitcnt_1_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.802, 18.876%; route: 2.989, 70.337%; tC2Q: 0.458, 10.787%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path8</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>15.708</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>6.581</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>22.289</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SSELr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_2_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td>SSELr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>R15C21[2][A]</td>
+<td style=" font-weight:bold;">SSELr_1_s0/Q</td>
+</tr>
+<tr>
+<td>4.253</td>
+<td>1.462</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[2][A]</td>
+<td>n128_s0/I0</td>
+</tr>
+<tr>
+<td>5.055</td>
+<td>0.802</td>
+<td>tINS</td>
+<td>FR</td>
+<td>3</td>
+<td>R15C26[2][A]</td>
+<td style=" background: #97FFFF;">n128_s0/F</td>
+</tr>
+<tr>
+<td>6.581</td>
+<td>1.526</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td style=" font-weight:bold;">bitcnt_2_s0/RESET</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0/CLK</td>
+</tr>
+<tr>
+<td>22.289</td>
+<td>-0.043</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.802, 18.876%; route: 2.989, 70.337%; tC2Q: 0.458, 10.787%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path9</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>15.742</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>6.190</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>21.932</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>byte_data_received_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>LED_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td>byte_data_received_0_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td style=" font-weight:bold;">byte_data_received_0_s0/Q</td>
+</tr>
+<tr>
+<td>6.190</td>
+<td>3.399</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td style=" font-weight:bold;">LED_s2/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td>LED_s2/CLK</td>
+</tr>
+<tr>
+<td>21.932</td>
+<td>-0.400</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td>LED_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 3.399, 88.119%; tC2Q: 0.458, 11.881%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path10</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>15.810</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>6.479</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>22.289</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>byte_data_received_0_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>R15C21[2][B]</td>
+<td style=" font-weight:bold;">SCLKr_1_s0/Q</td>
+</tr>
+<tr>
+<td>4.262</td>
+<td>1.471</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[1][B]</td>
+<td>n15_s0/I2</td>
+</tr>
+<tr>
+<td>5.323</td>
+<td>1.061</td>
+<td>tINS</td>
+<td>FR</td>
+<td>2</td>
+<td>R15C26[1][B]</td>
+<td style=" background: #97FFFF;">n15_s0/F</td>
+</tr>
+<tr>
+<td>6.479</td>
+<td>1.156</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td style=" font-weight:bold;">byte_data_received_0_s0/CE</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td>byte_data_received_0_s0/CLK</td>
+</tr>
+<tr>
+<td>22.289</td>
+<td>-0.043</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td>byte_data_received_0_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 1.061, 25.586%; route: 2.627, 63.361%; tC2Q: 0.458, 11.053%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path11</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>16.571</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>5.361</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>21.932</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_1_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>R15C21[2][B]</td>
+<td style=" font-weight:bold;">SCLKr_1_s0/Q</td>
+</tr>
+<tr>
+<td>4.262</td>
+<td>1.471</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>n24_s2/I3</td>
+</tr>
+<tr>
+<td>5.361</td>
+<td>1.099</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td style=" background: #97FFFF;">n24_s2/F</td>
+</tr>
+<tr>
+<td>5.361</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td style=" font-weight:bold;">bitcnt_1_s2/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>bitcnt_1_s2/CLK</td>
+</tr>
+<tr>
+<td>21.932</td>
+<td>-0.400</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>bitcnt_1_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 1.099, 36.285%; route: 1.471, 48.582%; tC2Q: 0.458, 15.133%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path12</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>17.044</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>4.888</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>21.932</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_0_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>R15C21[2][B]</td>
+<td style=" font-weight:bold;">SCLKr_1_s0/Q</td>
+</tr>
+<tr>
+<td>4.262</td>
+<td>1.471</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>n25_s3/I2</td>
+</tr>
+<tr>
+<td>4.888</td>
+<td>0.626</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td style=" background: #97FFFF;">n25_s3/F</td>
+</tr>
+<tr>
+<td>4.888</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td style=" font-weight:bold;">bitcnt_0_s2/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>bitcnt_0_s2/CLK</td>
+</tr>
+<tr>
+<td>21.932</td>
+<td>-0.400</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>bitcnt_0_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.626, 24.494%; route: 1.471, 57.573%; tC2Q: 0.458, 17.933%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path13</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>17.066</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>5.223</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>22.289</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_2_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>R15C21[2][B]</td>
+<td style=" font-weight:bold;">SCLKr_1_s0/Q</td>
+</tr>
+<tr>
+<td>4.262</td>
+<td>1.471</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[3][A]</td>
+<td>bitcnt_2_s3/I1</td>
+</tr>
+<tr>
+<td>4.887</td>
+<td>0.625</td>
+<td>tINS</td>
+<td>FR</td>
+<td>1</td>
+<td>R15C26[3][A]</td>
+<td style=" background: #97FFFF;">bitcnt_2_s3/F</td>
+</tr>
+<tr>
+<td>5.223</td>
+<td>0.336</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td style=" font-weight:bold;">bitcnt_2_s0/CE</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0/CLK</td>
+</tr>
+<tr>
+<td>22.289</td>
+<td>-0.043</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.625, 21.618%; route: 1.808, 62.528%; tC2Q: 0.458, 15.853%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path14</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>17.533</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>4.399</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>21.932</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>SCLKr_2_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>R15C21[2][B]</td>
+<td style=" font-weight:bold;">SCLKr_1_s0/Q</td>
+</tr>
+<tr>
+<td>4.399</td>
+<td>1.608</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C25[0][A]</td>
+<td style=" font-weight:bold;">SCLKr_2_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C25[0][A]</td>
+<td>SCLKr_2_s0/CLK</td>
+</tr>
+<tr>
+<td>21.932</td>
+<td>-0.400</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C25[0][A]</td>
+<td>SCLKr_2_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 1.608, 77.823%; tC2Q: 0.458, 22.177%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path15</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>17.700</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>4.232</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>21.932</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>bitcnt_1_s2</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_2_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>bitcnt_1_s2/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>3</td>
+<td>R15C26[0][A]</td>
+<td style=" font-weight:bold;">bitcnt_1_s2/Q</td>
+</tr>
+<tr>
+<td>3.133</td>
+<td>0.343</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>n23_s0/I1</td>
+</tr>
+<tr>
+<td>4.232</td>
+<td>1.099</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td style=" background: #97FFFF;">n23_s0/F</td>
+</tr>
+<tr>
+<td>4.232</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td style=" font-weight:bold;">bitcnt_2_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0/CLK</td>
+</tr>
+<tr>
+<td>21.932</td>
+<td>-0.400</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 1.099, 57.829%; route: 0.343, 18.054%; tC2Q: 0.458, 24.117%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3>Path16</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>18.181</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>3.751</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>21.932</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>MOSIr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>byte_data_received_0_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>2.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>2.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[0][B]</td>
+<td>MOSIr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>2.790</td>
+<td>0.458</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[0][B]</td>
+<td style=" font-weight:bold;">MOSIr_1_s0/Q</td>
+</tr>
+<tr>
+<td>3.751</td>
+<td>0.961</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td style=" font-weight:bold;">byte_data_received_0_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>20.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>22.088</td>
+<td>2.088</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>22.332</td>
+<td>0.244</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td>byte_data_received_0_s0/CLK</td>
+</tr>
+<tr>
+<td>21.932</td>
+<td>-0.400</td>
+<td>tSu</td>
+<td></td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td>byte_data_received_0_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship </td>
+<td>20.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 0.961, 67.706%; tC2Q: 0.458, 32.294%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 2.088, 89.539%; route: 0.244, 10.461%</td>
+</tr>
+</table>
+<h3><a name="Hold_Analysis">Hold Analysis Report</a></h3>
+<h4>Report Command:report_timing -hold -max_paths 25 -max_common_paths 1</h4>
+<h3>Path1</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>0.708</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>2.284</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.577</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>bitcnt_2_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_2_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>2</td>
+<td>R15C26[1][A]</td>
+<td style=" font-weight:bold;">bitcnt_2_s0/Q</td>
+</tr>
+<tr>
+<td>1.912</td>
+<td>0.002</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>n23_s0/I2</td>
+</tr>
+<tr>
+<td>2.284</td>
+<td>0.372</td>
+<td>tINS</td>
+<td>RF</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td style=" background: #97FFFF;">n23_s0/F</td>
+</tr>
+<tr>
+<td>2.284</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td style=" font-weight:bold;">bitcnt_2_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0/CLK</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.000</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.372, 52.565%; route: 0.002, 0.334%; tC2Q: 0.333, 47.101%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path2</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>0.709</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>2.285</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.577</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>bitcnt_1_s2</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_1_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>bitcnt_1_s2/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>3</td>
+<td>R15C26[0][A]</td>
+<td style=" font-weight:bold;">bitcnt_1_s2/Q</td>
+</tr>
+<tr>
+<td>1.913</td>
+<td>0.004</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>n24_s2/I0</td>
+</tr>
+<tr>
+<td>2.285</td>
+<td>0.372</td>
+<td>tINS</td>
+<td>RF</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td style=" background: #97FFFF;">n24_s2/F</td>
+</tr>
+<tr>
+<td>2.285</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td style=" font-weight:bold;">bitcnt_1_s2/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>bitcnt_1_s2/CLK</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.000</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>bitcnt_1_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.372, 52.478%; route: 0.004, 0.500%; tC2Q: 0.333, 47.023%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path3</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>0.955</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>2.531</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.577</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>MOSIr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>byte_data_received_0_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[0][B]</td>
+<td>MOSIr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[0][B]</td>
+<td style=" font-weight:bold;">MOSIr_1_s0/Q</td>
+</tr>
+<tr>
+<td>2.531</td>
+<td>0.621</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td style=" font-weight:bold;">byte_data_received_0_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td>byte_data_received_0_s0/CLK</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.000</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td>byte_data_received_0_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 0.621, 65.086%; tC2Q: 0.333, 34.914%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path4</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>0.955</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>2.532</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.577</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>bitcnt_0_s2</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>byte_received_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>bitcnt_0_s2/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>4</td>
+<td>R15C26[0][B]</td>
+<td style=" font-weight:bold;">bitcnt_0_s2/Q</td>
+</tr>
+<tr>
+<td>2.160</td>
+<td>0.250</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td>n20_s0/I1</td>
+</tr>
+<tr>
+<td>2.532</td>
+<td>0.372</td>
+<td>tINS</td>
+<td>RF</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td style=" background: #97FFFF;">n20_s0/F</td>
+</tr>
+<tr>
+<td>2.532</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td style=" font-weight:bold;">byte_received_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td>byte_received_s0/CLK</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.000</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td>byte_received_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.372, 38.939%; route: 0.250, 26.169%; tC2Q: 0.333, 34.892%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path5</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>1.060</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>2.636</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.577</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>bitcnt_0_s2</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_0_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>bitcnt_0_s2/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>4</td>
+<td>R15C26[0][B]</td>
+<td style=" font-weight:bold;">bitcnt_0_s2/Q</td>
+</tr>
+<tr>
+<td>1.912</td>
+<td>0.002</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>n25_s3/I0</td>
+</tr>
+<tr>
+<td>2.636</td>
+<td>0.724</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td style=" background: #97FFFF;">n25_s3/F</td>
+</tr>
+<tr>
+<td>2.636</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td style=" font-weight:bold;">bitcnt_0_s2/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>bitcnt_0_s2/CLK</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.000</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>bitcnt_0_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.724, 68.322%; route: 0.002, 0.223%; tC2Q: 0.333, 31.456%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path6</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>1.255</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>2.831</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.577</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>SCLKr_2_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>5</td>
+<td>R15C21[2][B]</td>
+<td style=" font-weight:bold;">SCLKr_1_s0/Q</td>
+</tr>
+<tr>
+<td>2.831</td>
+<td>0.921</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C25[0][A]</td>
+<td style=" font-weight:bold;">SCLKr_2_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C25[0][A]</td>
+<td>SCLKr_2_s0/CLK</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.000</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C25[0][A]</td>
+<td>SCLKr_2_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 0.921, 73.429%; tC2Q: 0.333, 26.571%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path7</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>1.516</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>3.105</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.589</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_2_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_2_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C25[0][A]</td>
+<td>SCLKr_2_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>4</td>
+<td>R15C25[0][A]</td>
+<td style=" font-weight:bold;">SCLKr_2_s0/Q</td>
+</tr>
+<tr>
+<td>2.144</td>
+<td>0.234</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[3][A]</td>
+<td>bitcnt_2_s3/I0</td>
+</tr>
+<tr>
+<td>2.868</td>
+<td>0.724</td>
+<td>tINS</td>
+<td>FR</td>
+<td>1</td>
+<td>R15C26[3][A]</td>
+<td style=" background: #97FFFF;">bitcnt_2_s3/F</td>
+</tr>
+<tr>
+<td>3.105</td>
+<td>0.237</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td style=" font-weight:bold;">bitcnt_2_s0/CE</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0/CLK</td>
+</tr>
+<tr>
+<td>1.589</td>
+<td>0.012</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.724, 47.363%; route: 0.471, 30.831%; tC2Q: 0.333, 21.806%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path8</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>2.035</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>3.612</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.577</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>byte_data_received_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>LED_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td>byte_data_received_0_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td style=" font-weight:bold;">byte_data_received_0_s0/Q</td>
+</tr>
+<tr>
+<td>3.612</td>
+<td>1.702</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td style=" font-weight:bold;">LED_s2/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td>LED_s2/CLK</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.000</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td>LED_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 1.702, 83.620%; tC2Q: 0.333, 16.380%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path9</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>2.131</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>3.721</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.589</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_2_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>byte_data_received_0_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C25[0][A]</td>
+<td>SCLKr_2_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>4</td>
+<td>R15C25[0][A]</td>
+<td style=" font-weight:bold;">SCLKr_2_s0/Q</td>
+</tr>
+<tr>
+<td>2.158</td>
+<td>0.249</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>R15C26[1][B]</td>
+<td>n15_s0/I1</td>
+</tr>
+<tr>
+<td>2.884</td>
+<td>0.726</td>
+<td>tINS</td>
+<td>FR</td>
+<td>2</td>
+<td>R15C26[1][B]</td>
+<td style=" background: #97FFFF;">n15_s0/F</td>
+</tr>
+<tr>
+<td>3.721</td>
+<td>0.836</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td style=" font-weight:bold;">byte_data_received_0_s0/CE</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td>byte_data_received_0_s0/CLK</td>
+</tr>
+<tr>
+<td>1.589</td>
+<td>0.012</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C21[1][A]</td>
+<td>byte_data_received_0_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.726, 33.862%; route: 1.085, 50.591%; tC2Q: 0.333, 15.547%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path10</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>2.443</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>4.019</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.577</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>MOSIr_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>MOSIr_1_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOT10[B]</td>
+<td>MOSIr_0_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>1</td>
+<td>IOT10[B]</td>
+<td style=" font-weight:bold;">MOSIr_0_s0/Q</td>
+</tr>
+<tr>
+<td>4.019</td>
+<td>2.109</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[0][B]</td>
+<td style=" font-weight:bold;">MOSIr_1_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[0][B]</td>
+<td>MOSIr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.000</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C21[0][B]</td>
+<td>MOSIr_1_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 2.109, 86.354%; tC2Q: 0.333, 13.646%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path11</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>2.443</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>4.020</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.577</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SSELr_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>SSELr_1_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOT10[A]</td>
+<td>SSELr_0_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>1</td>
+<td>IOT10[A]</td>
+<td style=" font-weight:bold;">SSELr_0_s0/Q</td>
+</tr>
+<tr>
+<td>4.020</td>
+<td>2.110</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td style=" font-weight:bold;">SSELr_1_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td>SSELr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.000</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td>SSELr_1_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 2.110, 86.356%; tC2Q: 0.333, 13.644%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path12</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>2.462</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>4.038</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.577</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SCLKr_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>SCLKr_1_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOT8[B]</td>
+<td>SCLKr_0_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>1</td>
+<td>IOT8[B]</td>
+<td style=" font-weight:bold;">SCLKr_0_s0/Q</td>
+</tr>
+<tr>
+<td>4.038</td>
+<td>2.128</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td style=" font-weight:bold;">SCLKr_1_s0/D</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.000</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C21[2][B]</td>
+<td>SCLKr_1_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.000, 0.000%; route: 2.128, 86.459%; tC2Q: 0.333, 13.541%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path13</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>2.775</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>4.364</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.589</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SSELr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_0_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td>SSELr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>2</td>
+<td>R15C21[2][A]</td>
+<td style=" font-weight:bold;">SSELr_1_s0/Q</td>
+</tr>
+<tr>
+<td>2.706</td>
+<td>0.796</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[2][A]</td>
+<td>n128_s0/I0</td>
+</tr>
+<tr>
+<td>3.262</td>
+<td>0.556</td>
+<td>tINS</td>
+<td>RR</td>
+<td>3</td>
+<td>R15C26[2][A]</td>
+<td style=" background: #97FFFF;">n128_s0/F</td>
+</tr>
+<tr>
+<td>4.364</td>
+<td>1.102</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td style=" font-weight:bold;">bitcnt_0_s2/RESET</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>bitcnt_0_s2/CLK</td>
+</tr>
+<tr>
+<td>1.589</td>
+<td>0.012</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C26[0][B]</td>
+<td>bitcnt_0_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.556, 19.946%; route: 1.898, 68.096%; tC2Q: 0.333, 11.958%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path14</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>2.775</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>4.364</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.589</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SSELr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_1_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td>SSELr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>2</td>
+<td>R15C21[2][A]</td>
+<td style=" font-weight:bold;">SSELr_1_s0/Q</td>
+</tr>
+<tr>
+<td>2.706</td>
+<td>0.796</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[2][A]</td>
+<td>n128_s0/I0</td>
+</tr>
+<tr>
+<td>3.262</td>
+<td>0.556</td>
+<td>tINS</td>
+<td>RR</td>
+<td>3</td>
+<td>R15C26[2][A]</td>
+<td style=" background: #97FFFF;">n128_s0/F</td>
+</tr>
+<tr>
+<td>4.364</td>
+<td>1.102</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td style=" font-weight:bold;">bitcnt_1_s2/RESET</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>bitcnt_1_s2/CLK</td>
+</tr>
+<tr>
+<td>1.589</td>
+<td>0.012</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C26[0][A]</td>
+<td>bitcnt_1_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.556, 19.946%; route: 1.898, 68.096%; tC2Q: 0.333, 11.958%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path15</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>2.775</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>4.364</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.589</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>SSELr_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>bitcnt_2_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[2][A]</td>
+<td>SSELr_1_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>2</td>
+<td>R15C21[2][A]</td>
+<td style=" font-weight:bold;">SSELr_1_s0/Q</td>
+</tr>
+<tr>
+<td>2.706</td>
+<td>0.796</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[2][A]</td>
+<td>n128_s0/I0</td>
+</tr>
+<tr>
+<td>3.262</td>
+<td>0.556</td>
+<td>tINS</td>
+<td>RR</td>
+<td>3</td>
+<td>R15C26[2][A]</td>
+<td style=" background: #97FFFF;">n128_s0/F</td>
+</tr>
+<tr>
+<td>4.364</td>
+<td>1.102</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td style=" font-weight:bold;">bitcnt_2_s0/RESET</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0/CLK</td>
+</tr>
+<tr>
+<td>1.589</td>
+<td>0.012</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>R15C26[1][A]</td>
+<td>bitcnt_2_s0</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.556, 19.946%; route: 1.898, 68.096%; tC2Q: 0.333, 11.958%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3>Path16</h3>
+<p><b>Path Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>3.200</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>4.789</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>1.589</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>byte_received_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>LED_s2</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>FPGA_clk:[R]</td>
+</tr>
+</table>
+<p><b>Data Arrival Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td>byte_received_s0/CLK</td>
+</tr>
+<tr>
+<td>1.910</td>
+<td>0.333</td>
+<td>tC2Q</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C26[2][B]</td>
+<td style=" font-weight:bold;">byte_received_s0/Q</td>
+</tr>
+<tr>
+<td>2.702</td>
+<td>0.792</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][B]</td>
+<td>n132_s0/I1</td>
+</tr>
+<tr>
+<td>3.087</td>
+<td>0.385</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>R15C21[1][B]</td>
+<td style=" background: #97FFFF;">n132_s0/F</td>
+</tr>
+<tr>
+<td>4.789</td>
+<td>1.702</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td style=" font-weight:bold;">LED_s2/CE</td>
+</tr>
+</table>
+<p><b>Data Required Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th class="label">FANOUT</th>
+<th class="label">LOC</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>0.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>1.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>13</td>
+<td>IOR17[A]</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>1.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td>LED_s2/CLK</td>
+</tr>
+<tr>
+<td>1.589</td>
+<td>0.012</td>
+<td>tHld</td>
+<td></td>
+<td>1</td>
+<td>IOB8[B]</td>
+<td>LED_s2</td>
+</tr>
+</table>
+<p><b>Path Statistics:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Hold Relationship </td>
+<td>0.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+<tr>
+<td class="label">Arrival Data Path Delay</td>
+<td>cell: 0.385, 11.983%; route: 2.494, 77.642%; tC2Q: 0.333, 10.375%</td>
+</tr>
+<tr>
+<td class="label">Required Clock Path Delay</td>
+<td>cell: 1.392, 88.292%; route: 0.185, 11.708%</td>
+</tr>
+</table>
+<h3><a name="Recovery_Analysis">Recovery Analysis Report</a></h3>
+<h4>Report Command:report_timing -recovery -max_paths 25 -max_common_paths 1</h4>
+<h4>No recovery paths to report!</h4>
+<h3><a name="Removal_Analysis">Removal Analysis Report</a></h3>
+<h4>Report Command:report_timing -removal -max_paths 25 -max_common_paths 1</h4>
+<h4>No removal paths to report!</h4>
+<h2><a name="Minimum_Pulse_Width_Report">Minimum Pulse Width Report:</a></h2>
+<h4>Report Command:report_min_pulse_width -nworst 10 -detail</h4>
+<h3>MPW1</h3>
+<p><b>MPW Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack:</td>
+<td>7.750</td>
+</tr>
+<tr>
+<td class="label">Actual Width:</td>
+<td>9.000</td>
+</tr>
+<tr>
+<td class="label">Required Width:</td>
+<td>1.250</td>
+</tr>
+<tr>
+<td class="label">Type:</td>
+<td>Low Pulse Width</td>
+</tr>
+<tr>
+<td class="label">Clock:</td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td class="label"> Objects:</td>
+<td>SCLKr_1_s0</td>
+</tr>
+</table>
+<p><b>Late clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>12.314</td>
+<td>2.314</td>
+<td>tINS</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>12.576</td>
+<td>0.262</td>
+<td>tNET</td>
+<td>FF</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+</table>
+<p><b>Early clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>21.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>21.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>SCLKr_1_s0/CLK</td>
+</tr>
+</table>
+<h3>MPW2</h3>
+<p><b>MPW Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack:</td>
+<td>7.750</td>
+</tr>
+<tr>
+<td class="label">Actual Width:</td>
+<td>9.000</td>
+</tr>
+<tr>
+<td class="label">Required Width:</td>
+<td>1.250</td>
+</tr>
+<tr>
+<td class="label">Type:</td>
+<td>Low Pulse Width</td>
+</tr>
+<tr>
+<td class="label">Clock:</td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td class="label"> Objects:</td>
+<td>SSELr_1_s0</td>
+</tr>
+</table>
+<p><b>Late clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>12.314</td>
+<td>2.314</td>
+<td>tINS</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>12.576</td>
+<td>0.262</td>
+<td>tNET</td>
+<td>FF</td>
+<td>SSELr_1_s0/CLK</td>
+</tr>
+</table>
+<p><b>Early clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>21.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>21.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>SSELr_1_s0/CLK</td>
+</tr>
+</table>
+<h3>MPW3</h3>
+<p><b>MPW Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack:</td>
+<td>7.750</td>
+</tr>
+<tr>
+<td class="label">Actual Width:</td>
+<td>9.000</td>
+</tr>
+<tr>
+<td class="label">Required Width:</td>
+<td>1.250</td>
+</tr>
+<tr>
+<td class="label">Type:</td>
+<td>Low Pulse Width</td>
+</tr>
+<tr>
+<td class="label">Clock:</td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td class="label"> Objects:</td>
+<td>byte_received_s0</td>
+</tr>
+</table>
+<p><b>Late clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>12.314</td>
+<td>2.314</td>
+<td>tINS</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>12.576</td>
+<td>0.262</td>
+<td>tNET</td>
+<td>FF</td>
+<td>byte_received_s0/CLK</td>
+</tr>
+</table>
+<p><b>Early clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>21.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>21.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>byte_received_s0/CLK</td>
+</tr>
+</table>
+<h3>MPW4</h3>
+<p><b>MPW Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack:</td>
+<td>7.750</td>
+</tr>
+<tr>
+<td class="label">Actual Width:</td>
+<td>9.000</td>
+</tr>
+<tr>
+<td class="label">Required Width:</td>
+<td>1.250</td>
+</tr>
+<tr>
+<td class="label">Type:</td>
+<td>Low Pulse Width</td>
+</tr>
+<tr>
+<td class="label">Clock:</td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td class="label"> Objects:</td>
+<td>MOSIr_0_s0</td>
+</tr>
+</table>
+<p><b>Late clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>12.314</td>
+<td>2.314</td>
+<td>tINS</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>12.576</td>
+<td>0.262</td>
+<td>tNET</td>
+<td>FF</td>
+<td>MOSIr_0_s0/CLK</td>
+</tr>
+</table>
+<p><b>Early clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>21.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>21.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>MOSIr_0_s0/CLK</td>
+</tr>
+</table>
+<h3>MPW5</h3>
+<p><b>MPW Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack:</td>
+<td>7.750</td>
+</tr>
+<tr>
+<td class="label">Actual Width:</td>
+<td>9.000</td>
+</tr>
+<tr>
+<td class="label">Required Width:</td>
+<td>1.250</td>
+</tr>
+<tr>
+<td class="label">Type:</td>
+<td>Low Pulse Width</td>
+</tr>
+<tr>
+<td class="label">Clock:</td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td class="label"> Objects:</td>
+<td>bitcnt_0_s2</td>
+</tr>
+</table>
+<p><b>Late clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>12.314</td>
+<td>2.314</td>
+<td>tINS</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>12.576</td>
+<td>0.262</td>
+<td>tNET</td>
+<td>FF</td>
+<td>bitcnt_0_s2/CLK</td>
+</tr>
+</table>
+<p><b>Early clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>21.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>21.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>bitcnt_0_s2/CLK</td>
+</tr>
+</table>
+<h3>MPW6</h3>
+<p><b>MPW Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack:</td>
+<td>7.750</td>
+</tr>
+<tr>
+<td class="label">Actual Width:</td>
+<td>9.000</td>
+</tr>
+<tr>
+<td class="label">Required Width:</td>
+<td>1.250</td>
+</tr>
+<tr>
+<td class="label">Type:</td>
+<td>Low Pulse Width</td>
+</tr>
+<tr>
+<td class="label">Clock:</td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td class="label"> Objects:</td>
+<td>bitcnt_1_s2</td>
+</tr>
+</table>
+<p><b>Late clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>12.314</td>
+<td>2.314</td>
+<td>tINS</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>12.576</td>
+<td>0.262</td>
+<td>tNET</td>
+<td>FF</td>
+<td>bitcnt_1_s2/CLK</td>
+</tr>
+</table>
+<p><b>Early clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>21.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>21.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>bitcnt_1_s2/CLK</td>
+</tr>
+</table>
+<h3>MPW7</h3>
+<p><b>MPW Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack:</td>
+<td>7.750</td>
+</tr>
+<tr>
+<td class="label">Actual Width:</td>
+<td>9.000</td>
+</tr>
+<tr>
+<td class="label">Required Width:</td>
+<td>1.250</td>
+</tr>
+<tr>
+<td class="label">Type:</td>
+<td>Low Pulse Width</td>
+</tr>
+<tr>
+<td class="label">Clock:</td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td class="label"> Objects:</td>
+<td>SCLKr_0_s0</td>
+</tr>
+</table>
+<p><b>Late clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>12.314</td>
+<td>2.314</td>
+<td>tINS</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>12.576</td>
+<td>0.262</td>
+<td>tNET</td>
+<td>FF</td>
+<td>SCLKr_0_s0/CLK</td>
+</tr>
+</table>
+<p><b>Early clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>21.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>21.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>SCLKr_0_s0/CLK</td>
+</tr>
+</table>
+<h3>MPW8</h3>
+<p><b>MPW Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack:</td>
+<td>7.750</td>
+</tr>
+<tr>
+<td class="label">Actual Width:</td>
+<td>9.000</td>
+</tr>
+<tr>
+<td class="label">Required Width:</td>
+<td>1.250</td>
+</tr>
+<tr>
+<td class="label">Type:</td>
+<td>Low Pulse Width</td>
+</tr>
+<tr>
+<td class="label">Clock:</td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td class="label"> Objects:</td>
+<td>MOSIr_1_s0</td>
+</tr>
+</table>
+<p><b>Late clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>12.314</td>
+<td>2.314</td>
+<td>tINS</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>12.576</td>
+<td>0.262</td>
+<td>tNET</td>
+<td>FF</td>
+<td>MOSIr_1_s0/CLK</td>
+</tr>
+</table>
+<p><b>Early clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>21.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>21.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>MOSIr_1_s0/CLK</td>
+</tr>
+</table>
+<h3>MPW9</h3>
+<p><b>MPW Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack:</td>
+<td>7.750</td>
+</tr>
+<tr>
+<td class="label">Actual Width:</td>
+<td>9.000</td>
+</tr>
+<tr>
+<td class="label">Required Width:</td>
+<td>1.250</td>
+</tr>
+<tr>
+<td class="label">Type:</td>
+<td>Low Pulse Width</td>
+</tr>
+<tr>
+<td class="label">Clock:</td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td class="label"> Objects:</td>
+<td>SCLKr_2_s0</td>
+</tr>
+</table>
+<p><b>Late clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>12.314</td>
+<td>2.314</td>
+<td>tINS</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>12.576</td>
+<td>0.262</td>
+<td>tNET</td>
+<td>FF</td>
+<td>SCLKr_2_s0/CLK</td>
+</tr>
+</table>
+<p><b>Early clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>21.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>21.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>SCLKr_2_s0/CLK</td>
+</tr>
+</table>
+<h3>MPW10</h3>
+<p><b>MPW Summary:</b></p>
+<table class="summary_table">
+<tr>
+<td class="label">Slack:</td>
+<td>7.750</td>
+</tr>
+<tr>
+<td class="label">Actual Width:</td>
+<td>9.000</td>
+</tr>
+<tr>
+<td class="label">Required Width:</td>
+<td>1.250</td>
+</tr>
+<tr>
+<td class="label">Type:</td>
+<td>Low Pulse Width</td>
+</tr>
+<tr>
+<td class="label">Clock:</td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td class="label"> Objects:</td>
+<td>LED_s2</td>
+</tr>
+</table>
+<p><b>Late clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>10.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>12.314</td>
+<td>2.314</td>
+<td>tINS</td>
+<td>FF</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>12.576</td>
+<td>0.262</td>
+<td>tNET</td>
+<td>FF</td>
+<td>LED_s2/CLK</td>
+</tr>
+</table>
+<p><b>Early clock Path:</b></p>
+<table class="detail_table">
+<tr>
+<th class="label">AT</th>
+<th class="label">DELAY</th>
+<th class="label">TYPE</th>
+<th class="label">RF</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td></td>
+<td></td>
+<td>FPGA_clk</td>
+</tr>
+<tr>
+<td>20.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/I</td>
+</tr>
+<tr>
+<td>21.392</td>
+<td>1.392</td>
+<td>tINS</td>
+<td>RR</td>
+<td>FPGA_clk_ibuf/O</td>
+</tr>
+<tr>
+<td>21.577</td>
+<td>0.185</td>
+<td>tNET</td>
+<td>RR</td>
+<td>LED_s2/CLK</td>
+</tr>
+</table>
+<h2><a name="High_Fanout_Nets_Report">High Fanout Nets Report:</a></h2>
+<h4>Report Command:report_high_fanout_nets -max_nets 10</h4>
+<table class="detail_table">
+<tr>
+<th class="label">FANOUT</th>
+<th class="label">NET NAME</th>
+<th class="label">WORST SLACK</th>
+<th class="label">MAX DELAY</th>
+</tr>
+<tr>
+<td>13</td>
+<td>FPGA_clk_d</td>
+<td>14.967</td>
+<td>0.262</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SCLKr[1]</td>
+<td>15.461</td>
+<td>1.608</td>
+</tr>
+<tr>
+<td>4</td>
+<td>bitcnt[0]</td>
+<td>17.751</td>
+<td>0.359</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SCLKr[2]</td>
+<td>16.572</td>
+<td>0.428</td>
+</tr>
+<tr>
+<td>3</td>
+<td>bitcnt[1]</td>
+<td>17.688</td>
+<td>0.422</td>
+</tr>
+<tr>
+<td>3</td>
+<td>n128_3</td>
+<td>15.708</td>
+<td>1.778</td>
+</tr>
+<tr>
+<td>2</td>
+<td>n15_4</td>
+<td>15.461</td>
+<td>1.294</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SSELr[1]</td>
+<td>15.708</td>
+<td>1.462</td>
+</tr>
+<tr>
+<td>2</td>
+<td>bitcnt[2]</td>
+<td>17.981</td>
+<td>0.339</td>
+</tr>
+<tr>
+<td>1</td>
+<td>n20_3</td>
+<td>15.461</td>
+<td>0.000</td>
+</tr>
+</table>
+<h2><a name="Route_Congestions_Report">Route Congestions Report:</a></h2>
+<h4>Report Command:report_route_congestion -max_grids 10</h4>
+<table class="detail_table">
+<tr>
+<th class="label">GRID LOC</th>
+<th class="label">ROUTE CONGESTIONS</th>
+</tr>
+<tr>
+<td>R15C26</td>
+<td>61.11%</td>
+</tr>
+<tr>
+<td>R15C21</td>
+<td>45.83%</td>
+</tr>
+<tr>
+<td>R15C25</td>
+<td>31.94%</td>
+</tr>
+<tr>
+<td>R1C8</td>
+<td>6.94%</td>
+</tr>
+<tr>
+<td>R1C1</td>
+<td>5.56%</td>
+</tr>
+<tr>
+<td>R16C21</td>
+<td>4.17%</td>
+</tr>
+<tr>
+<td>R15C23</td>
+<td>4.17%</td>
+</tr>
+<tr>
+<td>R15C20</td>
+<td>4.17%</td>
+</tr>
+<tr>
+<td>R1C10</td>
+<td>4.17%</td>
+</tr>
+<tr>
+<td>R8C21</td>
+<td>2.78%</td>
+</tr>
+</table>
+<h2><a name="Timing_Exceptions_Report">Timing Exceptions Report:</a></h2>
+<h3><a name="Setup_Analysis_Exceptions">Setup Analysis Report</a></h3>
+<h4>Report Command:report_exceptions -setup -max_paths 5 -max_common_paths 1</h4>
+<h4>No timing exceptions to report!</h4>
+<h3><a name="Hold_Analysis_Exceptions">Hold Analysis Report</a></h3>
+<h4>Report Command:report_exceptions -hold -max_paths 5 -max_common_paths 1</h4>
+<h4>No timing exceptions to report!</h4>
+<h3><a name="Recovery_Analysis_Exceptions">Recovery Analysis Report</a></h3>
+<h4>Report Command:report_exceptions -recovery -max_paths 5 -max_common_paths 1</h4>
+<h4>No timing exceptions to report!</h4>
+<h3><a name="Removal_Analysis_Exceptions">Removal Analysis Report</a></h3>
+<h4>Report Command:report_exceptions -removal -max_paths 5 -max_common_paths 1</h4>
+<h4>No timing exceptions to report!</h4>
+<h2><a name="SDC_Report">Timing Constraints Report:</a></h2>
+<table class="detail_table">
+<tr>
+<th class="label">SDC Command Type</th>
+<th class="label">State</th>
+<th class="label">Detail Command</th>
+</tr>
+</table>
+</div><!-- content -->
+</body>
+</html>
