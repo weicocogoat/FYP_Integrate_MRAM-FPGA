@@ -44,5 +44,5 @@ always @(posedge FPGA_clk) begin
     end
 end
 
-assign ser_data_out = (en) ? data_bits[index] : 0;
+assign ser_data_out = (en) ? data_bits[15 - index] : 0;
 endmodule
