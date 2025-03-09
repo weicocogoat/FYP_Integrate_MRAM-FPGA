@@ -60,12 +60,13 @@ wire SCLK_fallingedge = (SCLKr[2:1]==2'b10);  // Falling edges
 wire SSEL_active = ~SSELr[1];  // SSEL is active low
 wire SSEL_startmessage = (SSELr[2:1]==2'b10);  // message starts at falling edge
 wire SSEL_endmessage = (SSELr[2:1]==2'b01);  // message stops at rising edge
+reg msg_valid_detection;
 
 // Detect MOSI data
 wire MOSI_data = MOSIr[1];
 
 // 3-bit counter to count no. of bits coming in or leaving the SPI peripheral
-reg [2:0] bitcnt;
+reg [3:0] bitcnt;
 
 reg byte_received;              // high when a byte has been received
 reg [7:0] byte_data_received;   // stores the data byte
@@ -80,19 +81,19 @@ reg [7:0] cnt;              // reg to count the data bits being sent
 // States 
 localparam IDLE = 0;
 localparam READ_INFO = 1;   // Reads RWS, burst_len, and burst_en values
-localparam READ_ADDR = 2;
-localparam READ_DATA = 3;
-localparam WRITE_MRAM = 4;
-localparam READ_MRAM = 5;
-localparam MRAM_DATA_OUTPUT = 6;
+localparam READ_ADDR = 2;   // Reads base addr
+localparam READ_DATA = 3;   // Reads data to be written to MRAM (for write op)
+localparam WRITE_MRAM = 4;  // Writes data to MRAM
+localparam READ_MRAM = 5;   // Reads data from MRAM (for read op)
+localparam MRAM_DATA_OUTPUT = 6;    // Outputs data to SPI master
 
 // Information to keep track of
 reg [3:0] state = 0;
 reg [2:0] read_write_sel;
 reg [3:0] burst_len;
 reg burst_en;
-reg [19:0] addr_bits;
-reg [15:0] data_bits;
+reg [19:0] addr_bits = 0;
+reg [15:0] data_bits = 0;
 reg chip_en = 1;
 reg read_en = 1;
 reg write_en = 1;
@@ -100,6 +101,7 @@ reg lb_en = 1;
 reg ub_en = 1;
 
 reg [3:0] cycle = 0;
+reg [3:0] MRAM_delay = 0;
 reg PTS_en = 0;
 reg [3:0] addr_burst_counter = 0;
 
@@ -116,6 +118,7 @@ always @(posedge FPGA_clk) begin
         state <= IDLE;
         cycle <= 0;
         addr_burst_counter <= 1;
+        MRAM_delay <= 0;
     end
     else begin
         // Using the FPGA clock, detect any rising or falling edge of the incoming SPI clk signal
@@ -127,9 +130,15 @@ always @(posedge FPGA_clk) begin
         // On the rising edge of the SCLK, if bit count is 7 and SSEL is active, byte has been fully received from MOSI.
         byte_received <= SSEL_active && SCLK_risingedge && (bitcnt==3'b111);
         
+        // Ensure that only one SPI msg gets read
+        if (SSEL_startmessage) begin
+            msg_valid_detection <= 1;
+        end
+        
+        
         case (state)
             IDLE:   begin
-                if(SSEL_active) begin
+                if(SSEL_active && msg_valid_detection) begin
                     bitcnt <= 3'b000;  
                     state <= READ_INFO;
                 end
@@ -252,12 +261,22 @@ always @(posedge FPGA_clk) begin
                 lb_en <= 0;
                 ub_en <= 0;
                 
-                if ((addr_burst_counter < burst_len) && (burst_en) )begin
-                    state <= READ_DATA;
-                    addr_burst_counter <= addr_burst_counter + 1;
+                MRAM_delay <= MRAM_delay + 1;
+                
+                if (MRAM_delay == 3) begin // Edit cycle value to modify delay for MRAM control signals
+                    if ((addr_burst_counter < burst_len) && (burst_en) )begin
+                        state <= READ_DATA;
+                        addr_burst_counter <= addr_burst_counter + 1;
+                        MRAM_delay <= 0;
+                    end
+                    else begin
+                        state <= IDLE;
+                        MRAM_delay <= 0;
+                        msg_valid_detection <= 0;
+                    end
                 end
                 else begin
-                    state <= IDLE;
+                    state <= WRITE_MRAM;
                 end
             end
             
@@ -271,7 +290,14 @@ always @(posedge FPGA_clk) begin
                 PTS_en <= 1;
                 bitcnt <= 3'b000;
                 
-                state <= MRAM_DATA_OUTPUT;
+                if (MRAM_delay == 3) begin
+                    state <= MRAM_DATA_OUTPUT;
+                    MRAM_delay <= 0;
+                end
+                else begin
+                    MRAM_delay <= MRAM_delay + 1;
+                    state <= READ_MRAM;
+                end
             end
             
             MRAM_DATA_OUTPUT:  begin
@@ -285,7 +311,7 @@ always @(posedge FPGA_clk) begin
                     bitcnt <= bitcnt + 3'b001;
                 end
                 
-                if (bitcnt == 3'b111) begin
+                if (bitcnt > 3'b111) begin
                     case (cycle)
                         4'd0:   begin
                             state <= READ_MRAM;
@@ -303,6 +329,7 @@ always @(posedge FPGA_clk) begin
                             end
                             else begin
                                 state <= IDLE;
+                                msg_valid_detection <= 0;
                             end 
                         end
                     endcase 
