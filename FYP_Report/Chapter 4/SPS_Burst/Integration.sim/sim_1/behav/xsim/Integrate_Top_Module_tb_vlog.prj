@@ -1,0 +1,20 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../Test burst integration/Adder.v" \
+"../../../../Integration.srcs/sources_1/new/Integrate_Top_Module.v" \
+"../../../../../Test burst integration/MRAM_Top_Module.v" \
+"../../../../../Test burst integration/burst_ctrl.v" \
+"../../../../../Test burst integration/burst_ctrl_Top_Module.v" \
+"../../../../../Test burst integration/compare.v" \
+"../../../../../Test burst integration/control_module.v" \
+"../../../../../Test burst integration/counter.v" \
+"../../../../Integration.srcs/sources_1/new/delay_register.v" \
+"../../../../../Test burst integration/parallel_to_serial.v" \
+"../../../../../Test burst integration/serial_to_parallel.v" \
+"../../../../Integration.srcs/sources_1/new/Integrate_Top_Module_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
