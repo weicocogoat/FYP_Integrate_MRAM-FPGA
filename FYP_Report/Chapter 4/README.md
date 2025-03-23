@@ -10,11 +10,13 @@ Folders will namely contain the Verilog files used.
 - Relevant Folder: SPS_Burst
 - Top Module: Integrate_Top_Module.v
 - Testbench: Integrate_Top_Module_tb.v
+- Constraint file is for the Tang Nano 9k
 
 ## Section 4.3 - SPI Module
 - Relevant Folder: SPI_Module
 - Top Module: SPI_top_module.v
 - Testbench: SPI_Slave_tb.v
+- Contraint file is for the Tang Nano 9k
 
 ## Section 4.4.1 - Initial I2C Module
 - Relevant Folder: I2C_Initial_Design
