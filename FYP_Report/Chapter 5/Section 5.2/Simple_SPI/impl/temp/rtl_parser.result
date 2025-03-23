@@ -1,0 +1,28 @@
+[
+ {
+  "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/Simple_SPI/src/PTS_module.v",
+  "InstLine" : 23,
+  "InstName" : "PTS_module",
+  "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/Simple_SPI/src/PTS_module.v",
+  "ModuleLine" : 23,
+  "ModuleName" : "PTS_module"
+ },
+ {
+  "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/Simple_SPI/src/SPI_top_module.v",
+  "InstLine" : 23,
+  "InstName" : "SPI_top_module",
+  "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/Simple_SPI/src/SPI_top_module.v",
+  "ModuleLine" : 23,
+  "ModuleName" : "SPI_top_module",
+  "SubInsts" : [
+   {
+    "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/Simple_SPI/src/SPI_top_module.v",
+    "InstLine" : 44,
+    "InstName" : "uut",
+    "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/Simple_SPI/src/SPI_Slave.v",
+    "ModuleLine" : 23,
+    "ModuleName" : "SPI_slave"
+   }
+  ]
+ }
+]

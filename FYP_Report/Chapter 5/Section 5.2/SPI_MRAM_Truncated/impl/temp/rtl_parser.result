@@ -1,0 +1,28 @@
+[
+ {
+  "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPI_MRAM_Truncated/src/SPI_top_module.v",
+  "InstLine" : 23,
+  "InstName" : "SPI_top_module",
+  "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPI_MRAM_Truncated/src/SPI_top_module.v",
+  "ModuleLine" : 23,
+  "ModuleName" : "SPI_top_module",
+  "SubInsts" : [
+   {
+    "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPI_MRAM_Truncated/src/SPI_top_module.v",
+    "InstLine" : 52,
+    "InstName" : "SPI_Slave",
+    "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPI_MRAM_Truncated/src/SPI_Slave.v",
+    "ModuleLine" : 23,
+    "ModuleName" : "SPI_Slave"
+   },
+   {
+    "InstFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPI_MRAM_Truncated/src/SPI_top_module.v",
+    "InstLine" : 76,
+    "InstName" : "PTS_module",
+    "ModuleFile" : "C:/Gowin/Gowin_V1.9.9.03_Education_x64/IDE/bin/Documents/SPI_MRAM_Truncated/src/PTS_module.v",
+    "ModuleLine" : 23,
+    "ModuleName" : "PTS_module"
+   }
+  ]
+ }
+]

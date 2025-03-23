@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="SPI_top_module" T_Register="99(0)" T_Alu="43(0)" T_Lut="98(0)">
+    <SubModule name="SPI_Slave" Register="83" Alu="43" Lut="89" T_Register="83(83)" T_Alu="43(43)" T_Lut="89(89)"/>
+    <SubModule name="PTS_module" Register="16" Lut="9" T_Register="16(16)" T_Lut="9(9)"/>
+</Module>
