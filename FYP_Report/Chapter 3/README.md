@@ -1,5 +1,7 @@
-## Passive PCB Design
-- PCB design 1 files, done in KiCad
+## Section 3.2
 
-## TangNano-MRAM zip file
+### Passive PCB Design
+- PCB design 1 files, done in KiCad
+### TangNano-MRAM zip file
 - PCB design 2 files, done in KiCad
+
