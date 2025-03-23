@@ -1,0 +1,61 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Jan 18 18:41:09 2025
+[*]
+[dumpfile] "C:\Users\yeohw\OneDrive\Desktop\FYP\open IP-cores\ip-cores-communication_controller_i2c_slave\ip-cores-communication_controller_i2c_slave\sim\wave.vcd"
+[dumpfile_mtime] "Sat Jan 18 18:39:27 2025"
+[dumpfile_size] 1783877
+[savefile] "C:\Users\yeohw\OneDrive\Desktop\FYP\open IP-cores\ip-cores-communication_controller_i2c_slave\ip-cores-communication_controller_i2c_slave\sim\myWave.sav"
+[timestart] 401384000
+[size] 1920 1009
+[pos] -1 -1
+*-16.236395 401566200 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testHarness.
+[treeopen] testHarness.u_i2cSlave.
+[sst_width] 197
+[signals_width] 214
+[sst_expanded] 1
+[sst_vpaned_height] 297
+@200
+-I2C Comms
+@28
+testHarness.u_i2cSlave.scl
+testHarness.u_i2cSlave.sda
+@200
+-Regfile
+@22
+testHarness.u_i2cSlave.myReg0[7:0]
+testHarness.u_i2cSlave.myReg1[7:0]
+testHarness.u_i2cSlave.myReg2[7:0]
+testHarness.u_i2cSlave.myReg3[7:0]
+@29
+testHarness.clk
+@22
+testHarness.u_i2cSlave.u_registerInterface.myReg4[7:0]
+testHarness.u_i2cSlave.u_registerInterface.myReg5[7:0]
+testHarness.u_i2cSlave.myReg6[7:0]
+testHarness.u_i2cSlave.myReg7[7:0]
+testHarness.u_i2cSlave.data_lb[7:0]
+testHarness.u_i2cSlave.data_ub[7:0]
+@200
+-To MRAM
+@22
+testHarness.rws[7:0]
+testHarness.addr_7to0[7:0]
+testHarness.addr_15to8[7:0]
+testHarness.addr_20to16[7:0]
+testHarness.data_lb[7:0]
+testHarness.data_ub[7:0]
+@28
+testHarness.chip_en
+testHarness.read_en
+testHarness.write_en
+testHarness.lb_en
+testHarness.ub_en
+@200
+-Driving Tristate buffer
+@22
+testHarness.data_lb_drive[7:0]
+testHarness.data_ub_drive[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
