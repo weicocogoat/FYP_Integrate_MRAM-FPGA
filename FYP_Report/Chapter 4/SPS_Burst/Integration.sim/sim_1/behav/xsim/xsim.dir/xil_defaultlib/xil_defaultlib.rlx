@@ -1,0 +1,21 @@
+0.7
+2020.2
+Jun 14 2024
+10:04:17
+C:/Users/yeohw/OneDrive/Desktop/FYP/Integration/Integration.sim/sim_1/behav/xsim/glbl.v,1708598508,verilog,,,,glbl,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Integration/Integration.srcs/sources_1/new/Integrate_Top_Module.v,1734959854,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/MRAM_Top_Module.v,,Integrate_Top_Module,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Integration/Integration.srcs/sources_1/new/Integrate_Top_Module_tb.v,1734972393,verilog,,,,Integrate_Top_Module_tb,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Integration/Integration.srcs/sources_1/new/delay_register.v,1731837257,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/parallel_to_serial.v,,delay_register,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Integration/Integration.srcs/sources_1/new/delay_register_tb.v,1731836465,verilog,,,,delay_register_tb,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/Adder.v,1728839908,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Integration/Integration.srcs/sources_1/new/Integrate_Top_Module.v,,Adder,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/MRAM_Top_Module.v,1734963303,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/burst_ctrl.v,,MRAM_Top_Module,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/MRAM_Top_Module_tb.v,1731783160,verilog,,,,MRAM_Top_Module_tb,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/Single_MRAM_model.v,1726933379,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/burst_ctrl.v,,MRAM_model,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/burst_ctrl.v,1733738870,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/burst_ctrl_Top_Module.v,,burst_ctrl,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/burst_ctrl_Top_Module.v,1731782265,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/compare.v,,burst_ctrl_Top_Module,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/burst_ctrl_top_module_tb.v,1731782231,verilog,,,,burst_ctrl_top_module_tb,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/compare.v,1729346577,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/control_module.v,,compare,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/control_module.v,1736271399,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/counter.v,,control_module,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/counter.v,1731674721,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Integration/Integration.srcs/sources_1/new/delay_register.v,,counter,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/parallel_to_serial.v,1736267027,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/serial_to_parallel.v,,parallel_to_serial,,,,,,,,
+C:/Users/yeohw/OneDrive/Desktop/FYP/Test burst integration/serial_to_parallel.v,1733763786,verilog,,C:/Users/yeohw/OneDrive/Desktop/FYP/Integration/Integration.srcs/sources_1/new/Integrate_Top_Module_tb.v,,serial_to_parallel,,,,,,,,
