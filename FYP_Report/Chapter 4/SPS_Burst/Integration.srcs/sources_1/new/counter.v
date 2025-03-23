@@ -1,12 +1,11 @@
-
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
 // 
-// Create Date: 17.11.2024 17:33:50
+// Create Date: 13.10.2024 01:47:30
 // Design Name: 
-// Module Name: delay_register
+// Module Name: counter
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -21,26 +20,33 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module delay_register(
+module counter
+
+#(parameter COUNTER_WIDTH = 4)
+(
     input clk,
     input rst,
     
-    input in,
+    input en,
     
-    output out
+    output [COUNTER_WIDTH - 1:0] counter_out
 );
 
-reg temp;
+reg [COUNTER_WIDTH - 1:0] counter_reg;
 
 always @(posedge clk or posedge rst)
 begin
     if (rst) begin
-        temp <= 0;
+        counter_reg <= 0;
     end
     else begin
-        temp <= in;
+        // 1 cycle delay is needed before data is updated
+        if (en) begin
+            counter_reg <= counter_reg + 1;
+        end
     end
 end
 
-assign out = temp;
+assign counter_out = counter_reg;
+
 endmodule

@@ -4,9 +4,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 17.11.2024 17:33:50
+// Create Date: 13.10.2024 01:28:26
 // Design Name: 
-// Module Name: delay_register
+// Module Name: compare
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,27 +20,37 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module delay_register(
+// Checks if the burst_len and counter are the same values.
+// If they are, send a stop signal to the control module to stop incrementing the address
+module compare
+#(parameter COUNTER_WIDTH = 4)
+(
     input clk,
     input rst,
     
-    input in,
+    input [COUNTER_WIDTH - 1:0] burst_len,
+    input [COUNTER_WIDTH - 1:0] counter,
     
-    output out
+    output stop_signal
 );
 
-reg temp;
+/*
+reg flag;
 
 always @(posedge clk or posedge rst)
 begin
     if (rst) begin
-        temp <= 0;
+        flag <= 0;
     end
     else begin
-        temp <= in;
+        if (burst_len == counter) flag <= 1;
     end
 end
+*/
 
-assign out = temp;
+// Slight workaround to detect when the burst_len exceeds counter
+assign stop_signal = ( (burst_len + 1) == counter) ? 1 : 0;
+
+
 endmodule
+
