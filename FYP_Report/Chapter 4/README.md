@@ -14,4 +14,15 @@ Folders will namely contain the Verilog files used.
 ## Section 4.3 - SPI Module
 - Relevant Folder: SPI_Module
 - Top Module: SPI_top_module.v
-- Testbench: SPI_top_module_tb.v
+- Testbench: SPI_Slave_tb.v
+
+## Section 4.4.1 - Initial I2C Module
+- Relevant Folder: I2C_Initial_Design
+- Top Module: top_module.v
+- Testbench: top_module_tb.v
+
+## Section 4.4.2 - OpenIP Cores I2C Slave
+- Relevant Folder: ip-core-communication-controller_i2c_slave/rtl
+- Top Module: i2cSlaveTop.v
+- Testbench: ip-core-communication-controller_i2c_slave/sim & ip-core-communication-controller_i2c_slave/bench
+- Running the testbench requires Icarus Verilog and GTK wave
