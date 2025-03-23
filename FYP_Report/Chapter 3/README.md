@@ -1,4 +1,4 @@
-# Hardware and their relevant software
+# Chapter 3 - Hardware and their relevant software
 This README will go over the hardware utilized and the corresponding software used.
 
 ## Section 3.2 PCB Designs
