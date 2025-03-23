@@ -7,6 +7,7 @@ This README will go over the hardware utilized and the corresponding software us
 - PCB design 1 files, done in KiCad 8.0
 ### TangNano-MRAM zip file
 - PCB design 2 files, done in KiCad 8.0
+- This is the most relevant and up-to-date PCB design that is being used
 
 ## 3.3 FPGA
 - For Zedboard, Vivado and Vitis were used
